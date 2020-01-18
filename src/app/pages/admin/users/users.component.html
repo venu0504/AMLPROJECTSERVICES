@@ -1,0 +1,447 @@
+<vex-secondary-toolbar current="Admin">
+  <vex-breadcrumbs [crumbs]="['Admin', 'Users']" class="flex-auto"></vex-breadcrumbs>
+
+  <button class="ml-2" color="primary" mat-icon-button type="button">
+    <mat-icon [icIcon]="icMoreVert"></mat-icon>
+  </button>
+</vex-secondary-toolbar>
+
+
+<div class="p-gutter"
+     gdColumns="1fr 1fr 1fr 1fr"
+     gdColumns.lt-md="1fr 1fr"
+     gdColumns.lt-sm="1fr"
+     gdGap="16px">
+ 
+<div class="px-6 py-4 " fxLayout="row" fxLayoutAlign="start center">
+        <h2 class="title m-0"> List Of Users </h2>
+      </div>			
+ <div   gdColumn=" 4 / 1" style=" overflow-x: auto;display: block ;">
+
+       <div @fadeInUp
+           class=" px-6 border rounded-full bg-card py-2 pl-6 pr-3 text-secondary max-w-xl mx-auto shadow-8"
+           fxLayout="row"
+           fxLayoutAlign="start center">
+        <ic-icon [icon]="icSearch" fxFlex="none" size="24px"></ic-icon>
+        <input class="border-0 ml-4 placeholder:text-secondary subheading-2 outline-none font-medium w-0 bg-card"
+               fxFlex="auto"
+               placeholder="Search for answers..."
+               type="text">
+        <button class="rounded-full" color="primary" fxFlex="none" mat-raised-button type="button">GO</button>
+      </div>
+	  <br>
+
+  <div  class="card ">
+    <mat-list class="">
+      
+      <mat-list-item>
+        
+        <p matLine>
+        
+          <span class="text-secondary px-6 py-4"><a href="#"> -- Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</a></span>
+        </p>
+      </mat-list-item>
+      <mat-list-item>
+      
+        <p matLine>
+        
+          <span class="text-secondary px-6 py-4"><a href="#"> -- Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</a></span>
+        </p>
+      </mat-list-item>
+ 
+   
+    
+   
+    </mat-list>
+  </div>
+
+
+
+
+  </div>
+ 
+ <div class="card  advertisments" >
+ 
+      <mat-card class="mb-3">
+  
+   <vex-page-layout-content class="vex-tabs p-0" vexContainer>
+    <mat-tab-group>
+      <mat-tab label="User Details">
+        <div class="p-6">
+        <mat-card class="mb-3">
+		
+		  
+	     <div class="flex-auto flex flex-col sm:flex-row justify-between items-center">
+          <h3>User details</h3>
+
+
+      </div>
+ 
+ 
+      <mat-list role="list" class="custom-list">
+        <mat-list-item role="listitem"><span class="w-40">First name</span><span class="w-60"> Moe</span></mat-list-item>
+        <mat-list-item role="listitem"><span class="w-40">Last Name </span><span class="w-60">
+           Alharazi</span></mat-list-item>
+        <mat-list-item role="listitem"><span class="w-40">Email</span><span class="w-60"> moe.alharazi@cooptavanza.com</span>
+        </mat-list-item>
+      </mat-list>
+  
+
+    </mat-card>
+	
+	
+	    <mat-card class="mb-3">
+      <h3>Registration Keys</h3>
+      <hr class="mt-2">
+      <mat-list role="list" class="custom-list">
+        <mat-list-item role="listitem"><span class="w-40">Product Key</span><span class="w-60"> 84807d-8e88-402a-a958-56705327d806:d784807d-8e88-402a-a958-56705327</span></mat-list-item>
+        <mat-list-item role="listitem"><span class="w-40">API Key </span><span class="w-60">84807d-8e88-402a-a958-7
+           </span></mat-list-item>
+        <mat-list-item role="listitem"><span class="w-40">API Secret</span><span class="w-60"> ThiLeBXzuDqwTOI3q2aoJa+2eTD0RJaJfNgZ22AdjqhljG/afeThiLeBXzuDqwTOI3q2aoJa+2eTD0RJaJfNgZ22AdjqhljG/afe</span>
+          
+		</mat-list-item>
+		  <button style="left:200px;!important;" color="primary" mat-raised-button type="button">
+    ReGenerate API Key
+      </button>
+      </mat-list>
+    </mat-card>
+    <mat-card class="mb-3">
+	
+		  
+	     <div class="flex-auto flex flex-col sm:flex-row justify-between items-center">
+          <h3>Roles</h3>
+
+        <div class="actions flex flex-col sm:flex-row justify-end items-center">
+      
+          <div class="flex px-6"  >
+		 
+    <div class="flex">
+            <button style="color:#00a5e2" (click)="openLg(longContent)">Edit</button>
+           
+          </div>
+  
+		   
+          </div>
+        </div>
+      </div>
+
+    
+       <div  class="px-6 ">
+    <mat-list class="">
+      
+      <mat-list-item>
+        
+        <p matLine>
+        
+          <span class="text-secondary "><a href="#"> -- Case Manger / Screener </a></span>
+        </p>
+      </mat-list-item>
+      <mat-list-item>
+      
+        <p matLine>
+        
+          <span class="text-secondary "><a href="#"> -- Client Admin</a></span>
+        </p>
+      </mat-list-item>
+ 
+   
+    
+   
+    </mat-list>
+  </div>
+    </mat-card>
+	    
+
+    
+	
+        </div>
+      </mat-tab>
+ 
+      <mat-tab label="Groups">
+	  	  
+	     <div class=" p-6 flex-auto flex flex-col sm:flex-row justify-between items-center">
+          <h3>User details</h3>
+
+        <div class="actions flex flex-col sm:flex-row justify-end items-center">
+      
+          <div class="flex px-6"  >
+		 
+    <div class="flex">
+            <button style="color:#00a5e2" (click)="openScrollableUser(longUser)">Edit</button>
+           
+          </div>
+  
+		   
+          </div>
+        </div>
+      </div>
+	
+       <div @fadeInUp
+           class="  border rounded-full bg-card py-2 pl-6 pr-3 text-secondary max-w-xl mx-auto shadow-8"
+           fxLayout="row"
+           fxLayoutAlign="start center">
+        <ic-icon [icon]="icSearch" fxFlex="none" size="24px"></ic-icon>
+        <input class="border-0 ml-4 placeholder:text-secondary subheading-2 outline-none font-medium w-0 bg-card"
+               fxFlex="auto"
+               placeholder="Search for answers..."
+               type="text">
+        <button class="rounded-full" color="primary" fxFlex="none" mat-raised-button type="button">GO</button>
+      </div>
+	  
+	  <br>
+
+  <div  >
+    <mat-list class="">
+      
+      <mat-list-item>
+        
+        <p matLine>
+        
+          <span class="text-secondary px-6 py-4"><a href="#"> -- Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</a></span>
+        </p>
+      </mat-list-item>
+      <mat-list-item>
+      
+        <p matLine>
+        
+          <span class="text-secondary px-6 py-4"><a href="#"> -- Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</a></span>
+        </p>
+      </mat-list-item>
+ 
+   
+    
+   
+    </mat-list>
+  </div>
+
+      </mat-tab>
+	
+	  
+    </mat-tab-group>
+  </vex-page-layout-content>
+    </mat-card>
+ 
+              
+  </div>
+
+
+					
+
+     
+</div>
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Groups</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  	   <form [formGroup]="onCreateGroup">
+  <div class="modal-body">
+
+ <div class="px-6">
+          <h2 class="title m-0">Groups</h2>
+        </div>
+ <div class="px-6 py-4">
+    
+      <h4 class="body-2 text-secondary m-0"><p> Group :  <span>  Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</span>
+
+</p>
+</h4>
+    </div>
+
+        <div class="p-6">
+      <h2 class="title mt-0 mb-4">Create new group</h2>
+	  
+	  <h4 class="body-2 text-secondary m-0"><p> Parent group: <span>  Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</span>
+
+</p>
+</h4>
+	 
+    </div>
+	   
+	 
+      <div class="px-6" fxLayout="column">
+        <mat-form-field>
+          <mat-label>Group name</mat-label>
+          <input placeholder="Enter Group name"  formControlName="groupName" matInput required>
+		   <mat-error *ngIf="onCreateGroup.get('groupName').hasError('required')">Required</mat-error>
+        </mat-form-field>
+  <mat-form-field>
+          <mat-label>Compliance Leader</mat-label>
+          <input placeholder="Enter Compliance Leader"  formControlName="complianceLeader" matInput required>
+		   <mat-error *ngIf="onCreateGroup.get('complianceLeader').hasError('required')">Required</mat-error>
+        </mat-form-field>
+		  <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input placeholder="Enter Compliance Leader Email" formControlName="complianceEmail" matInput required>
+		     <mat-error *ngIf="onCreateGroup.get('complianceEmail').hasError('required')">Required</mat-error>
+        </mat-form-field>
+
+    
+
+ <div>
+
+    <h2 class="title m-3">Default search type for the group?</h2>
+<mat-radio-group >
+  <mat-radio-button class="radio" >
+  Zero Footprint Search
+  </mat-radio-button>
+   <mat-radio-button class="radio" >
+    Case Management & Audit
+  </mat-radio-button>
+</mat-radio-group>
+</div>
+        </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button color="primary" mat-raised-button type="submit">Create Group</button>
+    
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancel</button>
+  </div>
+  </form>
+</ng-template>
+
+<ng-template #longContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Edit User Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  	   <form [formGroup]="onEditGroup">
+  <div class="modal-body">
+
+   
+  
+  	 
+      <div class="px-6 py-4" fxLayout="column">
+        <mat-form-field  fxFlex="auto">
+          <mat-label>First Name</mat-label>
+          <input placeholder="Enter First Name"  formControlName="groupName" matInput required>
+		   <mat-error *ngIf="onEditGroup.get('groupName').hasError('required')">Required</mat-error>
+        </mat-form-field>
+  <mat-form-field  fxFlex="auto">
+          <mat-label>Last Name</mat-label>
+          <input placeholder="Enter Last Name"  formControlName="complianceLeader" matInput required>
+		   <mat-error *ngIf="onEditGroup.get('complianceLeader').hasError('required')">Required</mat-error>
+        </mat-form-field>
+		
+		  <mat-form-field  fxFlex="auto">
+          <mat-label>Email Address</mat-label>
+          <input placeholder="Enter Email Address" formControlName="complianceEmail" matInput required>
+		     <mat-error *ngIf="onEditGroup.get('complianceEmail').hasError('required')">Required</mat-error>
+        </mat-form-field>
+		  <mat-form-field fxFlex="auto">
+          <mat-label> Assigned Roles</mat-label>
+          <mat-select formControlName ="complianceEmail" >
+                  <mat-option  value="xxxxxx">ccccc</mat-option>
+          </mat-select>
+          
+        </mat-form-field>
+
+      </div>
+
+    
+
+
+
+
+
+  </div>
+ <div class="modal-footer">
+    <button color="primary" mat-raised-button type="submit">Save</button>
+    
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancel</button>
+  </div>
+  </form>
+	  
+	  </ng-template> 
+	  
+	  
+	  
+	  <ng-template #longUser let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Groups</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         
+  
+	
+       <div @fadeInUp
+           class="  border rounded-full bg-card py-2 pl-6 pr-3 text-secondary max-w-xl mx-auto shadow-8"
+           fxLayout="row"
+           fxLayoutAlign="start center">
+        <ic-icon [icon]="icSearch" fxFlex="none" size="24px"></ic-icon>
+        <input class="border-0 ml-4 placeholder:text-secondary subheading-2 outline-none font-medium w-0 bg-card"
+               fxFlex="auto"
+               placeholder="Search for answers..."
+               type="text">
+        <button class="rounded-full" color="primary" fxFlex="none" mat-raised-button type="button">GO</button>
+      </div>
+	  
+	  <br>
+
+  <div  >
+    <mat-list class="">
+      
+      <mat-list-item>
+        
+        <p matLine>
+        
+          <span class="text-secondary px-6 py-4"><a href="#"> -- Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</a></span>
+        </p>
+      </mat-list-item>
+      <mat-list-item>
+      
+        <p matLine>
+        
+          <span class="text-secondary px-6 py-4"><a href="#"> -- Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</a></span>
+        </p>
+      </mat-list-item>
+ 
+   
+    
+   
+    </mat-list>
+  </div>
+  	 
+  
+    
+
+          </div>
+
+
+         <div class="modal-footer">
+    <button color="primary" mat-raised-button type="button">Save</button>
+    
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancel</button>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+
+

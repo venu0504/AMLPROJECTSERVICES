@@ -1,0 +1,1370 @@
+<vex-secondary-toolbar current="Admin">
+  <vex-breadcrumbs [crumbs]="['Admin', 'Summery']" class="flex-auto"></vex-breadcrumbs>
+
+<button style="color:#00a5e2" (click)="openLg(content)">New Role </button>
+</vex-secondary-toolbar>
+
+<div class="p-gutter" gdColumns="1fr 1fr" gdColumns.lt-md="1fr 1fr" gdColumns.lt-sm="1fr" gdGap="16px" vexContainer>
+
+    <div>
+    <mat-card class="mb-3">
+      <h3>Roles</h3>
+      <hr class="mt-2">
+      <mat-list role="list" class="custom-list">
+        <mat-list-item role="listitem"><span class="w-40">Case Manager/Screener </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+  </div>
+   
+
+    <div>
+      <mat-card class="mb-3">
+    	  <div class="flex-auto flex flex-col sm:flex-row justify-between items-center">
+          <h3>PERMISSIONS</h3>
+
+        <div class="actions flex flex-col sm:flex-row justify-end items-center">
+      
+          <div class="flex px-6"  >
+		 
+    <div class="flex">
+            <button style="color:#00a5e2" (click)="openLg(longContent)">Edit</button>
+           
+          </div>
+  
+		   
+          </div>
+        </div>
+      </div>
+      <mat-list role="list" class="custom-list">
+          <mat-list-item role="listitem"><span class="w-40">Delete a case </span>
+          </mat-list-item>
+          <mat-list-item role="listitem"><span class="w-40">Screen a case </span>
+          </mat-list-item>
+          <mat-list-item role="listitem"><span class="w-40">Create a case </span>
+          </mat-list-item>
+          <mat-list-item role="listitem"><span class="w-40">Case OGS </span>
+          </mat-list-item>
+          <mat-list-item role="listitem"><span class="w-40">Review a case </span>
+          </mat-list-item>
+          <mat-list-item role="listitem"><span class="w-40">Archive a case </span>
+          </mat-list-item>
+          <mat-list-item role="listitem"><span class="w-40">Resolve a case </span>
+          </mat-list-item>
+          <mat-list-item role="listitem"><span class="w-40">Assign a case </span>
+          </mat-list-item>
+      </mat-list>
+    </mat-card>
+    </div>
+
+
+
+</div>
+<div class="container py-gutter tran">
+  <div class="card overflow-hidden">
+
+  <div  class="bg-card  px-gutter overflow-auto shadow"   gdColumn=" 4 / 1" >
+    
+	<div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+        <h2 class="title m-0">Audit List</h2>
+      </div>
+
+    <table class="table "   >
+      <thead>
+      <tr>
+        <td class="body-2 text-secondary">#</td>
+        <td class="body-2 text-secondary">Administrator</td>
+        <td class="body-2 text-secondary">	Actioned On</td>
+        <td class="body-2 text-secondary">	Event</td>
+        <td class="body-2 text-secondary">	Date</td>
+		 
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="py-6 border-b">1</td>
+        <td class="py-6 border-b">Ashitha B N</td>
+        <td class="py-6 border-b">Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</td>
+        <td class="py-6 border-b"><a (click)="openLg(content)"> <button style="color:#00a5e2"> Client Settings Update </button></a></td>
+		<td class="py-6 border-b">	07-Aug-2019 18:58</td>
+		
+      </tr>
+        <tr>
+        <td class="py-6 border-b">2</td>
+        <td class="py-6 border-b">Moe Alharazi</td>
+        <td class="py-6 border-b">Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</td>
+      <td class="py-6 border-b"><a (click)="openLg(longContent)"> <button style="color:#00a5e2"> Group Resolution Toolkit Update </button> </a></td>
+		<td class="py-6 border-b">	15-Oct-2019 18:58</td>
+		
+      </tr>
+	      <tr>
+        <td class="py-6 border-b">3</td>
+        <td class="py-6 border-b">Moe Alharazi</td>
+        <td class="py-6 border-b">Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</td>
+         <td class="py-6 border-b"><a (click)="openScrollableUser(longUser)"> <button style="color:#00a5e2"> Group Update </button> </a></td>
+		<td class="py-6 border-b">	07-Mar-2019 18:58</td>
+		
+      </tr>
+	    <tr>
+        <td class="py-6 border-b">4</td>
+        <td class="py-6 border-b">Ashitha B N</td>
+        <td class="py-6 border-b">Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</td>
+         <td class="py-6 border-b"><a (click)="openScrollableAuto(longAuto)"> <button style="color:#00a5e2"> Client Settings Update </button></a></td>
+		<td class="py-6 border-b">	20-Nov-2019 18:58</td>
+		
+      </tr>
+	  <tr>
+        <td class="py-6 border-b">5</td>
+        <td class="py-6 border-b">Ashitha B N</td>
+        <td class="py-6 border-b">Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</td>
+        <td class="py-6 border-b"><a (click)="openScrollableResolutiontool(longResolutiontool)"> <button style="color:#00a5e2"> Client Status Update </button></a></td>
+		<td class="py-6 border-b">	07-Aug-2019 18:58</td>
+		
+      </tr>
+	  <tr>
+        <td class="py-6 border-b">6</td>
+        <td class="py-6 border-b">Bhavani Cc</td>
+        <td class="py-6 border-b">Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</td>
+        <td class="py-6 border-b"><a (click)="openScrollableAutoresolution(longAutoresolution)" > <button style="color:#00a5e2"> Client Status Update </button></a></td>
+		<td class="py-6 border-b">	07-Aug-2019 18:58</td>
+		
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+	</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<div class="p-gutter"
+     gdColumns="1fr 1fr 1fr 1fr"
+     gdColumns.lt-md="1fr 1fr"
+     gdColumns.lt-sm="1fr"
+     gdGap="16px">
+</div>
+
+
+
+
+
+<ng-template #content let-modal>
+<div class="modal-header">
+    <h4 class="modal-title">ADD NEW ROLE </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+     <div class="px-6 py-4"  fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+        <mat-form-field fxFlex="auto">
+          <mat-label>Role Name :</mat-label>
+          <input placeholder="Enter Role name" matInput required>
+        </mat-form-field>
+		     <mat-form-field fxFlex="auto">
+          <mat-label>Favorite fruit</mat-label>
+          <mat-select>
+            <mat-option value="Apples">Apples</mat-option>
+            <mat-option value="Peaches">Peaches</mat-option>
+            <mat-option value="Bananas">Bananas</mat-option>
+            <mat-option value="Mango">Mango</mat-option>
+            <mat-option value="Apples">Cucumber</mat-option>
+          </mat-select>
+        </mat-form-field>
+</div>
+</div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+
+
+
+
+<ng-template #longContent let-modal>
+  
+  <div class="modal-body">
+ 
+ <div class="px-6 py-4">
+    <div class="px-6">
+          <h2 class="title m-0">GROUP CUSTOMIZATION</h2>
+        </div>
+      <mat-card class="mb-3">
+      <mat-list role="list" class="custom-list">
+        <mat-list-item role="listitem"><span class="w-40">Audit Date </span><span class="w-60"> 10-Dec-2019 04:43</span></mat-list-item>
+		
+        <mat-list-item role="listitem"><span class="w-40">Group </span><span class="w-60">
+            Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</span></mat-list-item>
+			
+	    <mat-list-item role="listitem"><span class="w-40">Audit Action </span><span class="w-60">
+             Moe Alharazi</span></mat-list-item>
+        
+      </mat-list>
+	  
+	  <div class="px-6">
+      <h2 class="title m-0">World-Check Resolution States</h2>
+    </div>
+	
+	  <table class="table "   >
+      <thead>
+      <tr>
+        <td class="body-2 text-secondary">Show</td>
+        <td class="body-2 text-secondary">Resolution State</td>
+		<td class="body-2 text-secondary">Risk Level</td>
+		<td class="body-2 text-secondary">Reason</td>
+		<td class="body-2 text-secondary">Mandatory</td>
+      </tr>
+      </thead>
+	  
+      <tbody>
+      <tr>
+        <td >X</td>
+        <td >FALSE</td>
+		<td >UNKNOWN</td>
+		<td >No Match</td>
+		<td >false</td>
+      </tr>
+      </tbody>
+	  
+	  <tbody>
+      <tr>
+        <td >X</td>
+        <td >UNSPECIFIED</td>
+		<td >UNKNOWN</td>
+		<td >Unknown</td>
+		<td >false</td>
+      </tr>
+      </tbody>
+	  
+	  <tbody>
+      <tr>
+        <td >X</td>
+        <td >POSSIBLE</td>
+		<td >HIGH
+MEDIUM
+LOW
+UNKNOWN</td>
+		<td >Partial Match</td>
+		<td >false</td>
+      </tr>
+      </tbody>
+	  
+	  <tbody>
+      <tr>
+        <td >X</td>
+        <td >POSITIVE</td>
+		<td >HIGH
+MEDIUM
+LOW</td>
+		<td >Full Match</td>
+		<td >false</td>
+      </tr>
+      </tbody>
+	  
+      </table>
+    </mat-card>
+	
+    </div>
+
+        
+	
+      
+  </div>
+ <div class="modal-footer">
+    
+    
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancel</button>
+  </div>
+	  
+	  </ng-template> 
+	  
+	  
+	  
+	  <ng-template #longUser let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Groups</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         
+<div class="px-6">
+          <h2 class="title m-0">Groups</h2>
+        </div>
+ <div class="px-6 py-4">
+    
+      <h4 class="body-2 text-secondary m-0"><p> Group :  <span>  Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</span>
+
+</p>
+</h4>
+    </div>
+
+        <div class="px-6">
+      <h2 class="title mt-0 mb-2">Edit Product Entitlements</h2>
+	  
+	 
+	 
+    </div>
+   
+        <div fxLayout="column" fxLayout.gt-sm="row">
+              <div class="p-6">
+
+                <div fxLayout="column" fxLayoutGap="12px">
+                  <mat-checkbox [checked]="true" color="primary">World-Check</mat-checkbox>
+                  <mat-checkbox [checked]="true" color="primary">Passport Check</mat-checkbox>
+                
+                </div>
+              </div>
+
+
+            </div>
+  	 
+  
+    
+
+          </div>
+
+
+         <div class="modal-footer">
+    <button color="primary" mat-raised-button type="button">Save</button>
+    
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancel</button>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+<ng-template #longAuto let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">World-Check Auto Resolution</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  
+  
+   <div class="px-6">
+          <h2 class="title m-0">Groups</h2>
+        </div>
+ <div class="px-6 py-4">
+    
+      <h4 class="body-2 text-secondary m-0"><p> Group :  <span>  Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</span>
+
+</p>
+</h4>
+    </div>
+
+        <div class="p-6">
+      <h2 class="title mt-0 mb-4">Screening Custom Fields</h2>
+	  <h3 class="title mt-0 mb-4">Custom Fields Configuration</h3>
+      <h4 class="body-2 text-secondary m-0">Create unique fields for use during case creation  </h4>
+	  
+	 
+    </div>
+
+    <hr>
+    <div class="p-6 ">
+
+      <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+
+
+        <mat-form-field>
+          <mat-label>Field 1</mat-label>
+          <input matInput required>
+        </mat-form-field>
+        <mat-checkbox color="primary" [checked]="true">Show</mat-checkbox>
+        <mat-checkbox color="accent" [checked]="true">Mandatory</mat-checkbox>
+
+
+      </div>
+      <button color="primary" mat-raised-button type="button">Add Row</button>
+
+    </div>
+    <div class="p-6 ">
+      <h4 class="modal-title">Daily Email Schedule:</h4>
+    </div>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+
+
+      <mat-form-field fxFlex="auto">
+        <mat-label>Members receive emails daily at</mat-label>
+        <input matInput required>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="auto">
+        <mat-label>Locale:</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+    </div>
+
+
+
+
+
+   
+
+  </div>
+  <div class="modal-footer">
+    <button color="primary" mat-raised-button type="button">Save</button>
+
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancel</button>
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-template #longContentworldcheck let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Groups</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="p-6">
+      <h2 class="title mt-0 mb-4">Custom Fields Configuration</h2>
+      <h4 class="body-2 text-secondary m-0">Create unique fields for use during case creation </h4>
+    </div>
+    <hr>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+      <div class="p-6 ">
+        <span>Auto Include New Data Sources :</span> &nbsp; &nbsp; <mat-slide-toggle color="primary" [checked]="true">
+        </mat-slide-toggle>
+      </div>
+      <div class="p-6 ">
+        <span>Subscription Details :</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <mat-slide-toggle color="primary"
+          [checked]="true"></mat-slide-toggle>
+
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+      <div class="p-6 ">
+        <span>Exclude Low Quality Aliases :</span> &nbsp; &nbsp; &nbsp; &nbsp; <mat-slide-toggle color="primary"
+          [checked]="true"></mat-slide-toggle>
+      </div>
+      <div class="p-6 ">
+        <span>Include Native Aliases :</span> &nbsp; &nbsp; &nbsp; &nbsp; <mat-slide-toggle color="primary"
+          [checked]="true"></mat-slide-toggle>
+      </div>
+    </div>
+    <div class="p-6 ">
+
+      <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+        <span>Include Native Aliases :</span>&nbsp; &nbsp; &nbsp; &nbsp; <mat-form-field>
+          <mat-label>C1-C4</mat-label>
+          <input disabled matInput>
+        </mat-form-field>
+
+
+      </div>
+      <button color="primary" mat-raised-button type="button">Add Row</button>
+
+    </div>
+    <div class="p-6 ">
+      <h4 class="modal-title">Daily Email Schedule:</h4>
+    </div>
+
+    <div>
+
+
+
+      <vex-page-layout-content class="vex-tabs p-0" vexContainer>
+        <mat-tab-group>
+
+          <mat-tab label="Initial Screening">
+
+            <div class="px-6 py-4" fxLayout="row" fxLayoutAlign="start center">
+              <h3>Initial Screening</h3>
+            </div>
+
+            <div class="p-6 ">
+
+              <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+                <span>Name match threshold:</span> &nbsp; <mat-form-field>
+                  <mat-label>90</mat-label>
+                  <input disabled matInput>
+                </mat-form-field>
+
+                <mat-slider min="1" max="10" thumbLabel tickInterval="1">Fuzzy</mat-slider>
+              </div>
+
+
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <div class="p-6">
+
+                <div fxLayout="column" fxLayoutGap="12px">
+                  <mat-checkbox>Sources</mat-checkbox>
+                  <mat-checkbox [checked]="true" color="primary">Law Enforcement</mat-checkbox>
+                  <mat-checkbox [checked]="true" color="accent">Other Bodies</mat-checkbox>
+                  <mat-checkbox [checked]="true" color="warn">PEP</mat-checkbox>
+                  <mat-checkbox [checked]="true" disabled>Regularity Enforcement</mat-checkbox>
+                  <mat-checkbox [indeterminate]="true">Sanctions</mat-checkbox>
+                </div>
+              </div>
+
+
+            </div>
+
+          </mat-tab>
+
+          <mat-tab label="Ongoing Screening">
+            <div class="px-6 py-4" fxLayout="row" fxLayoutAlign="start center">
+              <h3>Initial Screening</h3>
+            </div>
+
+            <div class="p-6 ">
+
+              <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+                <span>Name match threshold:</span> &nbsp; <mat-form-field>
+                  <mat-label>78.18</mat-label>
+                  <input disabled matInput>
+                </mat-form-field>
+
+                <mat-slider min="1" max="10" thumbLabel tickInterval="1">Fuzzy</mat-slider>
+              </div>
+
+
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row">
+              <div class="p-6">
+
+                <div fxLayout="column" fxLayoutGap="12px">
+                  <mat-checkbox>Sources</mat-checkbox>
+                  <mat-checkbox [checked]="true" color="primary">Primary</mat-checkbox>
+                  <mat-checkbox [checked]="true" color="accent">Accent</mat-checkbox>
+                  <mat-checkbox [checked]="true" color="warn">Warn</mat-checkbox>
+                  <mat-checkbox [checked]="true" disabled>Disabled</mat-checkbox>
+                  <mat-checkbox [indeterminate]="true">Indeterminate</mat-checkbox>
+                </div>
+              </div>
+
+
+            </div>
+
+          </mat-tab>
+
+        </mat-tab-group>
+      </vex-page-layout-content>
+
+
+
+    </div>
+
+
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button color="primary" mat-raised-button type="button">Edit</button>
+    <button color="primary" mat-raised-button type="button">Revert</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">
+      <<Back </button> </div>
+
+	  </ng-template> 
+	  
+	  
+	  
+	  <ng-template #longResolutiontool let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Groups</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="title m-0">World-Check Reasons for Resolution</h2>
+          </div>
+          <div fxLayout="column" fxLayout.gt-sm="row">
+            <div class="p-6">
+
+              <h4 class="modal-title"> Show :</h4>
+              <br>
+
+              <div fxLayout="column" fxLayoutGap="12px">
+                <mat-checkbox> Full Match</mat-checkbox>
+                <mat-checkbox> No Match</mat-checkbox>
+                <mat-checkbox> Partial Match </mat-checkbox>
+                <mat-checkbox> Unknown </mat-checkbox>
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+          <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+            <h2 class="title m-0">World-Check Resolution States</h2>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+
+                <td class="body-2 text-secondary"></td>
+                <td class="body-2 text-secondary">Mandatory Notes</td>
+                <td class="body-2 text-secondary"></td>
+                <td class="body-2 text-secondary"></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <mat-label>POSITIVE</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                </td>
+                <td class="p-8">
+                  <mat-checkbox color="primary" [checked]="true"></mat-checkbox>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Risk</mat-label>
+                    <mat-select>
+                      <mat-option value="Apples">Apples</mat-option>
+                      <mat-option value="Peaches">Peaches</mat-option>
+                      <mat-option value="Bananas">Bananas</mat-option>
+                      <mat-option value="Mango">Mango</mat-option>
+                      <mat-option value="Apples">Cucumber</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Reasons</mat-label>
+                    <mat-select>
+                      <mat-option value="Apples">Apples</mat-option>
+                      <mat-option value="Peaches">Peaches</mat-option>
+                      <mat-option value="Bananas">Bananas</mat-option>
+                      <mat-option value="Mango">Mango</mat-option>
+                      <mat-option value="Apples">Cucumber</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+
+
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <mat-label>POSIBLE</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                </td>
+                <td class="p-8">
+                  <mat-checkbox color="primary" [checked]="true"></mat-checkbox>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Risk</mat-label>
+                    <mat-select>
+                      <mat-option value="Apples">Apples</mat-option>
+                      <mat-option value="Peaches">Peaches</mat-option>
+                      <mat-option value="Bananas">Bananas</mat-option>
+                      <mat-option value="Mango">Mango</mat-option>
+                      <mat-option value="Apples">Cucumber</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Reasons</mat-label>
+                    <mat-select>
+                      <mat-option value="Apples">Apples</mat-option>
+                      <mat-option value="Peaches">Peaches</mat-option>
+                      <mat-option value="Bananas">Bananas</mat-option>
+                      <mat-option value="Mango">Mango</mat-option>
+                      <mat-option value="Apples">Cucumber</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <mat-label>FALSE</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                </td>
+                <td class="p-8">
+                  <mat-checkbox color="primary" [checked]="true"></mat-checkbox>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Risk</mat-label>
+                    <mat-select>
+                      <mat-option value="Apples">Apples</mat-option>
+                      <mat-option value="Peaches">Peaches</mat-option>
+                      <mat-option value="Bananas">Bananas</mat-option>
+                      <mat-option value="Mango">Mango</mat-option>
+                      <mat-option value="Apples">Cucumber</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Reasons</mat-label>
+                    <mat-select>
+                      <mat-option value="Apples">Apples</mat-option>
+                      <mat-option value="Peaches">Peaches</mat-option>
+                      <mat-option value="Bananas">Bananas</mat-option>
+                      <mat-option value="Mango">Mango</mat-option>
+                      <mat-option value="Apples">Cucumber</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+
+
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <mat-label>UNSPECIFIED</mat-label>
+                    <input matInput>
+                  </mat-form-field>
+                </td>
+                <td class="p-8">
+                  <mat-checkbox color="primary" [checked]="true"></mat-checkbox>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Risk</mat-label>
+                    <mat-select>
+                      <mat-option value="Apples">Apples</mat-option>
+                      <mat-option value="Peaches">Peaches</mat-option>
+                      <mat-option value="Bananas">Bananas</mat-option>
+                      <mat-option value="Mango">Mango</mat-option>
+                      <mat-option value="Apples">Cucumber</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Reasons</mat-label>
+                    <mat-select>
+                      <mat-option value="Apples">Apples</mat-option>
+                      <mat-option value="Peaches">Peaches</mat-option>
+                      <mat-option value="Bananas">Bananas</mat-option>
+                      <mat-option value="Mango">Mango</mat-option>
+                      <mat-option value="Apples">Cucumber</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+
+
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="mt-5" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+            <div @fadeInUp class="card" fxFlex="auto">
+              <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+                <h2 class="title m-0">Form Radio Button</h2>
+              </div>
+
+              <div class="px-6 py-4" fxLayout="column">
+                <p class="mt-0 mb-4 text-secondary">
+                  When you need a user to decide between multiple options and have him only choose one, you can use a
+                  radio
+                  button.
+                </p>
+
+                <div fxLayout="column" fxLayoutGap="16px">
+                  <mat-radio-group fxLayout="row" fxLayoutGap="16px">
+                    <mat-radio-button value="Peaches"> Remove from results</mat-radio-button>
+                    <mat-radio-button [checked]="true" value="Apples">Auto-resolve as ‘False’</mat-radio-button>
+
+                  </mat-radio-group>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button color="primary" mat-raised-button type="button">Save</button>
+
+          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+<ng-template #longAutoresolution let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">World-Check Auto Resolution</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div  fxLayout="row" fxLayoutAlign="start center">
+      <h2 class="title m-0">World-Check Auto Resolution</h2>
+    </div>
+
+    <div class="px-6 py-4" fxLayout="column">
+      <p class="mt-0 mb-4 text-secondary">
+        What should World-Check One do with the World-Check outcome?
+      </p>
+
+      <div fxLayout="column" fxLayoutGap="16px">
+        <mat-radio-group fxLayout="row" fxLayoutGap="16px">
+          <mat-radio-button value="Peaches"> Remove from results</mat-radio-button>
+          <mat-radio-button [checked]="true" value="Apples">Auto-resolve as ‘False’</mat-radio-button>
+
+        </mat-radio-group>
+
+      </div>
+    </div>
+
+
+    <div  fxLayout="row" fxLayoutAlign="start center">
+      <h2 class="title m-0">Edit World-Check Rule Definitions</h2>
+    </div>
+
+    <div class="px-6 py-4" fxLayout="column">
+      <p class="mt-0 mb-4 text-secondary">
+        Manage the outcome of auto resolution
+      </p>
+
+      <div fxLayout="column" fxLayoutGap="16px">
+        <mat-radio-group fxLayout="row" fxLayoutGap="16px">
+          <mat-radio-button value="Peaches"> Remove from results</mat-radio-button>
+          <mat-radio-button [checked]="true" value="Apples">Auto-resolve as ‘False’</mat-radio-button>
+
+        </mat-radio-group>
+
+      </div>
+    </div>
+    <div  fxLayout="row" fxLayoutAlign="start center">
+      <h2 class="title m-0">Edit World-Check Rule Definitions</h2>
+    </div>
+
+    <div class="px-6 py-4" fxLayout="column">
+      <p class="mt-0  text-secondary">
+      Manage the outcome of auto resolution 
+      </p>
+
+  
+    </div>
+    <div class="h-auto relative overflow-hidden">
+  <div  class="bg-card  px-gutter overflow-auto shadow"   gdColumn=" 4 / 1" >
+
+
+
+
+    <table class="table w-full "   >
+      <thead>
+	  <td>Clear ALL</td>
+  <td>Gender</td>
+          <td>Date of Birth</td>
+          <td>Country Location</td>
+          <td>Place of Birth</td>
+          <td>Nationality</td>
+          <td>Registered Country</td>
+          <td>IMO No</td>
+      </thead>
+   <tbody>
+    
+   
+        <tr class="odd">
+          <td><label class="sourceHeader">Sanctions</label></td>
+    <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">Sanctions</label></td>
+ <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr class="odd">
+          <td><label class="sourceHeader">Law Enforcement</label></td>
+   <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">Law</label></td>
+       <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr class="odd">
+          <td><label class="sourceHeader">Regulatory Enforcement</label></td>
+   <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">Regulatory</label></td>
+     <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr class="odd">
+          <td><label class="sourceHeader">PEP</label></td>
+        <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">State Owned Entity</label></td>
+        <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">National Government</label></td>
+     <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">Sub-National Government</label></td>
+          <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">Local Government</label></td>
+        <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">Non-Governmental</label></td>
+          <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">International Organization</label></td>
+         <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">Regional Organization</label></td>
+          <td>
+           <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+           <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+           <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">State Invested Entity</label></td>
+          <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr class="odd">
+          <td><label class="sourceHeader">Other Bodies</label></td>
+          <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="sourceList">World-Check other bodies</label></td>
+          <td>
+          <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+        <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+         <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+      <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+       <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+            <mat-checkbox></mat-checkbox>
+          </td>
+          <td>
+             <mat-checkbox></mat-checkbox>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    </div>
+	
+   
+
+  </div>
+  <div class="modal-footer">
+    <button color="primary" mat-raised-button type="button">Save</button>
+
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+
+
+
+

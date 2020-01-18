@@ -1,0 +1,43 @@
+<div class="w-full h-full p-gutter container" fxLayout="column">
+
+  <div class="bg-primary-500 w-full h-64 absolute top-0 left-0 right-0"></div>
+
+  <mat-drawer-container class="card overflow-hidden" fxFlex="auto">
+    <mat-drawer [mode]="mobileQuery.matches ? 'over' : 'side'"
+                [opened]="!mobileQuery.matches"
+                class="drawer"
+                position="start">
+      <div class="h-full" fxLayout="column">
+    
+
+   
+
+        <div *ngIf="chats$ | async as chats" [@stagger]="chats.length" fxFlex="auto" vexScrollbar>
+          <a *ngFor="let chat of chats; trackBy: trackById"
+             @fadeInUp
+             [routerLink]="[chat.id]"
+             class="border-b px-4 py-6 hover:bg-hover cursor-pointer relative select-none block no-underline text-dark"
+             matRipple
+             routerLinkActive="bg-hover">
+            <div fxLayout="row"
+                 fxLayoutAlign="start center"
+                 fxLayoutGap="16px">
+       
+              <div class="overflow-hidden" fxFlex="auto">
+                <div [class.font-medium]="chat.unreadCount > 0" class="subheading-2 leading-snug">{{ chat.from }}</div>
+               
+              </div>
+           
+            </div>
+          </a>
+        </div>
+      </div>
+    </mat-drawer>
+
+    <mat-drawer-content class="chat-pattern">
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
+
+

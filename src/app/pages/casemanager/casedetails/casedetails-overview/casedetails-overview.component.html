@@ -1,0 +1,98 @@
+<vex-page-layout mode="simple">
+  <vex-page-layout-header fxLayout="column" fxLayoutAlign="center start">
+    <div vexContainer>
+      <h1 class="title mt-0 mb-1">CASE DETAILS</h1>
+      <vex-breadcrumbs [crumbs]="['Case Details']"></vex-breadcrumbs>
+    </div>
+  </vex-page-layout-header>
+
+<div class="container py-gutter">
+  <div class="card overflow-hidden">
+
+  <div  class="bg-card  px-gutter overflow-auto shadow"   gdColumn=" 4 / 1" >
+    
+	<div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+        <h2 class="title m-0"> Comparison Data </h2>
+      </div>
+
+    <table class="table "   >
+      <thead>
+      <tr>
+        <td class="body-2 text-secondary">#</td>
+        <td class="body-2 text-secondary">  Name</td>
+        <td class="body-2 text-secondary"> 	Submitted Data</td>
+        <td class="body-2 text-secondary"> 	Matched Data</td>
+       
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="py-6 ">1</td>
+        <td class="py-6 ">Batch Name</td>
+        <td class="py-6 ">Group</td>
+        <td class="py-6 ">Client Status Update</td>
+		
+		
+      </tr>
+            <tr>
+        <td class="py-6 ">1</td>
+        <td class="py-6 ">Batch Name</td>
+        <td class="py-6 ">Group</td>
+        <td class="py-6 ">Client Status Update</td>
+		
+		
+      </tr>
+	       
+      </tbody>
+    </table>
+  </div>
+
+	</div>
+	</div>
+  <vex-page-layout-content fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="24px" vexContainer>
+    <div @stagger
+         [fxFlex]="menuWidth"
+         class="sticky top-6"
+         fxHide
+         fxLayout="column"
+         fxShow.gt-sm>
+      <mat-list class="navigation" fxFlex="grow">
+        <h3 @fadeInRight matSubheader>Mode</h3>
+        <mat-list-item (click)="scrollTo('keydata')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Key Data</h4>
+        </mat-list-item>
+        <mat-list-item (click)="scrollTo('furtherinformation')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Further Information</h4>
+        </mat-list-item>
+        <mat-list-item >
+          <h4 matLine>Aliases</h4>
+        </mat-list-item>
+        <mat-list-item (click)="scrollTo('keywords')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Keywords</h4>
+        </mat-list-item>
+        <mat-list-item (click)="scrollTo('connections')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Connections/Relationships</h4>
+        </mat-list-item>
+        <mat-list-item (click)="scrollTo('source')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Sources</h4>
+        </mat-list-item>
+  
+
+      </mat-list>
+    </div>
+
+    <div @stagger class="max-w-full" fxLayout="column" fxLayoutGap="24px">
+      <vex-keydata @fadeInUp></vex-keydata>
+      <vex-furtherinformation @fadeInUp></vex-furtherinformation>
+    
+      <vex-keywords @fadeInUp></vex-keywords>
+      <vex-connections @fadeInUp></vex-connections>
+    
+      <vex-sources @fadeInUp></vex-sources>
+
+    
+     
+    </div>
+  </vex-page-layout-content>
+</vex-page-layout>
+

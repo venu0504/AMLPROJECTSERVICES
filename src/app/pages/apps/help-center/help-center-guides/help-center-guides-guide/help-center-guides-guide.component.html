@@ -1,0 +1,57 @@
+<div fxLayout="row" fxLayoutAlign="start center" mat-dialog-title>
+  <h2 class="title m-0" fxFlex="auto">{{ guide.label }}</h2>
+
+  <button class="text-secondary" mat-icon-button type="button">
+    <mat-icon [icIcon]="icLaunch"></mat-icon>
+  </button>
+
+  <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+    <mat-icon [icIcon]="icClose"></mat-icon>
+  </button>
+</div>
+
+<mat-divider class="-mx-6 text-border"></mat-divider>
+
+<mat-dialog-content class="my-6" fxLayout="column">
+  <div >
+       <p> Group :  <span>  Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</span>
+
+</p>
+
+	   <h2 class="title m-3">Create new group</h2>
+	   
+	   <p> Parent group: <span>Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</span> </p>
+      </div>
+      <div class="px-6 py-4" fxLayout="column">
+        <mat-form-field>
+          <mat-label>Group name</mat-label>
+          <input placeholder="Enter Group name" matInput required>
+        </mat-form-field>
+  <mat-form-field>
+          <mat-label>Compliance Leader</mat-label>
+          <input placeholder="Enter Compliance Leader" matInput required>
+        </mat-form-field>
+		  <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input placeholder="Enter Compliance Leader Email" matInput required>
+        </mat-form-field>
+
+
+ <div>
+
+    <h2 class="title m-3">Default search type for the group?</h2>
+<mat-radio-group [(ngModel)]="favoriteSeason">
+  <mat-radio-button class="radio m-2" *ngFor="let season of seasons" [value]="season">
+    {{ season }}
+  </mat-radio-button>
+</mat-radio-group>
+</div>
+      </div>
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button color="primary" mat-raised-button type="button">Create Group</button>
+  <button cdkFocusInitial color="primary" mat-button mat-dialog-close type="button">CLOSE</button>
+
+</mat-dialog-actions>

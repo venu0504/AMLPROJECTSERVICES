@@ -1,0 +1,44 @@
+<div class="w-full h-full bg-login" fxLayout="column" fxLayoutAlign="center center">
+  <div @fadeInUp class="card overflow-hidden w-full max-w-md">
+    <div class="p-6 pb-0" fxLayout="column" fxLayoutAlign="center center">
+      <div class="fill-current text-center">
+        <img class="logo" src="assets/img/logo.png" alt="Thomsonreuters">
+      </div>
+    </div>
+
+ 
+
+    <div [formGroup]="form" class="p-6" fxLayout="column" fxLayoutGap="16px">
+      <div fxFlex="auto" fxLayout="column">
+ 
+        <mat-form-field fxFlex="grow">
+          <mat-label>Username</mat-label>
+          <input formControlName="text" matInput required>
+          <mat-error *ngIf="form.get('text').hasError('required')">Please enter a valid username</mat-error>
+        </mat-form-field>
+        <!-- <mat-form-field fxFlex="grow">
+              <mat-label>Username</mat-label>
+              <input formControlName="email" matInput required>
+              <mat-error *ngIf="form.get('email').hasError('required')">We need an email address to log you in</mat-error>
+            </mat-form-field> -->
+        <mat-form-field fxFlex="grow">
+          <mat-label>Password </mat-label>
+          <input [type]="inputType" formControlName="password" matInput required>
+          <button (click)="toggleVisibility()" mat-icon-button matSuffix matTooltip="Toggle Visibility" type="button">
+            <mat-icon *ngIf="visible" [icIcon]="icVisibility"></mat-icon>
+            <mat-icon *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>
+          </button>
+          <mat-hint>Click the eye to toggle visibility</mat-hint>
+          <mat-error *ngIf="form.get('password').hasError('required')">Please enter a valid password</mat-error>
+        </mat-form-field>
+
+      </div>
+      <button (click)="send()" color="primary" mat-raised-button type="button">
+        SIGN IN
+      </button>
+      <div class="mb-1" fxLayout="row" fxLayoutAlign="end none">
+        <a [routerLink]="['/onepass-profile']" class="caption">Create OnePass Profile</a>
+      </div>
+    </div>
+  </div>
+</div>

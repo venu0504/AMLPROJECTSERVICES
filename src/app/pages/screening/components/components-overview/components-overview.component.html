@@ -1,0 +1,66 @@
+<vex-page-layout mode="simple">
+  <vex-page-layout-header fxLayout="column" fxLayoutAlign="center start">
+    <div vexContainer>
+      <h1 class="title mt-0 mb-1">SCREENING</h1>
+      <vex-breadcrumbs [crumbs]="['SCREENING', 'Single Screening']"></vex-breadcrumbs>
+    </div>
+  </vex-page-layout-header>
+
+  <vex-page-layout-content fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="24px" vexContainer>
+    <div @stagger
+         [fxFlex]="menuWidth"
+         class="sticky top-6"
+         fxHide
+         fxLayout="column"
+         fxShow.gt-sm>
+      <mat-list class="navigation" fxFlex="grow">
+        <h3 @fadeInRight matSubheader>Mode</h3>
+        <mat-list-item (click)="scrollTo('single')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Single</h4>
+        </mat-list-item>
+        <mat-list-item (click)="scrollTo('batch')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Batch</h4>
+        </mat-list-item>
+        <mat-list-item >
+          <h4 matLine>Entity Type</h4>
+        </mat-list-item>
+        <mat-list-item (click)="scrollTo('individual')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Individual</h4>
+        </mat-list-item>
+        <mat-list-item (click)="scrollTo('organization')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Organiization</h4>
+        </mat-list-item>
+        <mat-list-item (click)="scrollTo('vessel')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Vessel</h4>
+        </mat-list-item>
+        <mat-list-item (click)="scrollTo('unspecified')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Unspecified</h4>
+        </mat-list-item>
+        <mat-list-item >
+          <h4 matLine>Check Types</h4>
+        </mat-list-item>
+        <mat-list-item >
+          <h4 matLine>World-Check</h4>
+        </mat-list-item>
+        <mat-list-item (click)="scrollTo('passportcheck')" @fadeInRight class="cursor-pointer" matRipple>
+          <h4 matLine>Passport-Check</h4>
+        </mat-list-item>
+
+      </mat-list>
+    </div>
+
+    <div @stagger class="max-w-full" fxLayout="column" fxLayoutGap="24px">
+      <vex-single @fadeInUp></vex-single>
+      <vex-batch @fadeInUp></vex-batch>
+    
+      <vex-individual @fadeInUp></vex-individual>
+      <vex-organization @fadeInUp></vex-organization>
+      <vex-unspecified @fadeInUp></vex-unspecified>
+      <vex-vessel @fadeInUp></vex-vessel>
+
+      <vex-passport-check @fadeInUp></vex-passport-check>
+     
+    </div>
+  </vex-page-layout-content>
+</vex-page-layout>
+

@@ -1,0 +1,30 @@
+<div class="bg-login w-full h-full" fxLayout="column" fxLayoutAlign="center center">
+  <div [@fadeInUp] class="card overflow-hidden w-full max-w-md">
+    <div class="p-6 pb-0" fxLayout="column" fxLayoutAlign="center center">
+      <div class="fill-current text-center">
+          <img class="logo" src="assets/img/logo.png" alt="Thomsonreuters">        
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <h2 class="title m-0">Forgot username?</h2>
+      <h4 class="body-2 text-secondary m-0">Enter your email and we will help you recover your username.</h4>
+    </div>
+
+    <div [formGroup]="form" class="p-6 flex flex-col">
+      <mat-form-field>
+        <mat-label>E-Mail</mat-label>
+
+        <mat-icon [icIcon]="icMail" class="mr-2" matPrefix></mat-icon>
+        <input formControlName="email" matInput required>
+        <mat-error *ngIf="form.get('email').hasError('required')">
+          We can't recover your password, without your email.
+        </mat-error>
+      </mat-form-field>
+
+      <button (click)="send()" class="mt-2" color="primary" mat-raised-button type="button">
+        RECOVER USERNAME
+      </button>
+    </div>
+  </div>
+</div>

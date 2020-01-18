@@ -1,0 +1,67 @@
+<div class="w-full h-full bg-login" fxLayout="column" fxLayoutAlign="center center">
+
+  <div @fadeInUp class="card overflow-hidden w-full max-w-md">
+    <div class="p-6 pb-0" fxLayout="column" fxLayoutAlign="center center">
+      <div class="fill-current text-center">
+        <img class="logo" src="assets/img/logo.png" alt="Thomsonreuters">
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <h2 class="title m-0">Welcome back</h2>
+      <h4 class="body-2 text-secondary m-0">Sign in using OnePass.</h4>
+    </div> 
+
+    <form [formGroup]="onLoginForm"  class="p-6" fxLayout="column" fxLayoutGap="16px">
+      <div fxFlex="auto" fxLayout="column">
+        <mat-form-field fxFlex="grow">
+          <mat-label>Username</mat-label>
+          <input formControlName ="username"  matInput required>
+
+		     <mat-error *ngIf="hasError('username', 'required')">User Name is required</mat-error>
+		  
+        </mat-form-field>
+        <!-- <mat-form-field fxFlex="grow">
+          <mat-label>Username</mat-label>
+          <input formControlName="email" matInput required>
+          <mat-error *ngIf="form.get('email').hasError('required')">We need an email address to log you in</mat-error>
+        </mat-form-field> -->
+          <mat-form-field fxFlex="grow">
+          <mat-label>Password</mat-label>
+          <input [type]="inputType" formControlName ="password" matInput required>
+     
+       
+          <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+		   <mat-error *ngIf="hasError('password', 'minlength')">Need to Entered Minimunm 5 characters</mat-error>
+          <mat-error *ngIf="hasError('password', 'maxlength')">You have Entered more than 20 characters</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mb-0" fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-checkbox class="caption" color="primary">Remember Me</mat-checkbox>
+        <a [routerLink]="['/forgot-username']" class="caption">Forgot Username?</a>
+      </div>
+      <div class="mb-1" fxLayout="row" fxLayoutAlign="end none">
+        <a [routerLink]="['/forgot-password']" class="caption">Forgot Password?</a>
+      </div>
+
+      <button  color="primary"  (click)="goToHome()" mat-raised-button type="submit">
+        SIGN IN
+      </button>
+
+      <div class="mb-1" fxLayout="row" fxLayoutAlign="space-between center">
+        <a [routerLink]="['/registration-key']">Add registration key</a>
+        <a [routerLink]="['/onepass-profile']">Create OnePass profile</a>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <a [routerLink]="['/update-oneplus-profile']">Update OnePass profile</a>
+      </div>
+
+
+      <!-- <p class="text-secondary text-center">
+        Don't have an account?<br/>
+        <a [routerLink]="['/register']">Click here to create one</a>
+      </p> -->
+    </form>
+  </div>
+</div>
