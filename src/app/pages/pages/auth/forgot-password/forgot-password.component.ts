@@ -5,6 +5,7 @@ import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animati
 import icMail from '@iconify/icons-ic/twotone-mail';
 import icSmartphone from '@iconify/icons-ic/twotone-smartphone';
 import { FormControl } from '@angular/forms';
+import { ApiProvider } from 'src/app/services/api-provider';
 
 @Component({
   selector: 'vex-forgot-password',
@@ -15,14 +16,18 @@ import { FormControl } from '@angular/forms';
 export class ForgotPasswordComponent implements OnInit {
 
 
-    public forgotPassword: any;
+    public forgotPasswordForm: any;
     submitted = false;
 
 
- constructor(private router: Router, private formBuilder: FormBuilder) {}
+ constructor(
+   private router: Router, 
+   private formBuilder: FormBuilder,
+   private apiProvider: ApiProvider,
+   ) {}
 
 ngOnInit() {
-this.forgotPassword = this.formBuilder.group({
+this.forgotPasswordForm = this.formBuilder.group({
  
       email: [null, Validators.compose([Validators.required, Validators.email])]
  });
@@ -30,13 +35,22 @@ this.forgotPassword = this.formBuilder.group({
 
 
  public hasError = (controlName: string, errorName: string) => {
-    return this.forgotPassword.controls[controlName].hasError(errorName);
+    return this.forgotPasswordForm.controls[controlName].hasError(errorName);
   }
-  forgotPasswordOnsubmit(){
-    this.submitted = true;
-    if (this.forgotPassword.invalid) {
-      return;
+
+  sendforgotPasswordLink(){
+    const inputData = {
+      email: this.forgotPasswordForm.value.email
     }
-    alert('form fields are validated successfully!');  
-  }
+   this.apiProvider.sendPasswordLink('sendPassword',inputData).subscribe(
+    async resdata => {
+              const res = resdata;
+              if(res){
+                //show some message
+                this.router.navigate(['/login'])
+              }
+      }, async (error) => {
+        console.log("error occured")
+      });
+    }
 }

@@ -267,7 +267,6 @@ export class ApiProvider {
     }
 
     sendUsernameLink(endpoint: string, payload: any): Observable<any> {
-        debugger;
         const headers = new Headers();
         const url = this.BaseUrl + endpoint;
 
@@ -279,5 +278,18 @@ export class ApiProvider {
                     return response.json();
                 }));
     }
+    
+    sendPasswordLink(endpoint: string, payload: any): Observable<any> {
+        const headers = new Headers();
+        const url = this.BaseUrl + endpoint;
+
+        const options = new RequestOptions({ headers });
+        return this.http.post(url, payload)
+            .pipe(
+                map(response => {
+                    response.json();
+                    return response.json();
+                }));
+        }
 
 }
