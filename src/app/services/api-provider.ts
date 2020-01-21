@@ -10,8 +10,8 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class ApiProvider {
     token = null;
     url = null;
-    public BaseUrl: any = 'https://cashsends.com/api/';
-    //public BaseUrl: any = 'http://localhost:8080/api/';
+    //public BaseUrl: any = 'https://cashsends.com/api/';
+    public BaseUrl: any = 'http://localhost:8080/api/';
     public gatewayurl: any = 'http://localhost:8080/';
     public coopavanzaurl: any = 'https://cooptavanza.com/fineract-provider/api/v1';
     public coopplus: any = 'https://co-opplus.com/';
@@ -266,5 +266,18 @@ export class ApiProvider {
 
     }
 
+    sendUsernameLink(endpoint: string, payload: any): Observable<any> {
+        debugger;
+        const headers = new Headers();
+        const url = this.BaseUrl + endpoint;
+
+        const options = new RequestOptions({ headers });
+        return this.http.post(url, payload)
+            .pipe(
+                map(response => {
+                    response.json();
+                    return response.json();
+                }));
+    }
 
 }
