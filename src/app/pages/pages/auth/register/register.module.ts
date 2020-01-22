@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
@@ -25,7 +26,8 @@ import { IconModule } from '@visurel/iconify-angular';
     MatButtonModule,
     MatTooltipModule,
     MatCheckboxModule,
-    IconModule
+    IconModule,
+    FormsModule
   ]
 })
 export class RegisterModule {

@@ -11,7 +11,7 @@
       <h4 class="body-2 text-secondary m-0">Simply fill out the form below</h4>
     </div>
 
-    <div [formGroup]="form" class="p-6" fxLayout="column" fxLayoutGap="16px">
+    <div [formGroup]="registrationForm" class="p-6" fxLayout="column" fxLayoutGap="16px">
       <div fxFlex="auto" fxLayout="column">
         <mat-form-field fxFlex="grow">
           <mat-label>Name</mat-label>
@@ -45,9 +45,9 @@
       </div>
 
       <div fxLayout="row" fxLayoutAlign="center center">
-        <mat-checkbox class="caption">I accept the <a>terms and conditions.</a></mat-checkbox>
+        <mat-checkbox class="caption" [ngModelOptions]="{standalone: true}" [(ngModel)]="isTermChecked">I accept the <a>terms and conditions.</a></mat-checkbox>
       </div>
-      <button (click)="send()" color="primary" mat-raised-button type="button">
+      <button (click)="register()" [disabled]="!isTermChecked" color="primary" mat-raised-button type="button">
         CREATE ACCOUNT
       </button>
       <p class="text-secondary text-center">
