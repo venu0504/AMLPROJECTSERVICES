@@ -48,7 +48,7 @@ const childrenRoutes: VexRoutes = [
     loadChildren: () => import('./pages/admin/users/users.module').then(m => m.UsersModule),
   },
     {
-    path: 'admin/summery',
+    path: 'admin/summary',
     loadChildren: () => import('./pages/admin/summery/summery.module').then(m => m.SummeryModule),
   },
     {

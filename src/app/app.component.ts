@@ -130,8 +130,8 @@ export class AppComponent {
       
 	      {
             type: 'link',
-            label: 'Summery',
-            route: '/admin/summery',
+            label: 'Summary',
+            route: '/admin/summary',
             icon: icAssigment
           },
           {
