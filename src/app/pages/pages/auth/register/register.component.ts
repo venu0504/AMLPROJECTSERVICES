@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private cd: ChangeDetectorRef,
-   private apiProvider: ApiProvider,
+    private apiProvider: ApiProvider,
   ) { }
 
   ngOnInit() {
@@ -49,7 +49,8 @@ export class RegisterComponent implements OnInit {
       passwordConfirm: this.registrationForm.value.passwordConfirm
     }
     console.log({inputData})
-   this.apiProvider.register('register',inputData).subscribe(
+   
+    this.apiProvider.register('register',inputData).subscribe(
     async resdata => {
               const res = resdata;
               if(res){
