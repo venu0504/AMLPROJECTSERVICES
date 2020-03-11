@@ -5,6 +5,10 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
+import { ApiProvider } from 'src/app/services/api-provider';
+
+
 @Component({
   selector: 'vex-vessel',
   templateUrl: './vessel.component.html',
@@ -27,15 +31,18 @@ export class VesselComponent implements OnInit {
   </mat-grid-tile>
 </mat-grid-list>`;
 
-      public componentsoverviewGridList: any;
+      public vesselScreeningForm: any;
     submitted = false;
 
 
- constructor(private router: Router, private formBuilder: FormBuilder) {}
+ constructor(
+   private router: Router, 
+   private formBuilder: FormBuilder,
+   private apiProvider: ApiProvider) {}
 
 ngOnInit() {
-this.componentsoverviewGridList = this.formBuilder.group({
-	  Name: [null, Validators.compose([Validators.required])],
+this.vesselScreeningForm = this.formBuilder.group({
+	  name: [null, Validators.compose([Validators.required])],
 	  caseId: [null, Validators.compose([Validators.required])],
 	  imoNumber: [null, Validators.compose([Validators.required])],
 	   
@@ -45,13 +52,28 @@ this.componentsoverviewGridList = this.formBuilder.group({
 
 
  public hasError = (controlName: string, errorName: string) => {
-    return this.componentsoverviewGridList.controls[controlName].hasError(errorName);
+    return this.vesselScreeningForm.controls[controlName].hasError(errorName);
   }
-  componentsoverviewOnsubmit(){
+  createVesselScreening(){
     this.submitted = true;
-    if (this.componentsoverviewGridList.invalid) {
-      return;
+    // if (this.vesselScreeningForm.invalid) {
+    //   return;
+    // }
+    // alert('form fields are validated successfully!');  
+    const inputData = {
+      name: this.vesselScreeningForm.value.name,
+      caseId: this.vesselScreeningForm.value.caseId,
+      registeredCountry: this.vesselScreeningForm.value.registeredCountry
     }
-    alert('form fields are validated successfully!');  
+    console.log({inputData})
+    this.apiProvider.createOrganizationScreening('createVesselList',inputData).subscribe(
+      async resdata => {
+                const res = resdata;
+                if(res){
+                  //show some message
+                }
+        }, async (error) => {
+          console.log("error occured")
+        });
   }
 }

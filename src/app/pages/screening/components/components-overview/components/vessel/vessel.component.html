@@ -4,14 +4,14 @@
         <h2 class="title m-0">Single Screening</h2>
       </div>
 
-      <form [formGroup]="componentsoverviewGridList" (ngSubmit)="componentsoverviewOnsubmit()" class="p-6" fxLayout="column" fxLayoutGap="16px">
+      <form [formGroup]="vesselScreeningForm" (ngSubmit)="createVesselScreening()" class="p-6" fxLayout="column" fxLayoutGap="16px">
        
 
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
           <mat-form-field fxFlex="auto">
           <mat-label>Name</mat-label>
-          <input formControlName="Name" matInput required>
-		  <mat-error *ngIf="hasError('Name', 'required')">Name is Required.</mat-error>
+          <input formControlName="name" matInput required>
+		  <mat-error *ngIf="hasError('name', 'required')">Name is Required.</mat-error>
         </mat-form-field>
 		
 		 <mat-form-field fxFlex="auto">
