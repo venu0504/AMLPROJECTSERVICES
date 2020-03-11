@@ -5,8 +5,10 @@ import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+
 import icArrowDropDown from '@iconify/icons-ic/twotone-arrow-drop-down';
 
+import { ApiProvider } from 'src/app/services/api-provider';
 import icVisibility from '@iconify/icons-ic/twotone-visibility';
 import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -29,15 +31,18 @@ export class OrganizationComponent {
 
 
 
-    public componentsoverviewDialogs: any;
+    public organizationScreeningForm: any;
     submitted = false;
 	
 	
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  constructor(
+    private router: Router, 
+    private formBuilder: FormBuilder,
+    private apiProvider: ApiProvider) {}
 
 ngOnInit() {
-this.componentsoverviewDialogs = this.formBuilder.group({
-	  Name: [null, Validators.compose([Validators.required])],
+this.organizationScreeningForm = this.formBuilder.group({
+	  name: [null, Validators.compose([Validators.required])],
 	  caseId: [null, Validators.compose([Validators.required])],
 	  registeredCountry: [null, Validators.compose([Validators.required])],
 	    
@@ -48,14 +53,30 @@ this.componentsoverviewDialogs = this.formBuilder.group({
 
 
  public hasError = (controlName: string, errorName: string) => {
-    return this.componentsoverviewDialogs.controls[controlName].hasError(errorName);
+    return this.organizationScreeningForm.controls[controlName].hasError(errorName);
   }
-  componentsoverviewOnsubmit(){
+
+  createOrganizationScreening(){
     this.submitted = true;
-    if (this.componentsoverviewDialogs.invalid) {
-      return;
+    // if (this.organizationScreeningForm.invalid) {
+    //   return;
+    // }
+    // alert('form fields are validated successfully!');  
+    const inputData = {
+      name: this.organizationScreeningForm.value.name,
+      caseId: this.organizationScreeningForm.value.caseId,
+      registeredCountry: this.organizationScreeningForm.value.registeredCountry
     }
-    alert('form fields are validated successfully!');  
+    console.log({inputData})
+    this.apiProvider.createOrganizationScreening('createcreateOrganizationScreeningSingleScreening',inputData).subscribe(
+      async resdata => {
+                const res = resdata;
+                if(res){
+                  //show some message
+                }
+        }, async (error) => {
+          console.log("error occured")
+        });
   }
 }
 
