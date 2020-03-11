@@ -105,7 +105,7 @@ this.onLoginForm = this.formBuilder.group({
 
       }, async (error) => {
         // this.toastr.error('Some thing went wrong please try after sometime or contact admin');
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/screening/components/overview'])
       });
 
 

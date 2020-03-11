@@ -4,14 +4,14 @@
         <h2 class="title m-0">Single Screening</h2>
       </div>
 
-      <form [formGroup]="componentsoverviewCheckbox" (ngSubmit)="componentsoverviewOnsubmit()" class="p-6" fxLayout="column" fxLayoutGap="16px">
+      <form [formGroup]="individualScreeningForm" (ngSubmit)="createIndividualScreening()" class="p-6" fxLayout="column" fxLayoutGap="16px">
        
 
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
           <mat-form-field fxFlex="auto">
           <mat-label>Name</mat-label>
-          <input formControlName="Name" matInput required>
-		  <mat-error *ngIf="hasError('Name', 'required')">Name is required</mat-error>
+          <input formControlName="name" matInput required>
+		  <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
         </mat-form-field>
 		
 		 <mat-form-field fxFlex="auto">
@@ -76,14 +76,14 @@
         </mat-form-field >
 		    <mat-form-field fxFlex="auto">
           <mat-label>Nationality</mat-label>
-          <mat-select formControlName="Nationality">
+          <mat-select formControlName="nationality">
             <mat-option value="new">American</mat-option>
             <mat-option value="new">Mexican</mat-option>
             <mat-option value="new">Russian </mat-option>
 			<mat-option value="new">Bulgarian </mat-option>
 			<mat-option value="new">Indian </mat-option>
           </mat-select>
-		  <mat-error *ngIf="hasError('Nationality', 'required')">Nationality is Required.</mat-error>
+		  <mat-error *ngIf="hasError('nationality', 'required')">Nationality is Required.</mat-error>
         </mat-form-field>
         </div>
 		  
