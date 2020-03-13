@@ -6,6 +6,7 @@ import icLockOpen from '@iconify/icons-ic/twotone-lock-open';
 import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiProvider } from 'src/app/services/api-provider';
 
 
 
@@ -41,15 +42,18 @@ export class UnspecifiedComponent implements OnInit {
   icLock = icLock;
   icLockOpen = icLockOpen;
 
-  public componentsoverviewInput: any;
+  public unSpecifiedScreeningForm: any;
     submitted = false;
 
 
- constructor(private router: Router, private formBuilder: FormBuilder) {}
+ constructor(
+        private router: Router, 
+        private formBuilder: FormBuilder,
+        private apiProvider: ApiProvider) {}
 
 ngOnInit() {
-this.componentsoverviewInput = this.formBuilder.group({
-	  Name: [null, Validators.compose([Validators.required])],
+this.unSpecifiedScreeningForm = this.formBuilder.group({
+	  name: [null, Validators.compose([Validators.required])],
 	  caseId: [null, Validators.compose([Validators.required])],
 	   
 	   
@@ -59,14 +63,30 @@ this.componentsoverviewInput = this.formBuilder.group({
 
 
  public hasError = (controlName: string, errorName: string) => {
-    return this.componentsoverviewInput.controls[controlName].hasError(errorName);
+    return this.unSpecifiedScreeningForm.controls[controlName].hasError(errorName);
   }
-  componentsoverviewOnsubmit(){
-    this.submitted = true;
-    if (this.componentsoverviewInput.invalid) {
-      return;
+
+
+  createUnspecifiedScreening(){
+    // this.submitted = true;
+    // if (this.unSpecifiedScreeningForm.invalid) {
+    //   return;
+    // }
+    // alert('form fields are validated successfully!');  
+    const inputData = {
+      name: this.unSpecifiedScreeningForm.value.name,
+      caseId: this.unSpecifiedScreeningForm.value.caseId,
     }
-    alert('form fields are validated successfully!');  
+    console.log({inputData})
+    this.apiProvider.createUnspecifiedScreening('createUnspecifiedScreening',inputData).subscribe(
+      async resdata => {
+                const res = resdata;
+                if(res){
+                  //show some message
+                }
+        }, async (error) => {
+          console.log("error occured")
+        });
   }
 
 }
