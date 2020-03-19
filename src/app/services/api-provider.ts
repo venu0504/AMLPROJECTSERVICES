@@ -278,6 +278,32 @@ export class ApiProvider {
                     return response.json();
                 }));
     }
+
+    getCountryList(endpoint: string): Observable<any> {
+        const headers = new Headers();
+        const url = this.BaseUrl + endpoint;
+
+        const options = new RequestOptions({ headers });
+        return this.http.get(url)
+            .pipe(
+                map(response => {
+                    response.json();
+                    return response.json();
+                }));
+    }
+
+    getGroups(endpoint: string): Observable<any> {
+        const headers = new Headers();
+        const url = this.BaseUrl + endpoint;
+
+        const options = new RequestOptions({ headers });
+        return this.http.post(url,'')
+            .pipe(
+                map(response => {
+                    response.json();
+                    return response.json();
+                }));
+    }
     
     sendPasswordLink(endpoint: string, payload: any): Observable<any> {
         const headers = new Headers();

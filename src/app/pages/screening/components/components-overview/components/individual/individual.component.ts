@@ -29,7 +29,28 @@ export class IndividualComponent implements OnInit {
 
    public individualScreeningForm: any;
     submitted = false;
-  
+    public countryList:Array<Object> = [
+      {
+        id: 'ABW',
+        name: 'Aruba'},
+      {
+        id: 'AFG',
+        name: 'Afghanistan'},
+      {
+        id: 'ARG',
+        name: 'Argentina'
+      },
+      {
+        id: 'IND',
+        name: 'India'
+      },
+      {
+        id: 'UAE',
+        name: 'United Arab Emirates'
+      }
+    ];
+    public groupId:String = localStorage.getItem('groupId')
+    public nonEditable:Boolean = true;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -38,12 +59,21 @@ export class IndividualComponent implements OnInit {
   ngOnInit() {
     this.individualScreeningForm = this.formBuilder.group({
       name: [null, Validators.compose([Validators.required])],
-      caseId: [null, Validators.compose([Validators.required])],
+      // caseId: [null, Validators.compose([Validators.required])],
       date: [null, Validators.compose([Validators.required])],
       countryLoc: [null, Validators.compose([Validators.required])],
       placeofBirth: [null, Validators.compose([Validators.required])],
       nationality: [null, Validators.compose([Validators.required])],
    });
+   this.apiProvider.getCountryList('reference/countries').subscribe(
+    async resdata => {
+              const res = resdata;
+              if(res){
+                //show some message
+              }
+      }, async (error) => {
+        console.log("error occured")
+      });
   }
 
 
@@ -66,7 +96,7 @@ export class IndividualComponent implements OnInit {
     //   nationality: this.individualScreeningForm.value.nationality
     // }
     const inputData = {
-      groupId: '0a3687d0-6a9c-1394-9aa8-fb0c0000028f',
+      groupId: localStorage.getItem('groupId'),
       entityType: 'INDIVIDUAL',
       providerTypes: [
             "WATCHLIST"

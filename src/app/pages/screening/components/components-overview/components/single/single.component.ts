@@ -54,10 +54,18 @@ this.singleScreeningForm = this.formBuilder.group({
 	  countryLoc: [null, Validators.compose([Validators.required])],
 	  placeofBirth: [null, Validators.compose([Validators.required])],
 	  nationality: [null, Validators.compose([Validators.required])],
-	    
-	   
-	 
+	  
  });
+ this.apiProvider.getGroups('groups').subscribe(
+  async resdata => {
+            const res = resdata;
+            if(res){
+              localStorage.setItem('groupId', res[0].id);
+            }
+    }, async (error) => {
+      console.log("error occured")
+    });
+
   }
 
 
