@@ -57,16 +57,36 @@ export class IndividualComponent implements OnInit {
     // }
     // alert('form fields are validated successfully!');  
     this.submitted = true;
+    // const inputData = {
+    //   name: this.individualScreeningForm.value.name,
+    //   caseId: this.individualScreeningForm.value.caseId,
+    //   date: this.individualScreeningForm.value.date,
+    //   countryLoc: this.individualScreeningForm.value.countryLoc,
+    //   placeofBirth: this.individualScreeningForm.value.placeofBirth,
+    //   nationality: this.individualScreeningForm.value.nationality
+    // }
     const inputData = {
+      groupId: '0a3687d0-6a9c-1394-9aa8-fb0c0000028f',
+      entityType: 'INDIVIDUAL',
+      providerTypes: [
+            "WATCHLIST"
+          ],
       name: this.individualScreeningForm.value.name,
-      caseId: this.individualScreeningForm.value.caseId,
-      date: this.individualScreeningForm.value.date,
-      countryLoc: this.individualScreeningForm.value.countryLoc,
-      placeofBirth: this.individualScreeningForm.value.placeofBirth,
-      nationality: this.individualScreeningForm.value.nationality
+      secondaryFields: [],
+      customFields: []
     }
+    // {
+    //   "groupId":"{{group-id}}",
+    //   "entityType": "INDIVIDUAL",
+    //   "providerTypes": [
+    //     "WATCHLIST"
+    //   ],
+    //   "name": "putin",
+    //   "secondaryFields":[],
+    //   "customFields":[]
+    // }
     console.log({inputData})
-    this.apiProvider.createIndividualScreening('createIndividualScreening',inputData).subscribe(
+    this.apiProvider.createIndividualScreening('cases/screeningRequest',inputData).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){
