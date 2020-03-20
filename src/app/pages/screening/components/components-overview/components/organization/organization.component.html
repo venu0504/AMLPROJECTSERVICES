@@ -29,9 +29,7 @@
               <mat-form-field fxFlex="auto">
           <mat-label>Registered Country</mat-label>
           <mat-select formControlName="registeredCountry">
-            <mat-option value="new">New York</mat-option>
-            <mat-option value="new">Washington</mat-option>
-            <mat-option value="new">Florida</mat-option>
+            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
           </mat-select>
        
 			<mat-error *ngIf="hasError('registeredCountry', 'required')">Registered Country is required</mat-error>

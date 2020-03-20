@@ -33,7 +33,26 @@ export class OrganizationComponent {
 
     public organizationScreeningForm: any;
     submitted = false;
-	
+    public countryList:Array<Object> = [
+      {
+        id: 'ABW',
+        name: 'Aruba'},
+      {
+        id: 'AFG',
+        name: 'Afghanistan'},
+      {
+        id: 'ARG',
+        name: 'Argentina'
+      },
+      {
+        id: 'IND',
+        name: 'India'
+      },
+      {
+        id: 'UAE',
+        name: 'United Arab Emirates'
+      }
+    ];
 	
   constructor(
     private router: Router, 
@@ -62,13 +81,69 @@ this.organizationScreeningForm = this.formBuilder.group({
     //   return;
     // }
     // alert('form fields are validated successfully!');  
+    // const inputData = {
+    //   name: this.organizationScreeningForm.value.name,
+    //   caseId: this.organizationScreeningForm.value.caseId,
+    //   registeredCountry: this.organizationScreeningForm.value.registeredCountry
+    // }
     const inputData = {
+      groupId: localStorage.getItem('groupId'),
+      entityType: 'INDIVIDUAL',
+      providerTypes: [
+            "WATCHLIST"
+          ],
       name: this.organizationScreeningForm.value.name,
-      caseId: this.organizationScreeningForm.value.caseId,
-      registeredCountry: this.organizationScreeningForm.value.registeredCountry
+      secondaryFields:[
+        {  
+              typeId: "SFCT_6",
+              value: "USA"
+          }	
+        ],
+        customFields:[
+          {  
+              typeId:"{{custom-field-1}}",
+              value:"custom field 1 sample value"
+          },
+          {  
+              typeId:"{{custom-field-2}}",
+              value:"custom field 2 sample value"
+          },
+          {  
+            typeId:"{{custom-field-3}}",
+              value:"mandatory custom field sample value"
+          }
+         ]
     }
+    // {
+    //   "groupId":"{{group-id}}",
+    //   "entityType": "ORGANISATION",
+    //   "providerTypes": [
+    //     "WATCHLIST"
+    //   ],
+    //   "name": "Apple",
+    //   "secondaryFields":[
+    //   {  
+    //         "typeId":"SFCT_6",
+    //         "value":"USA"
+    //     }	
+    //   ],
+    //   "customFields":[
+    //     {  
+    //         "typeId":"{{custom-field-1}}",
+    //         "value":"custom field 1 sample value"
+    //     },
+    //     {  
+    //         "typeId":"{{custom-field-2}}",
+    //         "value":"custom field 2 sample value"
+    //     },
+    //     {  
+    //       "typeId":"{{custom-field-3}}",
+    //         "value":"mandatory custom field sample value"
+    //     }
+    //    ]
+    // }
     console.log({inputData})
-    this.apiProvider.createOrganizationScreening('createcreateOrganizationScreeningSingleScreening',inputData).subscribe(
+    this.apiProvider.createOrganizationScreening('cases/screeningRequest',inputData).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){
