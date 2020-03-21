@@ -421,5 +421,19 @@ export class ApiProvider {
                     return response.json();
                 }));
     }
+    
+    //UserDetail for summary page
+    getUserDetails(endpoint: string): Observable<any> {
+        const headers = new Headers();
+        const url = this.BaseUrl + endpoint;
+
+        const options = new RequestOptions({ headers });
+        return this.http.get(url)
+            .pipe(
+                map(response => {
+                    response.json();
+                    return response.json();
+                }));
+    }
 
 }
