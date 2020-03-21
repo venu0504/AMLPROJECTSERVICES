@@ -72,13 +72,39 @@ this.unSpecifiedScreeningForm = this.formBuilder.group({
     // if (this.unSpecifiedScreeningForm.invalid) {
     //   return;
     // }
-    // alert('form fields are validated successfully!');  
+    // alert('form fields are validated successfully!');
+
+    // SEQ-case-create-simple: Save a very simple case
+
+/**
+ {
+  "secondaryFields": [],
+  "entityType": "INDIVIDUAL",
+  "customFields": [],
+  "groupId":"{{group-id}}",
+  "providerTypes": [
+    "WATCHLIST"
+  ],
+  "name": "putin"
+}
+ */
+
+    // const inputData = {
+    //   name: this.unSpecifiedScreeningForm.value.name,
+    //   caseId: this.unSpecifiedScreeningForm.value.caseId,
+    // }
+    // console.log({inputData})
     const inputData = {
+      groupId: localStorage.getItem('groupId'),
+      entityType: 'INDIVIDUAL',
+      providerTypes: [
+            "WATCHLIST"
+          ],
       name: this.unSpecifiedScreeningForm.value.name,
-      caseId: this.unSpecifiedScreeningForm.value.caseId,
+      secondaryFields: [],
+      customFields: []
     }
-    console.log({inputData})
-    this.apiProvider.createUnspecifiedScreening('createUnspecifiedScreening',inputData).subscribe(
+    this.apiProvider.createUnspecifiedScreening('cases',inputData).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){
