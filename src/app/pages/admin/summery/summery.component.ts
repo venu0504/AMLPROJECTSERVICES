@@ -42,6 +42,8 @@ export class SummeryComponent implements OnInit {
 	  
  onGroupForm: FormGroup;
  submitted = false;
+ public name:String='';
+ public email:String='';
  
   icSettings = icSettings;
   displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
@@ -77,8 +79,11 @@ export class SummeryComponent implements OnInit {
     this.apiProvider.getUserDetails('users').subscribe(
       async resdata => {
                 const res = resdata;
+                let UserData = [];
                 if(res){
-                  console.log({res})
+                  UserData = res;
+                  this.name = UserData[0].firstName + ' ' + UserData[0].lastName;
+                  this.email = UserData[0].email;
                 }
         }, async (error) => {
           console.log("error occured")
