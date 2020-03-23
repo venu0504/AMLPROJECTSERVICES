@@ -69,7 +69,7 @@ export class IndividualComponent implements OnInit {
     async resdata => {
               const res = resdata;
               if(res){
-                //show some message
+                console.log('res',res)
               }
       }, async (error) => {
         console.log("error occured")

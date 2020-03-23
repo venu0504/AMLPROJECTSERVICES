@@ -278,17 +278,18 @@ export class ApiProvider {
                     return response.json();
                 }));
     }
-
     getCountryList(endpoint: string): Observable<any> {
         const headers = new Headers();
         const url = this.BaseUrl + endpoint;
 
         const options = new RequestOptions({ headers });
-        return this.http.get(url)
+        return this.http.post(url,{})
             .pipe(
                 map(response => {
-                    response.json();
-                    return response.json();
+                    let res = response.json();
+                    let result = Object.keys(res)
+                   .map(key => ({id: key, name: res[key]}));
+                   return result;
                 }));
     }
 
@@ -428,7 +429,7 @@ export class ApiProvider {
         const url = this.BaseUrl + endpoint;
 
         const options = new RequestOptions({ headers });
-        return this.http.get(url)
+        return this.http.post(url,{})
             .pipe(
                 map(response => {
                     response.json();
