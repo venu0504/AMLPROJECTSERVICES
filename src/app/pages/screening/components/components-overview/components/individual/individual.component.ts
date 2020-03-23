@@ -59,7 +59,7 @@ export class IndividualComponent implements OnInit {
   ngOnInit() {
     this.individualScreeningForm = this.formBuilder.group({
       name: [null, Validators.compose([Validators.required])],
-      // caseId: [null, Validators.compose([Validators.required])],
+      caseId: [null, Validators.compose([Validators.required])],
       date: [null, Validators.compose([Validators.required])],
       countryLoc: [null, Validators.compose([Validators.required])],
       placeofBirth: [null, Validators.compose([Validators.required])],
@@ -80,6 +80,25 @@ export class IndividualComponent implements OnInit {
  public hasError = (controlName: string, errorName: string) => {
     return this.individualScreeningForm.controls[controlName].hasError(errorName);
   }
+  
+  getSecondaryField(){
+    let totalFields = [];
+      for(let i=0;i<=3;i++){
+        if(this.individualScreeningForm.value.date){
+          totalFields.push({typeId: 'SFCT_3',name: this.individualScreeningForm.value.date});
+        }
+        if(this.individualScreeningForm.value.date){
+          totalFields.push({typeId: 'SFCT_4',name: this.individualScreeningForm.value.countryLoc});
+        }
+        if(this.individualScreeningForm.value.date){
+          totalFields.push({typeId: 'SFCT_5',name: this.individualScreeningForm.value.placeofBirth});
+        }
+        if(this.individualScreeningForm.value.date){
+          totalFields.push({typeId: 'SFCT_6',name: this.individualScreeningForm.value.nationality});
+        }
+      }
+      return totalFields;
+  }
   createIndividualScreening(){
     // this.submitted = true;
     // if (this.individualScreeningForm.invalid) {
@@ -87,34 +106,17 @@ export class IndividualComponent implements OnInit {
     // }
     // alert('form fields are validated successfully!');  
     this.submitted = true;
-    // const inputData = {
-    //   name: this.individualScreeningForm.value.name,
-    //   caseId: this.individualScreeningForm.value.caseId,
-    //   date: this.individualScreeningForm.value.date,
-    //   countryLoc: this.individualScreeningForm.value.countryLoc,
-    //   placeofBirth: this.individualScreeningForm.value.placeofBirth,
-    //   nationality: this.individualScreeningForm.value.nationality
-    // }
     const inputData = {
       groupId: localStorage.getItem('groupId'),
       entityType: 'INDIVIDUAL',
       providerTypes: [
             "WATCHLIST"
           ],
+      // name: [{typeId: 'PRIMARY',value: this.individualScreeningForm.value.name}],
       name: this.individualScreeningForm.value.name,
       secondaryFields: [],
       customFields: []
     }
-    // {
-    //   "groupId":"{{group-id}}",
-    //   "entityType": "INDIVIDUAL",
-    //   "providerTypes": [
-    //     "WATCHLIST"
-    //   ],
-    //   "name": "putin",
-    //   "secondaryFields":[],
-    //   "customFields":[]
-    // }
     console.log({inputData})
     this.apiProvider.createIndividualScreening('cases/screeningRequest',inputData).subscribe(
       async resdata => {
