@@ -48,7 +48,7 @@ export class VesselComponent implements OnInit {
 ngOnInit() {
 this.vesselScreeningForm = this.formBuilder.group({
 	  name: [null, Validators.compose([Validators.required])],
-	  caseId: [null, Validators.compose([Validators.required])],
+	  caseId: [null, Validators.compose([])],
 	  imoNumber: [null, Validators.compose([Validators.required])],
 	   
 	 
@@ -61,9 +61,9 @@ this.vesselScreeningForm = this.formBuilder.group({
   }
   createVesselScreening(){
     this.submitted = true;
-    // if (this.vesselScreeningForm.invalid) {
-    //   return;
-    // }
+    if (this.vesselScreeningForm.invalid) {
+      return;
+    }
     // alert('form fields are validated successfully!');  
     // const inputData = {
     //   name: this.vesselScreeningForm.value.name,
@@ -77,7 +77,9 @@ this.vesselScreeningForm = this.formBuilder.group({
             "WATCHLIST"
           ],
       name: this.vesselScreeningForm.value.name,
-      secondaryFields: [],
+      secondaryFields: [
+        {typeId: 'SFCT_3',name: this.vesselScreeningForm.value.imoNumber}
+      ],
       customFields: []
     }
     /*

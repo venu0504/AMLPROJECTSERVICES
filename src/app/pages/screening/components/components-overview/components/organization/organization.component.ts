@@ -66,7 +66,7 @@ export class OrganizationComponent {
 ngOnInit() {
 this.organizationScreeningForm = this.formBuilder.group({
 	  name: [null, Validators.compose([Validators.required])],
-	  caseId: [null, Validators.compose([Validators.required])],
+	  caseId: [null, Validators.compose([])],
 	  registeredCountry: [null, Validators.compose([Validators.required])],
 	    
 	   
@@ -81,9 +81,9 @@ this.organizationScreeningForm = this.formBuilder.group({
 
   createOrganizationScreening(){
     this.submitted = true;
-    // if (this.organizationScreeningForm.invalid) {
-    //   return;
-    // }
+    if (this.organizationScreeningForm.invalid) {
+      return;
+    }
     // alert('form fields are validated successfully!');  
     // const inputData = {
     //   name: this.organizationScreeningForm.value.name,
@@ -98,25 +98,9 @@ this.organizationScreeningForm = this.formBuilder.group({
           ],
       name: this.organizationScreeningForm.value.name,
       secondaryFields:[
-        {  
-              typeId: "SFCT_6",
-              value: "USA"
-          }	
+        {typeId: 'SFCT_3',name: this.organizationScreeningForm.value.registeredCountry},
         ],
-        customFields:[
-          {  
-              typeId:"{{custom-field-1}}",
-              value:"custom field 1 sample value"
-          },
-          {  
-              typeId:"{{custom-field-2}}",
-              value:"custom field 2 sample value"
-          },
-          {  
-            typeId:"{{custom-field-3}}",
-              value:"mandatory custom field sample value"
-          }
-         ]
+        customFields:[]
     }
     // {
     //   "groupId":"{{group-id}}",

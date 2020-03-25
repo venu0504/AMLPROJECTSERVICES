@@ -59,7 +59,7 @@ export class UnspecifiedComponent implements OnInit {
 ngOnInit() {
 this.unSpecifiedScreeningForm = this.formBuilder.group({
 	  name: [null, Validators.compose([Validators.required])],
-	  caseId: [null, Validators.compose([Validators.required])],
+	  caseId: [null, Validators.compose([])],
 	   
 	   
 	 
@@ -74,9 +74,9 @@ this.unSpecifiedScreeningForm = this.formBuilder.group({
 
   createUnspecifiedScreening(){
     // this.submitted = true;
-    // if (this.unSpecifiedScreeningForm.invalid) {
-    //   return;
-    // }
+    if (this.unSpecifiedScreeningForm.invalid) {
+      return;
+    }
     // alert('form fields are validated successfully!');
 
     // SEQ-case-create-simple: Save a very simple case
