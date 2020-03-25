@@ -278,33 +278,6 @@ export class ApiProvider {
                     return response.json();
                 }));
     }
-    getCountryList(endpoint: string): Observable<any> {
-        const headers = new Headers();
-        const url = this.BaseUrl + endpoint;
-
-        const options = new RequestOptions({ headers });
-        return this.http.post(url,{})
-            .pipe(
-                map(response => {
-                    let res = response.json();
-                    let result = Object.keys(res)
-                   .map(key => ({id: key, name: res[key]}));
-                   return result;
-                }));
-    }
-
-    getGroups(endpoint: string): Observable<any> {
-        const headers = new Headers();
-        const url = this.BaseUrl + endpoint;
-
-        const options = new RequestOptions({ headers });
-        return this.http.post(url,'')
-            .pipe(
-                map(response => {
-                    response.json();
-                    return response.json();
-                }));
-    }
     
     sendPasswordLink(endpoint: string, payload: any): Observable<any> {
         const headers = new Headers();
@@ -358,70 +331,6 @@ export class ApiProvider {
                 }));
     }
 
-    createIndividualScreening(endpoint: string, payload: any): Observable<any> {
-        const headers = new Headers();
-        const url = this.BaseUrl + endpoint;
-
-        const options = new RequestOptions({ headers });
-        return this.http.post(url, payload)
-            .pipe(
-                map(response => {
-                    response.json();
-                    return response.json();
-                }));
-    }
-
-    createOrganizationScreening(endpoint: string, payload: any): Observable<any> {
-        const headers = new Headers();
-        const url = this.BaseUrl + endpoint;
-
-        const options = new RequestOptions({ headers });
-        return this.http.post(url, payload)
-            .pipe(
-                map(response => {
-                    response.json();
-                    return response.json();
-                }));
-    }
-    
-    createVesselScreening(endpoint: string, payload: any): Observable<any> {
-        const headers = new Headers();
-        const url = this.BaseUrl + endpoint;
-
-        const options = new RequestOptions({ headers });
-        return this.http.post(url, payload)
-            .pipe(
-                map(response => {
-                    response.json();
-                    return response.json();
-                }));
-    }
-
-    createUnspecifiedScreening(endpoint: string, payload: any): Observable<any> {
-        const headers = new Headers();
-        const url = this.BaseUrl + endpoint;
-
-        const options = new RequestOptions({ headers });
-        return this.http.post(url, payload)
-            .pipe(
-                map(response => {
-                    response.json();
-                    return response.json();
-                }));
-    }
-
-    createPassportCheck(endpoint: string, payload: any): Observable<any> {
-        const headers = new Headers();
-        const url = this.BaseUrl + endpoint;
-
-        const options = new RequestOptions({ headers });
-        return this.http.post(url, payload)
-            .pipe(
-                map(response => {
-                    response.json();
-                    return response.json();
-                }));
-    }
     
     //UserDetail for summary page
     getUserDetails(endpoint: string): Observable<any> {

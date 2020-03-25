@@ -7,6 +7,8 @@ import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiProvider } from 'src/app/services/api-provider';
+import { ComponentsOverviewSVC } from '../../components-overview.service';
+
 
 
 
@@ -49,7 +51,8 @@ export class UnspecifiedComponent implements OnInit {
  constructor(
         private router: Router, 
         private formBuilder: FormBuilder,
-        private apiProvider: ApiProvider) {}
+        private apiProvider: ApiProvider,
+        private ComponentsOverviewSVC: ComponentsOverviewSVC) {}
 
 ngOnInit() {
 this.unSpecifiedScreeningForm = this.formBuilder.group({
@@ -104,7 +107,7 @@ this.unSpecifiedScreeningForm = this.formBuilder.group({
       secondaryFields: [],
       customFields: []
     }
-    this.apiProvider.createUnspecifiedScreening('cases',inputData).subscribe(
+    this.ComponentsOverviewSVC.createUnspecifiedScreening('cases',inputData).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){

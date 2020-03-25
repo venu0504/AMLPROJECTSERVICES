@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 
 
 import { ApiProvider } from 'src/app/services/api-provider';
+import { ComponentsOverviewSVC } from '../../components-overview.service';
+
 
 
 @Component({
@@ -38,7 +40,8 @@ export class VesselComponent implements OnInit {
  constructor(
    private router: Router, 
    private formBuilder: FormBuilder,
-   private apiProvider: ApiProvider) {}
+   private apiProvider: ApiProvider,
+   private ComponentsOverviewSVC: ComponentsOverviewSVC) {}
 
 ngOnInit() {
 this.vesselScreeningForm = this.formBuilder.group({
@@ -106,7 +109,7 @@ this.vesselScreeningForm = this.formBuilder.group({
 }
     */ 
     console.log({inputData})
-    this.apiProvider.createOrganizationScreening('cases/screeningRequest',inputData).subscribe(
+    this.ComponentsOverviewSVC.createOrganizationScreening('cases/screeningRequest',inputData).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){

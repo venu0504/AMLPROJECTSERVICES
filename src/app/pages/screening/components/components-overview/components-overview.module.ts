@@ -21,6 +21,7 @@ import { BreadcrumbsModule } from '../../../../../@vex/components/breadcrumbs/br
 import { ContainerModule } from '../../../../../@vex/directives/container/container.module';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { ComponentsOverviewSVC } from './components-overview.service';
 
 @NgModule({
   declarations: [ComponentsOverviewComponent],
@@ -44,7 +45,8 @@ import { MatInputModule } from '@angular/material/input';
     ContainerModule,
 	MatSelectModule,
 	MatInputModule
-  ]
+  ],
+  providers:[ComponentsOverviewSVC]
 })
 export class ComponentsOverviewModule {
 }

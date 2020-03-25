@@ -10,6 +10,8 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiProvider } from 'src/app/services/api-provider';
+import { ComponentsOverviewSVC } from '../../components-overview.service';
+
 
 
 @Component({
@@ -32,7 +34,8 @@ export class PassportcheckComponent implements OnInit {
  constructor(
    private router: Router,
     private formBuilder: FormBuilder,
-    private apiProvider: ApiProvider) {}
+    private apiProvider: ApiProvider,
+    private ComponentsOverviewSVC:  ComponentsOverviewSVC) {}
  
 
    ngOnInit() {
@@ -81,7 +84,7 @@ export class PassportcheckComponent implements OnInit {
       dateofExpiry: this.passportCheckForm.value.dateofExpiry
     }
     console.log({inputData})
-    this.apiProvider.createPassportCheck('createPassportCheck',inputData).subscribe(
+    this.ComponentsOverviewSVC.createPassportCheck('createPassportCheck',inputData).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){

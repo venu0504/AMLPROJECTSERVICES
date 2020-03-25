@@ -10,6 +10,7 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiProvider } from 'src/app/services/api-provider';
+import { ComponentsOverviewSVC } from '../../components-overview.service';
 
 
 @Component({
@@ -54,7 +55,8 @@ export class IndividualComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private apiProvider: ApiProvider) {}
+    private apiProvider: ApiProvider,
+    private ComponentsOverviewSVC: ComponentsOverviewSVC) {}
 
   ngOnInit() {
     this.individualScreeningForm = this.formBuilder.group({
@@ -65,11 +67,11 @@ export class IndividualComponent implements OnInit {
       placeofBirth: [null, Validators.compose([Validators.required])],
       nationality: [null, Validators.compose([Validators.required])],
    });
-   this.apiProvider.getCountryList('reference/countries').subscribe(
+   this.ComponentsOverviewSVC.getCountryList('reference/countries').subscribe(
     async resdata => {
               const res = resdata;
               if(res){
-                console.log('res',res)
+                console.log('res country',res)
               }
       }, async (error) => {
         console.log("error occured")
@@ -118,7 +120,7 @@ export class IndividualComponent implements OnInit {
       customFields: []
     }
     console.log({inputData})
-    this.apiProvider.createIndividualScreening('cases/screeningRequest',inputData).subscribe(
+    this.ComponentsOverviewSVC.createIndividualScreening('cases/screeningRequest',inputData).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){

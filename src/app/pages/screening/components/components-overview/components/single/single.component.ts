@@ -10,6 +10,8 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiProvider } from 'src/app/services/api-provider';
+import { ComponentsOverviewSVC } from '../../components-overview.service';
+
 
 
 @Component({
@@ -26,7 +28,8 @@ public singleScreeningForm: any;
  constructor(
     private router: Router,  
     private formBuilder: FormBuilder,
-    private apiProvider: ApiProvider) {}
+    private apiProvider: ApiProvider,
+    private ComponentsOverviewSVC: ComponentsOverviewSVC) {}
  
   autocompleteHTML =
     `<mat-input-container>
@@ -56,7 +59,7 @@ this.singleScreeningForm = this.formBuilder.group({
 	  nationality: [null, Validators.compose([Validators.required])],
 	  
  });
- this.apiProvider.getGroups('groups').subscribe(
+ this.ComponentsOverviewSVC.getGroups('groups').subscribe(
   async resdata => {
             const res = resdata;
             if(res){

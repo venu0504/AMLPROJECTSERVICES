@@ -13,6 +13,8 @@ import icVisibility from '@iconify/icons-ic/twotone-visibility';
 import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ComponentsOverviewSVC } from '../../components-overview.service';
+
 
 @Component({
   selector: 'vex-organization',
@@ -57,7 +59,8 @@ export class OrganizationComponent {
   constructor(
     private router: Router, 
     private formBuilder: FormBuilder,
-    private apiProvider: ApiProvider) {}
+    private apiProvider: ApiProvider,
+    private ComponentsOverviewSVC: ComponentsOverviewSVC) {}
 
 ngOnInit() {
 this.organizationScreeningForm = this.formBuilder.group({
@@ -143,7 +146,7 @@ this.organizationScreeningForm = this.formBuilder.group({
     //    ]
     // }
     console.log({inputData})
-    this.apiProvider.createOrganizationScreening('cases/screeningRequest',inputData).subscribe(
+    this.ComponentsOverviewSVC.createOrganizationScreening('cases/screeningRequest',inputData).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){
