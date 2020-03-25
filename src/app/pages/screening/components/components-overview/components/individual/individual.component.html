@@ -65,22 +65,24 @@
         <mat-form-field fxFlex="auto">
           <mat-label>Place of Birth</mat-label>
           <mat-select formControlName="placeofBirth">
-            <mat-option value="new">New York</mat-option>
+            <!-- <mat-option value="new">New York</mat-option>
             <mat-option value="new">Washington</mat-option>
             <mat-option value="new">Mumbai</mat-option>
             <mat-option value="new">Canada</mat-option>
-            <mat-option value="new">Toranto </mat-option>
+            <mat-option value="new">Toranto </mat-option> -->
+            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
           </mat-select>
           <mat-error *ngIf="hasError('placeofBirth', 'required')">Place of Birth is Required.</mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="auto">
           <mat-label>Nationality</mat-label>
           <mat-select formControlName="nationality">
-            <mat-option value="new">American</mat-option>
+            <!-- <mat-option value="new">American</mat-option>
             <mat-option value="new">Mexican</mat-option>
             <mat-option value="new">Russian </mat-option>
             <mat-option value="new">Bulgarian </mat-option>
-            <mat-option value="new">Indian </mat-option>
+            <mat-option value="new">Indian </mat-option> -->
+            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
           </mat-select>
           <mat-error *ngIf="hasError('nationality', 'required')">Nationality is Required.</mat-error>
         </mat-form-field>

@@ -61,7 +61,7 @@ export class IndividualComponent implements OnInit {
   ngOnInit() {
     this.individualScreeningForm = this.formBuilder.group({
       name: [null, Validators.compose([Validators.required])],
-      caseId: [null, Validators.compose([Validators.required])],
+      caseId: [null, Validators.compose([])],
       date: [null, Validators.compose([Validators.required])],
       countryLoc: [null, Validators.compose([Validators.required])],
       placeofBirth: [null, Validators.compose([Validators.required])],
@@ -103,9 +103,9 @@ export class IndividualComponent implements OnInit {
   }
   createIndividualScreening(){
     // this.submitted = true;
-    // if (this.individualScreeningForm.invalid) {
-    //   return;
-    // }
+    if (this.individualScreeningForm.invalid) {
+      return;
+    }
     // alert('form fields are validated successfully!');  
     this.submitted = true;
     const inputData = {
@@ -116,7 +116,12 @@ export class IndividualComponent implements OnInit {
           ],
       // name: [{typeId: 'PRIMARY',value: this.individualScreeningForm.value.name}],
       name: this.individualScreeningForm.value.name,
-      secondaryFields: [],
+      secondaryFields: [
+        {typeId: 'SFCT_3',name: this.individualScreeningForm.value.date},
+        {typeId: 'SFCT_4',name: this.individualScreeningForm.value.countryLoc},
+        {typeId: 'SFCT_5',name: this.individualScreeningForm.value.placeofBirth},
+        {typeId: 'SFCT_6',name: this.individualScreeningForm.value.nationality}
+      ],
       customFields: []
     }
     console.log({inputData})
