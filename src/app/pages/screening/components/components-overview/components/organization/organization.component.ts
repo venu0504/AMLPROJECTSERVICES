@@ -24,7 +24,8 @@ import { ComponentsOverviewSVC } from '../../components-overview.service';
 export class OrganizationComponent {
 
   result: string;
-
+  public groupId:String = localStorage.getItem('groupId');
+  public nonEditable:Boolean = true;
   dialogHTML =
     `<button mat-raised-button type="button" (click)="openDialog()" color="primary">Open Dialog</button>
 <p *ngIf="result">You chose: {{ result }}</p>

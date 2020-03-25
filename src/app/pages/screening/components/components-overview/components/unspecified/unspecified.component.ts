@@ -45,6 +45,8 @@ export class UnspecifiedComponent implements OnInit {
   icLockOpen = icLockOpen;
 
   public unSpecifiedScreeningForm: any;
+  public groupId:String = localStorage.getItem('groupId');
+  public nonEditable:Boolean = true;
     submitted = false;
 
 

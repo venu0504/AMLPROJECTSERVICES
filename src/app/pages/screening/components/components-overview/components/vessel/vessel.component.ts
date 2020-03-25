@@ -33,8 +33,10 @@ export class VesselComponent implements OnInit {
   </mat-grid-tile>
 </mat-grid-list>`;
 
-      public vesselScreeningForm: any;
-    submitted = false;
+  public vesselScreeningForm: any;
+  submitted = false;
+  public groupId: String = localStorage.getItem('groupId');
+  public nonEditable: Boolean = true;
 
 
  constructor(
