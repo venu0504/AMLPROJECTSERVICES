@@ -9,6 +9,8 @@ import { IndividualComponent } from './components/individual/individual.componen
 import { OrganizationComponent } from './components/organization/organization.component';
 import { PassportcheckComponent } from './components/passport-check/passport-check.component';
 import { UnspecifiedComponent } from './components/unspecified/unspecified.component';
+import { ComponentsOverviewSVC } from './components-overview.service';
+
 
 import { ScrollDispatcher } from '@angular/cdk/overlay';
 import { fadeInRight400ms } from '../../../../../@vex/animations/fade-in-right.animation';
@@ -43,10 +45,20 @@ export class ComponentsOverviewComponent implements OnInit {
 
   constructor(private layoutService: LayoutService,
               private scrollDispatcher: ScrollDispatcher,
-              private elem: ElementRef) {
+              private elem: ElementRef,
+              private ComponentsOverviewSVC: ComponentsOverviewSVC) {
   }
 
   ngOnInit() {
+    this.ComponentsOverviewSVC.getGroups('groups').subscribe(
+      async resdata => {
+                const res = resdata;
+                if(res){
+                  localStorage.setItem('groupId', res[0].id);
+                }
+        }, async (error) => {
+          console.log("error occured")
+        });
   }
 
   scrollTo(elem: string) {

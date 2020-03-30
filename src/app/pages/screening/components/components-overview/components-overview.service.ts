@@ -18,8 +18,7 @@ export class ComponentsOverviewSVC {
     return this.http.post(url,'')
         .pipe(
             map(response => {
-                response.json();
-                return response.json();
+                return response;
             }));
 }
 
@@ -30,8 +29,9 @@ export class ComponentsOverviewSVC {
     return this.http.post(url, payload)
       .pipe(
         map(response => {
-          response.json();
-          return response.json();
+          // response.json();
+          // return response.json();
+          return response;
         }));
   }
 
@@ -43,8 +43,9 @@ export class ComponentsOverviewSVC {
     return this.http.post(url, payload)
         .pipe(
             map(response => {
-                response.json();
-                return response.json();
+                // response.json();
+                // return response.json();
+                return response;
             }));
 }
 
@@ -56,8 +57,9 @@ createVesselScreening(endpoint: string, payload: any): Observable<any> {
   return this.http.post(url, payload)
       .pipe(
           map(response => {
-              response.json();
-              return response.json();
+              // response.json();
+              // return response.json();
+              return response;
           }));
 }
 
@@ -69,8 +71,9 @@ createUnspecifiedScreening(endpoint: string, payload: any): Observable<any> {
   return this.http.post(url, payload)
       .pipe(
           map(response => {
-              response.json();
-              return response.json();
+              // response.json();
+              // return response.json();
+              return response;
           }));
 }
 
@@ -82,8 +85,9 @@ createPassportCheck(endpoint: string, payload: any): Observable<any> {
   return this.http.post(url, payload)
       .pipe(
           map(response => {
-              response.json();
-              return response.json();
+              // response.json();
+              // return response.json();
+              return response;
           }));
 }
 
@@ -95,9 +99,8 @@ getCountryList(endpoint: string): Observable<any> {
   return this.http.post(url,{})
       .pipe(
           map(response => {
-              let res = response.json();
-              let result = Object.keys(res)
-             .map(key => ({id: key, name: res[key]}));
+              let result = Object.keys(response)
+             .map(key => ({id: key, name: response[key]}));
              return result;
           }));
 }

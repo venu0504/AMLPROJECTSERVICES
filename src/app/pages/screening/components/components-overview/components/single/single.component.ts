@@ -59,15 +59,15 @@ this.singleScreeningForm = this.formBuilder.group({
 	  nationality: [null, Validators.compose([Validators.required])],
 	  
  });
- this.ComponentsOverviewSVC.getGroups('groups').subscribe(
-  async resdata => {
-            const res = resdata;
-            if(res){
-              localStorage.setItem('groupId', res[0].id);
-            }
-    }, async (error) => {
-      console.log("error occured")
-    });
+//  this.ComponentsOverviewSVC.getGroups('groups').subscribe(
+//   async resdata => {
+//             const res = resdata;
+//             if(res){
+//               localStorage.setItem('groupId', res[0].id);
+//             }
+//     }, async (error) => {
+//       console.log("error occured")
+//     });
 
   }
 

@@ -36,26 +36,26 @@ export class OrganizationComponent {
 
     public organizationScreeningForm: any;
     submitted = false;
-    public countryList:Array<Object> = [
-      {
-        id: 'ABW',
-        name: 'Aruba'},
-      {
-        id: 'AFG',
-        name: 'Afghanistan'},
-      {
-        id: 'ARG',
-        name: 'Argentina'
-      },
-      {
-        id: 'IND',
-        name: 'India'
-      },
-      {
-        id: 'UAE',
-        name: 'United Arab Emirates'
-      }
-    ];
+    public countryList:Array<Object> = [];
+    //   {
+    //     id: 'ABW',
+    //     name: 'Aruba'},
+    //   {
+    //     id: 'AFG',
+    //     name: 'Afghanistan'},
+    //   {
+    //     id: 'ARG',
+    //     name: 'Argentina'
+    //   },
+    //   {
+    //     id: 'IND',
+    //     name: 'India'
+    //   },
+    //   {
+    //     id: 'UAE',
+    //     name: 'United Arab Emirates'
+    //   }
+    // ];
 	
   constructor(
     private router: Router, 
@@ -68,10 +68,18 @@ this.organizationScreeningForm = this.formBuilder.group({
 	  name: [null, Validators.compose([Validators.required])],
 	  caseId: [null, Validators.compose([])],
 	  registeredCountry: [null, Validators.compose([Validators.required])],
-	    
-	   
-	 
- });
+});
+// need to update the logic and keep it in parent
+this.ComponentsOverviewSVC.getCountryList('reference/countries').subscribe(
+  async resdata => {
+            const res = resdata;
+            if(res){
+              console.log('res country',res)
+              this.countryList = res;
+            }
+    }, async (error) => {
+      console.log("error occured")
+    });
   }
 
 

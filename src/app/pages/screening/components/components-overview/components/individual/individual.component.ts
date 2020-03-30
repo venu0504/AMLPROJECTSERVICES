@@ -30,26 +30,26 @@ export class IndividualComponent implements OnInit {
 
    public individualScreeningForm: any;
     submitted = false;
-    public countryList:Array<Object> = [
-      {
-        id: 'ABW',
-        name: 'Aruba'},
-      {
-        id: 'AFG',
-        name: 'Afghanistan'},
-      {
-        id: 'ARG',
-        name: 'Argentina'
-      },
-      {
-        id: 'IND',
-        name: 'India'
-      },
-      {
-        id: 'UAE',
-        name: 'United Arab Emirates'
-      }
-    ];
+    public countryList:Array<Object> = [];
+    //   {
+    //     id: 'ABW',
+    //     name: 'Aruba'},
+    //   {
+    //     id: 'AFG',
+    //     name: 'Afghanistan'},
+    //   {
+    //     id: 'ARG',
+    //     name: 'Argentina'
+    //   },
+    //   {
+    //     id: 'IND',
+    //     name: 'India'
+    //   },
+    //   {
+    //     id: 'UAE',
+    //     name: 'United Arab Emirates'
+    //   }
+    // ];
     public groupId:String = localStorage.getItem('groupId')
     public nonEditable:Boolean = true;
   constructor(
@@ -72,6 +72,7 @@ export class IndividualComponent implements OnInit {
               const res = resdata;
               if(res){
                 console.log('res country',res)
+                this.countryList = res;
               }
       }, async (error) => {
         console.log("error occured")
