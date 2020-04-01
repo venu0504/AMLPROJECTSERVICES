@@ -18,7 +18,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     public forgotPasswordForm: any;
     submitted = false;
-
+    icMail = icMail;
 
  constructor(
    private router: Router, 

@@ -222,6 +222,12 @@ public casedet: any;
     this.countries[index].labels = change.value;
     this.subject$.next(this.countries);
   }*/
+  updateCustomer(value){
+    console.log("value", value)
+  }
+  createCustomer(){
+    console.log("createCustomer");
+  }
 
   ngOnDestroy() {
   }

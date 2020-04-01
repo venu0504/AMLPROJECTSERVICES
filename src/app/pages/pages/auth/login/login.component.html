@@ -28,7 +28,7 @@
         </mat-form-field> -->
           <mat-form-field fxFlex="grow">
           <mat-label>Password</mat-label>
-          <input [type]="inputType" formControlName ="password" matInput required>
+          <input type="password" formControlName ="password" matInput required>
      
        
           <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>

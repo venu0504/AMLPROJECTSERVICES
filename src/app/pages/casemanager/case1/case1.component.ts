@@ -192,6 +192,12 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
     this.subject$.next(this.countries);
   }*/
 
+  updateCustomer(value){
+    console.log("value", value)
+  }
+  createCustomer(){
+    console.log("createCustomer");
+  }
   ngOnDestroy() {
   }
 }
