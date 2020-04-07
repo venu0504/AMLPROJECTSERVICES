@@ -28,10 +28,8 @@
       <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
         <div style="margin-top: 16px;">
           <mat-label>Gender</mat-label>
-          <mat-radio-group fxLayout="row" fxLayoutGap="16px">
-            <mat-radio-button [checked]="true" value="Peaches"> Male</mat-radio-button>
-            <mat-radio-button value="Apples">Female</mat-radio-button>
-            <mat-radio-button value="uns">Unspecified</mat-radio-button>
+          <mat-radio-group fxLayout="row" fxLayoutGap="16px" formControlName="genderValue">
+            <mat-radio-button *ngFor="let gender of genderList"   value={{gender}}> {{gender | titlecase}}</mat-radio-button>
           </mat-radio-group>
 
         </div>

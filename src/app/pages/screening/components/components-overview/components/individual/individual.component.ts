@@ -31,6 +31,8 @@ export class IndividualComponent implements OnInit {
    public individualScreeningForm: any;
     submitted = false;
     public countryList:Array<Object> = [];
+    public genderList:string[] = ['MALE', 'FEMALE','UNSPECIFIED'];
+    public SelectedGender:string;
     //   {
     //     id: 'ABW',
     //     name: 'Aruba'},
@@ -65,6 +67,7 @@ export class IndividualComponent implements OnInit {
       countryLoc: [null, Validators.compose([Validators.required])],
       placeofBirth: [null, Validators.compose([Validators.required])],
       nationality: [null, Validators.compose([Validators.required])],
+      genderValue: [null, Validators.compose([Validators.required])]
    });
    this.ComponentsOverviewSVC.getCountryList('reference/countries').subscribe(
     async resdata => {
@@ -122,7 +125,7 @@ export class IndividualComponent implements OnInit {
           ],
       name: this.individualScreeningForm.value.name,
       secondaryFields: [
-        {"typeId": 'SFCT_1',"value": 'MALE'},
+        {"typeId": 'SFCT_1',"value": this.individualScreeningForm.value.genderValue},
         {"typeId": 'SFCT_2',"dateTimeValue": this.getFormatedDate(this.individualScreeningForm.value.date)},
         {"typeId": 'SFCT_3',"value": this.individualScreeningForm.value.countryLoc},
         {"typeId": 'SFCT_4',"value": this.individualScreeningForm.value.placeofBirth},
