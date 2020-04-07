@@ -51,7 +51,6 @@ export class IndividualComponent implements OnInit {
     //   }
     // ];
     public groupId:String = localStorage.getItem('groupId')
-    public nonEditable:Boolean = true;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -102,6 +101,12 @@ export class IndividualComponent implements OnInit {
       }
       return totalFields;
   }
+
+  getFormatedDate(dateValue){
+    let date = new Date(dateValue);
+    return date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+
+  }
   createIndividualScreening(){
     // this.submitted = true;
     if (this.individualScreeningForm.invalid) {
@@ -115,13 +120,13 @@ export class IndividualComponent implements OnInit {
       providerTypes: [
             "WATCHLIST"
           ],
-      // name: [{typeId: 'PRIMARY',value: this.individualScreeningForm.value.name}],
       name: this.individualScreeningForm.value.name,
       secondaryFields: [
-        {typeId: 'SFCT_3',name: this.individualScreeningForm.value.date},
-        {typeId: 'SFCT_4',name: this.individualScreeningForm.value.countryLoc},
-        {typeId: 'SFCT_5',name: this.individualScreeningForm.value.placeofBirth},
-        {typeId: 'SFCT_6',name: this.individualScreeningForm.value.nationality}
+        {"typeId": 'SFCT_1',"value": 'MALE'},
+        {"typeId": 'SFCT_2',"dateTimeValue": this.getFormatedDate(this.individualScreeningForm.value.date)},
+        {"typeId": 'SFCT_3',"value": this.individualScreeningForm.value.countryLoc},
+        {"typeId": 'SFCT_4',"value": this.individualScreeningForm.value.placeofBirth},
+        {"typeId": 'SFCT_5',"value": this.individualScreeningForm.value.nationality}
       ],
       customFields: []
     }

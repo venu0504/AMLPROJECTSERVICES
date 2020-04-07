@@ -16,8 +16,8 @@
 		
 		 <mat-form-field fxFlex="auto">
             <mat-label>Case ID</mat-label>
-            <input formControlName="caseId" matInput [value]="groupId" [readonly]='nonEditable'>
-			<mat-error *ngIf="hasError('caseId', 'required')">Case ID is required</mat-error>
+            <input formControlName="caseId" matInput [value]=" " >
+			<!-- <mat-error *ngIf="hasError('caseId', 'required')">Case ID is required</mat-error> -->
           </mat-form-field>
          
         </div>
@@ -29,7 +29,7 @@
               <mat-form-field fxFlex="auto">
           <mat-label>Registered Country</mat-label>
           <mat-select formControlName="registeredCountry">
-            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
+            <mat-option *ngFor="let country of countryList" [value]="country.id">{{ country.name }}</mat-option>
           </mat-select>
        
 			<mat-error *ngIf="hasError('registeredCountry', 'required')">Registered Country is required</mat-error>

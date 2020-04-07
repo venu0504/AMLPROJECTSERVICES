@@ -78,7 +78,7 @@ this.vesselScreeningForm = this.formBuilder.group({
           ],
       name: this.vesselScreeningForm.value.name,
       secondaryFields: [
-        {typeId: 'SFCT_3',name: this.vesselScreeningForm.value.imoNumber}
+        {typeId: 'SFCT_7',name: this.vesselScreeningForm.value.imoNumber}
       ],
       customFields: []
     }

@@ -25,7 +25,6 @@ export class OrganizationComponent {
 
   result: string;
   public groupId:String = localStorage.getItem('groupId');
-  public nonEditable:Boolean = true;
   dialogHTML =
     `<button mat-raised-button type="button" (click)="openDialog()" color="primary">Open Dialog</button>
 <p *ngIf="result">You chose: {{ result }}</p>
@@ -106,7 +105,7 @@ this.ComponentsOverviewSVC.getCountryList('reference/countries').subscribe(
           ],
       name: this.organizationScreeningForm.value.name,
       secondaryFields:[
-        {typeId: 'SFCT_3',name: this.organizationScreeningForm.value.registeredCountry},
+        {typeId: 'SFCT_6',name: this.organizationScreeningForm.value.registeredCountry},
         ],
         customFields:[]
     }

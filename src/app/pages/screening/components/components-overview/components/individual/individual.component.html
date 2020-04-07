@@ -17,7 +17,7 @@
 
         <mat-form-field fxFlex="auto">
           <mat-label>Case ID</mat-label>
-          <input formControlName="caseId" matInput [value]="groupId" [readonly]='nonEditable'>
+          <input formControlName="caseId" matInput [value]=" " >
 
           <!-- <mat-error *ngIf="hasError('caseId', 'required')">Case Id is Required.</mat-error> -->
         </mat-form-field>
@@ -57,7 +57,7 @@
             <!-- <mat-option value="new">United States Of America</mat-option>
             <mat-option value="new">Australia</mat-option>
             <mat-option value="new">India</mat-option> -->
-            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
+            <mat-option *ngFor="let country of countryList" [value]="country.id">{{ country.name }}</mat-option>
           </mat-select>
           <mat-error *ngIf="hasError('countryLoc', 'required')">Country Location is Required.</mat-error>
         </mat-form-field>
@@ -70,7 +70,7 @@
             <mat-option value="new">Mumbai</mat-option>
             <mat-option value="new">Canada</mat-option>
             <mat-option value="new">Toranto </mat-option> -->
-            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
+            <mat-option *ngFor="let country of countryList" [value]="country.id">{{ country.name }}</mat-option>
           </mat-select>
           <mat-error *ngIf="hasError('placeofBirth', 'required')">Place of Birth is Required.</mat-error>
         </mat-form-field>
@@ -82,7 +82,7 @@
             <mat-option value="new">Russian </mat-option>
             <mat-option value="new">Bulgarian </mat-option>
             <mat-option value="new">Indian </mat-option> -->
-            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
+            <mat-option *ngFor="let country of countryList" [value]="country.id">{{ country.name }}</mat-option>
           </mat-select>
           <mat-error *ngIf="hasError('nationality', 'required')">Nationality is Required.</mat-error>
         </mat-form-field>
