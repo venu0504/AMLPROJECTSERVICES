@@ -21,6 +21,7 @@ import { ColorFadeModule } from '../../../../@vex/pipes/color/color-fade.module'
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { Case1Component } from './case1.component';
 import { Case1RoutingModule } from './case1-routing.module';
+import { ComponentsOverviewSVC } from '../../screening/components/components-overview/components-overview.service';
 
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -110,7 +111,8 @@ import { HighlightModule } from '../../../../@vex/components/highlight/highlight
     HelpCenterGuidesModule,
 	
 	HighlightModule
-  ]
+  ],
+  providers:[ComponentsOverviewSVC]
 })
 export class Case1Module {
 }

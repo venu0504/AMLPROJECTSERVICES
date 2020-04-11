@@ -27,6 +27,8 @@ import icPhone from '@iconify/icons-ic/twotone-phone';
 import icMail from '@iconify/icons-ic/twotone-mail';
 import icMap from '@iconify/icons-ic/twotone-map';
 import { CountryData } from 'src/static-data/country.data';
+import { ComponentsOverviewSVC } from '../../screening/components/components-overview/components-overview.service';
+
 
 
 @Component({
@@ -49,6 +51,7 @@ import { CountryData } from 'src/static-data/country.data';
 export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
 
   layoutCtrl = new FormControl('boxed');
+  public caseManagerList: Array<Object> = [];
 
   /**
    * Simulating a service with HTTP that returns Observables
@@ -61,15 +64,15 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
   @Input()
   columns: TableColumn<Case1>[] = [
     { label: 'Checkbox', property: 'checkbox', type: 'checkbox', visible: true },
-    { label: 'Entity Type ', property: 'entity', type: 'text', visible: true},
-    { label: 'Case Name', property: 'casename', type: 'text', visible: true, cssClasses: ['font-medium']  },
+    { label: 'Entity Type ', property: 'entity', type: 'text', visible: true },
+    { label: 'Case Name', property: 'casename', type: 'text', visible: true, cssClasses: ['font-medium'] },
     { label: 'ID', property: 'ids', type: 'text', visible: true },
-	   { label: 'Mandatory Actions	', property: 'mandatory', type: 'text', visible: true },
-	    { label: 'World-Check	', property: 'worldcheck', type: 'text', visible: true },
-		  { label: 'OGS', property: 'ogs', type: 'text', visible: true },
-		    { label: 'Archived	', property: 'archived', type: 'text', visible: true },
-			  { label: 'Assignee	', property: 'asignee', type: 'text', visible: true },
-     { label: 'Actions', property: 'actions', type: 'button', visible: true }
+    { label: 'Mandatory Actions	', property: 'mandatory', type: 'text', visible: true },
+    { label: 'World-Check	', property: 'worldcheck', type: 'text', visible: true },
+    { label: 'OGS', property: 'ogs', type: 'text', visible: true },
+    { label: 'Archived	', property: 'archived', type: 'text', visible: true },
+    { label: 'Assignee	', property: 'asignee', type: 'text', visible: true },
+    { label: 'Actions', property: 'actions', type: 'button', visible: true }
   ];
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 20, 50];
@@ -95,7 +98,7 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private ComponentsOverviewSVC : ComponentsOverviewSVC) {
   }
 
   get visibleColumns() {
@@ -117,16 +120,44 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
 
     this.dataSource = new MatTableDataSource();
 
-    this.data$.pipe(
-      filter<Case1[]>(Boolean)
-    ).subscribe(states => {
-      this.states = states;
-      this.dataSource.data = states;
-    });
+    // this.data$.pipe(
+    //   filter<Case1[]>(Boolean)
+    // ).subscribe(states => {
+    //   this.states = states;
+    //   // this.dataSource.data = states;
+    // });
 
     this.searchCtrl.valueChanges.pipe(
       untilDestroyed(this)
     ).subscribe(value => this.onFilterChange(value));
+
+    let data = {
+      "query": "modificationDate>=2019-01-01T00:00:00.000Z",
+      "sort": [
+          {
+              "columnName": "modificationDate",
+              "order": "ASCENDING"
+          },
+          {
+              "columnName": "modifierUserId",
+              "order": "DESCENDING"
+          }
+      ],
+      "cursorOptions": {
+          "itemsPerPage": 10
+      }
+  }
+    this.ComponentsOverviewSVC.getSummaries('cases/summaries',data).subscribe(
+      async resdata => {
+                const res = resdata;
+                if(res){
+                  console.log('summary',res.results)
+                  this.caseManagerList = res.results;
+                  this.dataSource.data = res.results;
+                }
+        }, async (error) => {
+          console.log("error occured")
+        });
   }
 
   ngAfterViewInit() {
