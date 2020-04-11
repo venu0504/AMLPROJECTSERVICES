@@ -16,7 +16,7 @@
 		
 		 <mat-form-field fxFlex="auto">
             <mat-label>Case ID</mat-label>
-            <input formControlName="caseId" matInput [value]="groupId" [readonly]='nonEditable'>
+            <input formControlName="caseId" matInput value="">
 			<mat-error *ngIf="hasError('caseId', 'required')">Case ID is Required.</mat-error>
           </mat-form-field>
          

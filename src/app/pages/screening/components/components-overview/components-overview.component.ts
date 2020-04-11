@@ -30,8 +30,8 @@ import { stagger80ms } from '../../../../../@vex/animations/stagger.animation';
 export class ComponentsOverviewComponent implements OnInit {
 
   menuWidth = '250px';
-  @ViewChild(SingleComponent, { read: ElementRef, static: true }) private single: ElementRef;
-  @ViewChild(BatchComponent, { read: ElementRef, static: true }) private batch: ElementRef;
+  // @ViewChild(SingleComponent, { read: ElementRef, static: true }) private single: ElementRef;
+  // @ViewChild(BatchComponent, { read: ElementRef, static: true }) private batch: ElementRef;
 
   @ViewChild(IndividualComponent, { read: ElementRef, static: true }) private individual: ElementRef;
   @ViewChild(OrganizationComponent, { read: ElementRef, static: true }) private organization: ElementRef;

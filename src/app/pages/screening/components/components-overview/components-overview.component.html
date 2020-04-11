@@ -15,12 +15,12 @@
          fxShow.gt-sm>
       <mat-list class="navigation" fxFlex="grow">
         <h3 @fadeInRight matSubheader>Mode</h3>
-        <mat-list-item (click)="scrollTo('individual')" @fadeInRight class="cursor-pointer" matRipple>
+        <!-- <mat-list-item (click)="scrollTo('individual')" @fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Single</h4>
         </mat-list-item>
         <mat-list-item (click)="scrollTo('batch')" @fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Batch</h4>
-        </mat-list-item>
+        </mat-list-item> -->
         <mat-list-item >
           <h4 matLine>Entity Type</h4>
         </mat-list-item>
@@ -50,13 +50,13 @@
     </div>
 
     <div @stagger class="max-w-full" fxLayout="column" fxLayoutGap="24px">
-      <vex-single @fadeInUp></vex-single>
-      <vex-batch @fadeInUp></vex-batch>
+      <!-- <vex-single @fadeInUp></vex-single>
+      <vex-batch @fadeInUp></vex-batch> -->
     
       <vex-individual @fadeInUp></vex-individual>
       <vex-organization @fadeInUp></vex-organization>
-      <vex-unspecified @fadeInUp></vex-unspecified>
       <vex-vessel @fadeInUp></vex-vessel>
+      <vex-unspecified @fadeInUp></vex-unspecified>
 
       <vex-passport-check @fadeInUp></vex-passport-check>
      
