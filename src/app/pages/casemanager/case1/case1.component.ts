@@ -52,7 +52,40 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
 
   layoutCtrl = new FormControl('boxed');
   public caseManagerList: Array<Object> = [];
-
+  public ExampleJson = [
+    {
+      caseId: '5nzbfkc4fbia1ejv9f4ryzlsi',
+      entity: 'Sample1',
+      caseName:'Demo Case Name',
+      totalMatches:'0',
+      worldcheckUnResolved: '0',
+      worldCheckReview:'0',
+      ongoingScreening:'0',
+      archived:'0',
+      asignee: 'Demo Assignee',
+      lastModifiedBy:'Moe Alharazi',
+      modificationDate:'22-11-2019',
+      createdBy: 'Moe Alharazi',
+      createdDate: '20-11-2019',
+      lastScreenedDate: '22-11-2019'
+    },
+    {
+      caseId: '5nzbfkc4fbia1ejv9f4ryzlsi',
+      entity: 'Sample2',
+      caseName:'Demo Case Name2',
+      totalMatches:'1',
+      worldcheckUnResolved: '1',
+      worldCheckReview:'1',
+      ongoingScreening:'1',
+      archived:'1',
+      asignee: 'Demo Assignee2',
+      lastModifiedBy:'Moe Alharazi',
+      modificationDate:'22-01-2019',
+      createdBy: 'Moe Alharazi',
+      createdDate: '20-01-2019',
+      lastScreenedDate: '22-01-2019'
+    }
+  ]
   /**
    * Simulating a service with HTTP that returns Observables
    * You probably want to remove this and do all requests in a service with HTTP
@@ -171,7 +204,7 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
      * Here we are updating our local array.
      * You would probably make an HTTP request here.
      */
-    this.states.splice(this.states.findIndex((existingCustomer) => existingCustomer.id === state.id), 1);
+    this.states.splice(this.states.findIndex((existingCustomer) => existingCustomer.caseId === state.caseId), 1);
     this.selection.deselect(state);
     this.subject$.next(this.states);
   }
