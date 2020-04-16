@@ -1,5 +1,5 @@
 export class Case1 {
-  caseId: number;
+  caseId: string;
   entity: string;
   caseName: string;
   totalMatches: string; //mandatory Actions
@@ -32,12 +32,12 @@ export class Case1 {
     this.lastScreenedDate = customer.lastScreenedDate
   }
 
-  get name() {
-    return this.caseName;
-  }
+  // get name() {
+  //   return this.caseName;
+  // }
 
-  set name(value) {
-  }
+  // set name(value) {
+  // }
 
 }
 // 1)Entity Type            =>

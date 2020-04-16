@@ -52,7 +52,10 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
 
   layoutCtrl = new FormControl('boxed');
   public caseManagerList: Array<Object> = [];
-  public ExampleJson = [
+  displayedColumns: string[] = ['checkbox','entity', 'caseName', 'caseId', 'totalMatches','worldcheckUnResolved',
+                                'worldCheckReview','ongoingScreening','archived','asignee','lastModifiedBy',
+                                'modificationDate','modificationDate','createdBy','createdDate','lastScreenedDate'];
+  public ExampleJson: Case1[]  = [
     {
       caseId: '5nzbfkc4fbia1ejv9f4ryzlsi',
       entity: 'Sample1',
@@ -186,7 +189,7 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
                 if(res){
                   console.log('summary',res.results)
                   this.caseManagerList = res.results;
-                  this.dataSource.data = res.results;
+                  this.dataSource.data = this.ExampleJson;
                 }
         }, async (error) => {
           console.log("error occured")
