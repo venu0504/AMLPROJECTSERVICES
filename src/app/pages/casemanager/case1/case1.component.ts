@@ -52,43 +52,9 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
 
   layoutCtrl = new FormControl('boxed');
   public caseManagerList: Array<Object> = [];
-  displayedColumns: string[] = ['checkbox','entity', 'caseName', 'caseId', 'totalMatches','worldcheckUnResolved',
-                                'worldCheckReview','ongoingScreening','archived','asignee','lastModifiedBy',
-                                'modificationDate','modificationDate','createdBy','createdDate','lastScreenedDate'];
-  public ExampleJson: Case1[]  = [
-    {
-      caseId: '5nzbfkc4fbia1ejv9f4ryzlsi',
-      entity: 'Sample1',
-      caseName:'Demo Case Name',
-      totalMatches:'0',
-      worldcheckUnResolved: '0',
-      worldCheckReview:'0',
-      ongoingScreening:'0',
-      archived:'0',
-      asignee: 'Demo Assignee',
-      lastModifiedBy:'Moe Alharazi',
-      modificationDate:'22-11-2019',
-      createdBy: 'Moe Alharazi',
-      createdDate: '20-11-2019',
-      lastScreenedDate: '22-11-2019'
-    },
-    {
-      caseId: '5nzbfkc4fbia1ejv9f4ryzlsi',
-      entity: 'Sample2',
-      caseName:'Demo Case Name2',
-      totalMatches:'1',
-      worldcheckUnResolved: '1',
-      worldCheckReview:'1',
-      ongoingScreening:'1',
-      archived:'1',
-      asignee: 'Demo Assignee2',
-      lastModifiedBy:'Moe Alharazi',
-      modificationDate:'22-01-2019',
-      createdBy: 'Moe Alharazi',
-      createdDate: '20-01-2019',
-      lastScreenedDate: '22-01-2019'
-    }
-  ]
+  displayedColumns: string[] = ['checkbox','entityType', 'name', 'caseId', 'totalMatches','worldcheckUnResolved',
+                                'worldCheckReviewRequired','caseScreeningState','lifecycleState','asignee','lastModifiedBy',
+                                'modificationDate','modificationDate','createdBy','creationDate','lastScreenedDate'];
   /**
    * Simulating a service with HTTP that returns Observables
    * You probably want to remove this and do all requests in a service with HTTP
@@ -183,13 +149,15 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
           "itemsPerPage": 10
       }
   }
-    this.ComponentsOverviewSVC.getSummaries('cases/summaries',data).subscribe(
+    this.ComponentsOverviewSVC.getSummaries('cases/summariesnew',data).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){
-                  console.log('summary',res.results)
-                  this.caseManagerList = res.results;
-                  this.dataSource.data = this.ExampleJson;
+                  this.caseManagerList = res;
+                  let formattedResult = this.formatJson(res);
+                  this.dataSource.data = formattedResult;
+                  console.log("value summary",formattedResult)
+
                 }
         }, async (error) => {
           console.log("error occured")
@@ -201,6 +169,37 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
     this.dataSource.sort = this.sort;
   }
 
+  formatJson(value){
+        value.map(item=>{
+        if(item.creator){
+            item['createdBy'] = item.creator.fullName
+          delete item.creator
+        }
+        if(item.modifier){
+        item['lastModifiedBy'] = item.modifier.fullName
+          delete item.modifier
+        }
+        if(item.providerSummaries){
+          item['totalMatches'] = item.providerSummaries.WATCHLIST.totalMatches;
+          item['worldcheckUnResolved'] = item.providerSummaries.WATCHLIST.reviewRequired;
+          item['worldCheckReviewRequired'] = item.providerSummaries.WATCHLIST.unresolved;
+          delete item.providerSummaries;
+        }
+    })
+    return value;
+  }
+   
+  changeDateFormat(value){
+    let date = new Date(value);
+    let n = date.toLocaleDateString();
+      // let  dd = date.getDate();
+      // let  mm = date.getMonth()+1;
+      // let  yyyy = date.getFullYear(); 
+      // if(dd<10){dd ='0'+dd} 
+      // if(mm<10){mm ='0'+mm};
+      // return d = dd+'-'+mm+'-'+yyyy
+      return n;
+    }
 
   deleteCustomer(state: Case1) {
     /**
