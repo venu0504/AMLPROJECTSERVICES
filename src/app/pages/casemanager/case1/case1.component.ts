@@ -185,20 +185,27 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
           item['worldCheckReviewRequired'] = item.providerSummaries.WATCHLIST.unresolved;
           delete item.providerSummaries;
         }
+        if(item.modificationDate){
+          item['modificationDate'] = this.changeDateFormat(item.modificationDate)
+        }
+        if(item.requestFromScreenedDate){
+          item['requestFromScreenedDate'] = this.changeDateFormat(item.requestFromScreenedDate)
+        }
+        if(item.lastScreenedDate){
+          item['lastScreenedDate'] = this.changeDateFormat(item.lastScreenedDate)
+        }
+        if(item.creationDate){
+          item['creationDate'] = this.changeDateFormat(item.creationDate);
+        }
     })
     return value;
   }
    
   changeDateFormat(value){
     let date = new Date(value);
-    let n = date.toLocaleDateString();
-      // let  dd = date.getDate();
-      // let  mm = date.getMonth()+1;
-      // let  yyyy = date.getFullYear(); 
-      // if(dd<10){dd ='0'+dd} 
-      // if(mm<10){mm ='0'+mm};
-      // return d = dd+'-'+mm+'-'+yyyy
-      return n;
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+    let n = date.getDate()+'-' + months[date.getMonth()] + '-'+date.getFullYear() +' '+ date.getHours() +':'+ date.getMinutes() ;
+    return n;
     }
 
   deleteCustomer(state: Case1) {
