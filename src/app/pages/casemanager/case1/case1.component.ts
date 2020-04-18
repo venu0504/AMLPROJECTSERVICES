@@ -268,9 +268,9 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
   updateCustomer(value){
     console.log("value", value)
   }
-  createCustomer(){
-    console.log("createCustomer");
-  }
+  // createCustomer(){
+  //   console.log("createCustomer");
+  // }
   ngOnDestroy() {
   }
 }
