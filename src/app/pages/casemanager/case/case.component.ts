@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Observable, of, ReplaySubject } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { Case } from './interfaces/case.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -28,7 +28,9 @@ import icMail from '@iconify/icons-ic/twotone-mail';
 import icMap from '@iconify/icons-ic/twotone-map';
 import { CountryData } from 'src/static-data/country.data';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ComponentsOverviewSVC } from '../../screening/components/components-overview/components-overview.service';
+
 @Component({
   selector: 'vex-case',
   templateUrl: './case.component.html',
@@ -47,9 +49,10 @@ import { Router } from '@angular/router';
   ]
 })
 export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
-public casedet: any;
-    submitted = false;
+  public casedet: any;
+  submitted = false;
   layoutCtrl = new FormControl('boxed');
+  state$: object;
 
   /**
    * Simulating a service with HTTP that returns Observables
@@ -62,21 +65,21 @@ public casedet: any;
   @Input()
   columns: TableColumn<Case>[] = [
     { label: 'Checkbox', property: 'checkbox', type: 'checkbox', visible: true },
-    { label: 'Entity Type', property: 'countryname', type: 'text', visible: true},
-    { label: 'Name', property: 'statename', type: 'text', visible: true},
-    { label: 'Matched Alias', property: 'statecode', type: 'text', visible: true, cssClasses: ['font-medium']  },
+    { label: 'Entity Type', property: 'countryname', type: 'text', visible: true },
+    { label: 'Name', property: 'statename', type: 'text', visible: true },
+    { label: 'Matched Alias', property: 'statecode', type: 'text', visible: true, cssClasses: ['font-medium'] },
     { label: '	Match Strength', property: 'status', type: 'text', visible: true },
-	  { label: '	Type', property: 'cc', type: 'text', visible: true },
-	   { label: '	Identification', property: 'vv', type: 'text', visible: true },
-	  { label: '	Category', property: 'ss', type: 'text', visible: true },
-	   { label: '	World-Check ID', property: 'ww', type: 'text', visible: true },
-	  { label: '	Entered Date ', property: 'yy', type: 'text', visible: true },
-		{ label: '	Updated Date ', property: 'hh', type: 'text', visible: true },
-		 { label: '	Matched Date ', property: 'ccs', type: 'text', visible: true },
-		  { label: 'Last Resolved/ Reviewed On ', property: 'ccdd', type: 'text', visible: true },
-		  { label: 'Last Resolved/ Reviewed By ', property: 'ssss', type: 'text', visible: true },
-		  { label: 'Risk Level ', property: 'cssscdd', type: 'text', visible: true },
-     { label: 'Actions', property: 'actions', type: 'button', visible: true }
+    { label: '	Type', property: 'cc', type: 'text', visible: true },
+    { label: '	Identification', property: 'vv', type: 'text', visible: true },
+    { label: '	Category', property: 'ss', type: 'text', visible: true },
+    { label: '	World-Check ID', property: 'ww', type: 'text', visible: true },
+    { label: '	Entered Date ', property: 'yy', type: 'text', visible: true },
+    { label: '	Updated Date ', property: 'hh', type: 'text', visible: true },
+    { label: '	Matched Date ', property: 'ccs', type: 'text', visible: true },
+    { label: 'Last Resolved/ Reviewed On ', property: 'ccdd', type: 'text', visible: true },
+    { label: 'Last Resolved/ Reviewed By ', property: 'ssss', type: 'text', visible: true },
+    { label: 'Risk Level ', property: 'cssscdd', type: 'text', visible: true },
+    { label: 'Actions', property: 'actions', type: 'button', visible: true }
   ];
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 20, 50];
@@ -102,7 +105,7 @@ public casedet: any;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private router: Router, private formBuilder: FormBuilder,private dialog: MatDialog) {
+  constructor(private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private dialog: MatDialog, private ComponentsOverviewSVC: ComponentsOverviewSVC) {
   }
 
   get visibleColumns() {
@@ -134,31 +137,42 @@ public casedet: any;
     this.searchCtrl.valueChanges.pipe(
       untilDestroyed(this)
     ).subscribe(value => this.onFilterChange(value));
-	
-	this.casedet = this.formBuilder.group({
-	
-	  casestatus: [null, Validators.compose([Validators.required])],
-	  risk: [null, Validators.compose([Validators.required])],
-	  reason: [null, Validators.compose([Validators.required])],
-	  note: [null, Validators.compose([Validators.required])],
-	
-	    
-	   
-	 
- });
+
+
+    this.casedet = this.formBuilder.group({
+      casestatus: [null, Validators.compose([Validators.required])],
+      risk: [null, Validators.compose([Validators.required])],
+      reason: [null, Validators.compose([Validators.required])],
+      note: [null, Validators.compose([Validators.required])],
+
+    });
+
+    this.state$ = this.activatedRoute.paramMap
+      .pipe(map(() => window.history.state));
+    console.log("dassaa", this.state$);
+    let data = {};
+    this.ComponentsOverviewSVC.getCaseResult(`cases/0a3687cf-6b99-1f52-9afe-d2f000707848/results`).subscribe(
+      async resdata => {
+        const res = resdata;
+        if (res) {
+          console.log("reaponse", res)
+        }
+      }, async (error) => {
+        console.log("error occured")
+      });
   }
 
 
 
- public hasError = (controlName: string, errorName: string) => {
+  public hasError = (controlName: string, errorName: string) => {
     return this.casedet.controls[controlName].hasError(errorName);
   }
-  caseOnsubmit(){
+  caseOnsubmit() {
     this.submitted = true;
     if (this.casedet.invalid) {
       return;
     }
-    alert('form fields are validated successfully!');  
+    alert('form fields are validated successfully!');
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -222,12 +236,12 @@ public casedet: any;
     this.countries[index].labels = change.value;
     this.subject$.next(this.countries);
   }*/
-  updateCustomer(value){
+  updateCustomer(value) {
     console.log("value", value)
   }
-  createCustomer(){
-    console.log("createCustomer");
-  }
+  // createCustomer() {
+  //   console.log("createCustomer");
+  // }
 
   ngOnDestroy() {
   }

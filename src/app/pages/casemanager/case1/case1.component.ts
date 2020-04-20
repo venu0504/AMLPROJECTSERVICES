@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { Router} from '@angular/router';
 import { Case1 } from './interfaces/case1.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -100,7 +101,7 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private dialog: MatDialog, private ComponentsOverviewSVC : ComponentsOverviewSVC) {
+  constructor(private dialog: MatDialog, private ComponentsOverviewSVC : ComponentsOverviewSVC, private router: Router) {
   }
 
   get visibleColumns() {
@@ -271,6 +272,12 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
   // createCustomer(){
   //   console.log("createCustomer");
   // }
+
+  routeToCaseDescPage(){
+    let value = 'adarsh'
+    this.router.navigate(['/casemanager/case', value ])
+  }
+
   ngOnDestroy() {
   }
 }
