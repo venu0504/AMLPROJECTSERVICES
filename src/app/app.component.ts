@@ -102,25 +102,25 @@ export class AppComponent {
         icon: icContacts
       },
 	
-      {
-        type: 'dropdown',
-        label: 'Status Reports',
-        icon: icAssigment,
-        children: [
-          {
-            type: 'link',
-            label: 'Batch Screening Status',
-              route: '/status-reports/screening-status',
-            icon: icAssigment
-          },
-          {
-            type: 'link',
-            label: 'Export Status',
-            route: '/status-reports/export-status',
-            icon: icAssigment
-          }
-        ]
-      },
+      // {
+      //   type: 'dropdown',
+      //   label: 'Status Reports',
+      //   icon: icAssigment,
+      //   children: [
+      //     {
+      //       type: 'link',
+      //       label: 'Batch Screening Status',
+      //         route: '/status-reports/screening-status',
+      //       icon: icAssigment
+      //     },
+      //     {
+      //       type: 'link',
+      //       label: 'Export Status',
+      //       route: '/status-reports/export-status',
+      //       icon: icAssigment
+      //     }
+      //   ]
+      // },
 	 
       {
         type: 'dropdown',
@@ -191,76 +191,76 @@ export class AppComponent {
 
 
  
-      {
-        type: 'subheading',
-        label: 'Pages',
-        children: [
-          {
-            type: 'dropdown',
-            label: 'Authentication',
-            icon: icLock,
-            children: [
-              {
-                type: 'link',
-                label: 'Login',
-                route: '/login'
-              },
-              {
-                type: 'link',
-                label: 'Register',
-                route: '/register'
-              },
-              {
-                type: 'link',
-                label: 'Forgot Password',
-                route: '/forgot-password'
-              },
-              {
-                type: 'link',
-                label: 'Forgot Username',
-                route: '/forgot-username'
-              }
-            ]
-          },
+      // {
+      //   type: 'subheading',
+      //   label: 'Pages',
+      //   children: [
+      //     {
+      //       type: 'dropdown',
+      //       label: 'Authentication',
+      //       icon: icLock,
+      //       children: [
+      //         {
+      //           type: 'link',
+      //           label: 'Login',
+      //           route: '/login'
+      //         },
+      //         {
+      //           type: 'link',
+      //           label: 'Register',
+      //           route: '/register'
+      //         },
+      //         {
+      //           type: 'link',
+      //           label: 'Forgot Password',
+      //           route: '/forgot-password'
+      //         },
+      //         {
+      //           type: 'link',
+      //           label: 'Forgot Username',
+      //           route: '/forgot-username'
+      //         }
+      //       ]
+      //     },
          
   
-          {
-            type: 'link',
-            label: 'Pricing',
-            icon: icAttachMoney,
-            route: '/pages/pricing'
-          },
-          {
-            type: 'link',
-            label: 'Profile',
-            icon: icPersonOutline,
-            route: '/pages/profile'
-          },
-          {
-            type: 'link',
-            label: 'Invoice',
-            icon: icReceipt,
-            route: '/pages/invoice'
-          },
-          {
-            type: 'link',
-            label: 'FAQ',
-            icon: icHelp,
-            route: '/pages/faq'
-          },
-          {
-            type: 'link',
-            label: 'Guides',
-            icon: icBook,
-            route: '/pages/guides',
-            badge: {
-              value: '18',
-              background: theme.colors.teal['500'],
-              color: theme.textColor['teal-contrast']['500']
-            },
-          },
-        ]
-      },
+      //     {
+      //       type: 'link',
+      //       label: 'Pricing',
+      //       icon: icAttachMoney,
+      //       route: '/pages/pricing'
+      //     },
+      //     {
+      //       type: 'link',
+      //       label: 'Profile',
+      //       icon: icPersonOutline,
+      //       route: '/pages/profile'
+      //     },
+      //     {
+      //       type: 'link',
+      //       label: 'Invoice',
+      //       icon: icReceipt,
+      //       route: '/pages/invoice'
+      //     },
+      //     {
+      //       type: 'link',
+      //       label: 'FAQ',
+      //       icon: icHelp,
+      //       route: '/pages/faq'
+      //     },
+      //     {
+      //       type: 'link',
+      //       label: 'Guides',
+      //       icon: icBook,
+      //       route: '/pages/guides',
+      //       badge: {
+      //         value: '18',
+      //         background: theme.colors.teal['500'],
+      //         color: theme.textColor['teal-contrast']['500']
+      //       },
+      //     },
+      //   ]
+      // },
  
       {
         type: 'link',

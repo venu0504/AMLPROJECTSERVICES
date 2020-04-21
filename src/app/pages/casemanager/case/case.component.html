@@ -1,4 +1,9 @@
-
+<vex-page-layout-header fxLayout="column" fxLayoutAlign="center start">
+  <div vexContainer>
+    <h1 class="title mt-0 mb-1">Case Details</h1>
+    <vex-breadcrumbs [crumbs]="['Case Manager', 'Case Details']"></vex-breadcrumbs>
+  </div>
+</vex-page-layout-header>
  <div class="card " >
      <form [formGroup]="casedet" (ngSubmit)="caseOnsubmit()" class="p-6" fxLayout="column" fxLayoutGap="16px">
       <mat-card class="mb-3">
@@ -115,7 +120,7 @@
 
 <vex-page-layout>
 
-  <vex-page-layout-header class="pb-16" fxLayout="column" fxLayoutAlign="center start">
+  <!-- <vex-page-layout-header class="pb-16" fxLayout="column" fxLayoutAlign="center start">
     <div [class.container]="layoutCtrl.value === 'boxed'"
          [class.px-gutter]="layoutCtrl.value === 'fullwidth'"
          class="w-full flex justify-between">
@@ -126,7 +131,7 @@
 
       
     </div>
-  </vex-page-layout-header>
+  </vex-page-layout-header> -->
 
   <vex-page-layout-content [class.container]="layoutCtrl.value === 'boxed'"
                            [class.px-gutter]="layoutCtrl.value === 'fullwidth'"

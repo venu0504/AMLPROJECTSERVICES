@@ -273,9 +273,9 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
   //   console.log("createCustomer");
   // }
 
-  routeToCaseDescPage(){
-    let value = 'adarsh'
-    this.router.navigate(['/casemanager/case', value ])
+  routeToCaseDescPage(value){
+    
+    this.router.navigate(['/casemanager/case'], {queryParams: {value}} )
   }
 
   ngOnDestroy() {

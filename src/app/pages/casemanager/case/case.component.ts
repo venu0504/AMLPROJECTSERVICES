@@ -52,6 +52,8 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
   public casedet: any;
   submitted = false;
   layoutCtrl = new FormControl('boxed');
+  id: any;
+  sub:any;
   state$: object;
 
   /**
@@ -146,12 +148,9 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
       note: [null, Validators.compose([Validators.required])],
 
     });
-
-    this.state$ = this.activatedRoute.paramMap
-      .pipe(map(() => window.history.state));
-    console.log("dassaa", this.state$);
+    this.state$ = this.activatedRoute.queryParams['value'];
     let data = {};
-    this.ComponentsOverviewSVC.getCaseResult(`cases/0a3687cf-6b99-1f52-9afe-d2f000707848/results`).subscribe(
+    this.ComponentsOverviewSVC.getCaseResult(`cases/${this.state$['value']}/results`).subscribe(
       async resdata => {
         const res = resdata;
         if (res) {
