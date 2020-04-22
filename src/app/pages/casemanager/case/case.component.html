@@ -204,7 +204,7 @@
               The actual rendered columns are set as a property on the row definition" -->
 
         <!-- Checkbox Column -->
-        <ng-container matColumnDef="checkbox">
+        <!-- <ng-container matColumnDef="checkbox">
           <th *matHeaderCellDef mat-header-cell>
             <mat-checkbox (change)="$event ? masterToggle() : null"
                           [checked]="selection.hasValue() && isAllSelected()"
@@ -219,23 +219,23 @@
                           color="primary">
             </mat-checkbox>
           </td>
-        </ng-container>
+        </ng-container> -->
 
         <!-- Image Column -->
         
 
         <!-- Text Columns -->
-        <ng-container *ngFor="let column of columns; trackBy: trackByProperty">
+        <!-- <ng-container *ngFor="let column of columns; trackBy: trackByProperty">
           <ng-container *ngIf="column.type === 'text'" [matColumnDef]="column.property">
             <th *matHeaderCellDef class="uppercase" mat-header-cell mat-sort-header> {{ column.label }}</th>
             <td *matCellDef="let row" [ngClass]="column.cssClasses" mat-cell routerLink="/casemanager/casedetails/overview">{{ row[column.property] }}</td>
           </ng-container>
-        </ng-container>
+        </ng-container> -->
 
         
 
         <!-- Action Column -->
-        <ng-container matColumnDef="actions">
+        <!-- <ng-container matColumnDef="actions">
           <th *matHeaderCellDef mat-header-cell mat-sort-header></th>
           <td *matCellDef="let row" class="w-10 text-secondary" mat-cell>
             <button (click)="$event.stopPropagation()"
@@ -253,7 +253,94 @@
             *matRowDef="let row; columns: visibleColumns;"
             @fadeInUp
             class="hover:bg-hover trans-ease-out cursor-pointer"
-            mat-row></tr>
+            mat-row></tr> -->
+            <ng-container matColumnDef="checkbox">
+              <th *matHeaderCellDef mat-header-cell>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                              [checked]="selection.hasValue() && isAllSelected()"
+                              [indeterminate]="selection.hasValue() && !isAllSelected()"
+                              color="primary">
+                </mat-checkbox>
+              </th>
+              <td *matCellDef="let row" class="w-4" mat-cell>
+                <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+                              (click)="$event.stopPropagation()"
+                              [checked]="selection.isSelected(row)"
+                              color="primary">
+                </mat-checkbox>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="submittedTerm">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.submittedTerm}} </td>
+            </ng-container>
+            <ng-container matColumnDef="matchedNameType">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Matched Alias</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.matchedNameType}} </td>
+            </ng-container>
+            <ng-container matColumnDef="strength">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Matched Strength</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.strength}} </td>
+            </ng-container>
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.type}} </td>
+            </ng-container>
+            <ng-container matColumnDef="gender">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.gender}} </td>
+            </ng-container>
+            <ng-container matColumnDef="dateOfBirth">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.dateOfBirth}} </td>
+            </ng-container>
+            <ng-container matColumnDef="placeOfBirth">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Place of Birht</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.placeOfBirth}} </td>
+            </ng-container>
+            <ng-container matColumnDef="nationality">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Nationality</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.nationality}} </td>
+            </ng-container>
+            <ng-container matColumnDef="residence">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Country Location</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.residence}} </td>
+            </ng-container>
+            <ng-container matColumnDef="referenceId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>World Check Id</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.referenceId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="category">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.category}} </td>
+            </ng-container>
+            <ng-container matColumnDef="creationDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Entered Date</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.creationDate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="modificationDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Updated Date</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.modificationDate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="matchedDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Matched Date</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.matchedDate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="lastResolvedOrReviewedDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Resolved/ Reviewed on</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.lastResolvedOrReviewedDate}} </td>
+            </ng-container>
+            <ng-container matColumnDef="lastResolvedOrReviewedBy">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Resolved / Reviewed By</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.lastResolvedOrReviewedBy}} </td>
+            </ng-container>
+            <ng-container matColumnDef="riskLevel">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Risk Level</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.riskLevel}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 
       <mat-paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize" class="sticky left-0"></mat-paginator>

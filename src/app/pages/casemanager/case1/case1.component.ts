@@ -274,7 +274,6 @@ export class Case1Component implements OnInit, AfterViewInit, OnDestroy {
   // }
 
   routeToCaseDescPage(value){
-    
     this.router.navigate(['/casemanager/case'], {queryParams: {value}} )
   }
 

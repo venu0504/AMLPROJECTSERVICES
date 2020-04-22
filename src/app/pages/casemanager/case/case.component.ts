@@ -55,6 +55,10 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
   id: any;
   sub:any;
   state$: object;
+  displayedColumns: string[] = ["checkbox", "submittedTerm", "matchedNameType", "strength", "type", "gender", "dateOfBirth", 
+                       "placeOfBirth", "nationality", "residence", "referenceId","category",
+                        "creationDate", "modificationDate", "matchedDate", "lastResolvedOrReviewedDate",
+                        "lastResolvedOrReviewedBy", "riskLevel"];
 
   /**
    * Simulating a service with HTTP that returns Observables
@@ -153,6 +157,7 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
     this.ComponentsOverviewSVC.getCaseResult(`cases/${this.state$['value']}/results`).subscribe(
       async resdata => {
         const res = resdata;
+        this.dataSource.data = this.formatJson(resdata);
         if (res) {
           console.log("reaponse", res)
         }
@@ -160,7 +165,27 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
         console.log("error occured")
       });
   }
+  formatJson(value){
+    value.map(item=>{
+        if(item.creationDate){
+          item['creationDate'] = this.changeDateFormat(item['creationDate']);
+        }
+        if(item.modificationDate){
+          item['modificationDate'] = this.changeDateFormat(item['modificationDate']);
+        }
+        if(item.referenceId){
+          item['referenceId'] = item['referenceId'].substr(9);
+        }
+})
+return value;
+}
 
+changeDateFormat(value){
+  let date = new Date(value);
+  let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+  let n = date.getDate()+'-' + months[date.getMonth()] + '-'+date.getFullYear() +' '+ date.getHours() +':'+ date.getMinutes() ;
+  return n;
+  }
 
 
   public hasError = (controlName: string, errorName: string) => {
@@ -184,9 +209,9 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
      * Here we are updating our local array.
      * You would probably make an HTTP request here.
      */
-    this.cases.splice(this.cases.findIndex((existingCustomer) => existingCustomer.id === state.id), 1);
-    this.selection.deselect(state);
-    this.subject$.next(this.cases);
+    // this.cases.splice(this.cases.findIndex((existingCustomer) => existingCustomer.id === state.id), 1);
+    // this.selection.deselect(state);
+    // this.subject$.next(this.cases);
   }
 
   deleteCustomers(cases: Case[]) {
