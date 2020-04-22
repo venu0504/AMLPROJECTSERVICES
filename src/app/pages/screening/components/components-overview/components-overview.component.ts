@@ -30,6 +30,12 @@ import { stagger80ms } from '../../../../../@vex/animations/stagger.animation';
 export class ComponentsOverviewComponent implements OnInit {
 
   menuWidth = '250px';
+  showIndividualForm: Boolean = true;
+  showVesselForm: Boolean = false;
+  showOrganizationForm: Boolean = false;
+  showUnspecifiedForm: Boolean = false;
+  currentForm: string = 'individual';
+
   // @ViewChild(SingleComponent, { read: ElementRef, static: true }) private single: ElementRef;
   // @ViewChild(BatchComponent, { read: ElementRef, static: true }) private batch: ElementRef;
 
@@ -67,5 +73,25 @@ export class ComponentsOverviewComponent implements OnInit {
       top: this[elem].nativeElement.offsetTop - 24,
       behavior: 'smooth'
     });
+  }
+
+  showForm(element: string){
+    debugger;
+    this.showIndividualForm = false;
+    this.showVesselForm = false;
+    this.showOrganizationForm = false;
+    this.showUnspecifiedForm = false;
+    switch(element){
+      case 'individual':
+        return  this.showIndividualForm = true;
+      case 'vessel':
+        return  this.showVesselForm = true;
+      case 'organization':
+        return  this.showOrganizationForm = true;
+      case 'unspecified':
+        return  this.showUnspecifiedForm = true;
+      default:
+        return ;
+    }
   }
 }

@@ -24,16 +24,16 @@
         <mat-list-item >
           <h4 matLine>Entity Type</h4>
         </mat-list-item>
-        <mat-list-item (click)="scrollTo('individual')" @fadeInRight class="cursor-pointer" matRipple>
+        <mat-list-item (click)="currentForm = 'individual'" @fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Individual</h4>
         </mat-list-item>
-        <mat-list-item (click)="scrollTo('organization')" @fadeInRight class="cursor-pointer" matRipple>
+        <mat-list-item (click)=" currentForm = 'organization'" @fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Organization</h4>
         </mat-list-item>
-        <mat-list-item (click)="scrollTo('vessel')" @fadeInRight class="cursor-pointer" matRipple>
+        <mat-list-item (click)="currentForm ='vessel'" @fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Vessel</h4>
         </mat-list-item>
-        <mat-list-item (click)="scrollTo('unspecified')" @fadeInRight class="cursor-pointer" matRipple>
+        <mat-list-item (click)="currentForm ='unspecified'" @fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Unspecified</h4>
         </mat-list-item>
         <!-- <mat-list-item >
@@ -53,10 +53,10 @@
       <!-- <vex-single @fadeInUp></vex-single>
       <vex-batch @fadeInUp></vex-batch> -->
     
-      <vex-individual @fadeInUp></vex-individual>
-      <vex-organization @fadeInUp></vex-organization>
-      <vex-vessel @fadeInUp></vex-vessel>
-      <vex-unspecified @fadeInUp></vex-unspecified>
+      <span *ngIf="currentForm === 'individual'"><vex-individual ></vex-individual></span>
+      <span *ngIf="currentForm === 'organization'"><vex-organization ></vex-organization></span>
+      <span *ngIf="currentForm === 'vessel'"><vex-vessel ></vex-vessel></span>
+      <span *ngIf="currentForm === 'unspecified'"><vex-unspecified ></vex-unspecified></span>
 
       <!-- <vex-passport-check @fadeInUp></vex-passport-check> -->
      
