@@ -54,9 +54,11 @@
    <mat-form-field fxFlex="auto">
           <mat-label>REASON</mat-label>
           <mat-select formControlName="reason">
-            <mat-option value="new">New York</mat-option>
-            <mat-option value="new">Washington</mat-option>
-            <mat-option value="new">Florida</mat-option>
+            <mat-option value="new">Partial Match</mat-option>
+            <mat-option value="new">Full Match</mat-option>
+            <mat-option value="new">Unknown</mat-option>
+            <mat-option value="new">No Match</mat-option>
+            
           </mat-select>
 		    <mat-error *ngIf="hasError('reason', 'required')">Required.</mat-error>
         </mat-form-field>        
