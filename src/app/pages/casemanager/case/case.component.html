@@ -280,9 +280,9 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Matched Alias</th>
               <td mat-cell  *matCellDef="let element" >{{ element.matchedNameType}} </td>
             </ng-container>
-            <ng-container matColumnDef="strength">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Matched Strength</th>
-              <td mat-cell  *matCellDef="let element" >{{ element.strength}} </td>
+            <ng-container matColumnDef="matchStrength">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Match Strength</th>
+              <td mat-cell  *matCellDef="let element" >{{ element.matchStrength}} </td>
             </ng-container>
             <ng-container matColumnDef="type">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
@@ -297,7 +297,7 @@
               <td mat-cell  *matCellDef="let element" >{{ element.dateOfBirth}} </td>
             </ng-container>
             <ng-container matColumnDef="placeOfBirth">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Place of Birht</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Place of Birth</th>
               <td mat-cell  *matCellDef="let element" >{{ element.placeOfBirth}} </td>
             </ng-container>
             <ng-container matColumnDef="nationality">
@@ -312,9 +312,9 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header>World Check Id</th>
               <td mat-cell  *matCellDef="let element" >{{ element.referenceId}} </td>
             </ng-container>
-            <ng-container matColumnDef="category">
+            <ng-container matColumnDef="categories">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
-              <td mat-cell  *matCellDef="let element" >{{ element.category}} </td>
+              <td mat-cell  *matCellDef="let element" >{{ element.categories.toString()}} </td>
             </ng-container>
             <ng-container matColumnDef="creationDate">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Entered Date</th>

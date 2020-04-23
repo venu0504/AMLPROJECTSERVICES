@@ -55,8 +55,8 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
   id: any;
   sub:any;
   state$: object;
-  displayedColumns: string[] = ["checkbox", "submittedTerm", "matchedNameType", "strength", "type", "gender", "dateOfBirth", 
-                       "placeOfBirth", "nationality", "residence", "referenceId","category",
+  displayedColumns: string[] = ["checkbox", "submittedTerm", "matchedNameType", "matchStrength", "type", "gender", "dateOfBirth", 
+                       "placeOfBirth", "nationality", "residence", "referenceId","categories",
                         "creationDate", "modificationDate", "matchedDate", "lastResolvedOrReviewedDate",
                         "lastResolvedOrReviewedBy", "riskLevel"];
 
@@ -157,6 +157,7 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
     this.ComponentsOverviewSVC.getCaseResult(`cases/${this.state$['value']}/results`).subscribe(
       async resdata => {
         const res = resdata;
+        debugger;
         this.dataSource.data = this.formatJson(resdata);
         if (res) {
           console.log("reaponse", res)
