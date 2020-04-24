@@ -1,9 +1,13 @@
 <div class="w-full h-full bg-login" fxLayout="column" fxLayoutAlign="center center">
   <div @fadeInUp class="card overflow-hidden w-full max-w-md">
     <div class="p-6 pb-0" fxLayout="column" fxLayoutAlign="center center">
-      <div class="fill-current text-center">
-        <img class="logo" src="assets/img/aml.png" alt="Thomsonreuters">
-      </div>
+         <div class="text-center mt-4">
+      <h2 class="title m-0">CoopVerified</h2>
+     
+    </div> 
+	<!-- <div class="fill-current text-center">
+        <img class="logo" src="assets/img/logo.png" alt="Thomsonreuters">
+      </div>-->
     </div>
 
     <div class="text-center mt-4">
@@ -11,7 +15,7 @@
       <h4 class="body-2 text-secondary m-0">Enter your product information and an email to begin.</h4>
     </div>
 
-    <form [formGroup]="onepassProfile" (ngSubmit)="onepassProfileOnsubmit()" class="p-6" fxLayout="column" fxLayoutGap="16px">
+    <form [formGroup]="onepassProfileFrom"  class="p-6" fxLayout="column" fxLayoutGap="16px">
      <div fxFlex="auto" fxLayout="column">
      <mat-form-field >
           <mat-label>Product </mat-label>
@@ -49,7 +53,7 @@
         </mat-form-field>
 
       </div>
-      <button  color="primary" (click)="send()" color="primary" mat-raised-button type="submit">
+      <button  color="primary" (click)="createOnePassProfile()" color="primary" mat-raised-button type="submit">
         CONTINUE
       </button>
     </form>

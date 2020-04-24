@@ -8,6 +8,9 @@ import icSettings from '@iconify/icons-ic/twotone-settings';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import icSearch from '@iconify/icons-ic/twotone-search';
+
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -59,6 +62,7 @@ export class UsersComponent implements OnInit {
   }
 
   icMoreVert = icMoreVert;
+  icSearch = icSearch;
   theme = theme;
     ngOnInit() {
 	  

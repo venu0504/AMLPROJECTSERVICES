@@ -1,10 +1,10 @@
 <div class="card" fxLayout="column" fxLayout.gt-sm="row">
  <div @fadeInUp class="card" fxFlex="auto">
       <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
-        <h2 class="title m-0">Single Screening</h2>
+        <h2 class="title m-0">Passport Screening</h2>
       </div>
 
-      <form [formGroup]="componentsoverviewProgress" (ngSubmit)="componentsoverviewOnsubmit()" class="p-6" fxLayout="column" fxLayoutGap="16px">
+      <form [formGroup]="passportCheckForm" (ngSubmit)="submitPassportCheck()" class="p-6" fxLayout="column" fxLayoutGap="16px">
        
 
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
@@ -54,9 +54,7 @@
               <mat-form-field fxFlex="auto">
           <mat-label>Country Location</mat-label>
           <mat-select formControlName="countryLoc">
-            <mat-option value="new">United States Of America</mat-option>
-            <mat-option value="new">Australia</mat-option>
-            <mat-option value="new">India</mat-option>
+            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
           </mat-select>
 		  <mat-error *ngIf="hasError('countryLoc', 'required')">Country Location is Required.</mat-error>
         </mat-form-field>
@@ -64,22 +62,14 @@
 		     <mat-form-field fxFlex="auto">
           <mat-label>Place of Birth</mat-label>
           <mat-select formControlName="placeofBirth">
-            <mat-option value="new">New York</mat-option>
-            <mat-option value="new">Washington</mat-option>
-            <mat-option value="new">Mumbai</mat-option>
-			<mat-option value="new">Canada</mat-option>
-			<mat-option value="new">Toranto </mat-option>
+            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
           </mat-select>
 		   <mat-error *ngIf="hasError('placeofBirth', 'required')">Place of Birth is Required.</mat-error>
         </mat-form-field >
 		    <mat-form-field fxFlex="auto">
           <mat-label>Nationality</mat-label>
           <mat-select formControlName="Nationality">
-            <mat-option value="new">American</mat-option>
-            <mat-option value="new">Mexican</mat-option>
-            <mat-option value="new">Russian </mat-option>
-			<mat-option value="new">Bulgarian </mat-option>
-			<mat-option value="new">Indian </mat-option>
+            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
           </mat-select>
 		  <mat-error *ngIf="hasError('Nationality', 'required')">Nationality is Required.</mat-error>
         </mat-form-field>
@@ -110,9 +100,7 @@
               <mat-form-field fxFlex="auto">
           <mat-label>Issuing State</mat-label>
           <mat-select formControlName="issuingState">
-            <mat-option value="ccc">New York</mat-option>
-            <mat-option value="cccv">Washington</mat-option>
-            <mat-option value="sss">Florida</mat-option>
+            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
           </mat-select>
 		  <mat-error *ngIf="hasError('issuingState', 'required')">Issuing State is Required.</mat-error>
         </mat-form-field>
@@ -120,9 +108,7 @@
 		     <mat-form-field fxFlex="auto">
           <mat-label>Nationality</mat-label>
           <mat-select formControlName="passportcheckNat">
-            <mat-option value="ss">New York</mat-option>
-            <mat-option value="a">Washington</mat-option>
-            <mat-option value="cc">Florida</mat-option>
+            <mat-option *ngFor="let country of countryList" [value]="country.name">{{ country.name }}</mat-option>
           </mat-select>
 		   <mat-error *ngIf="hasError('passportcheckNat', 'required')">Nationality is Required.</mat-error>
         </mat-form-field >

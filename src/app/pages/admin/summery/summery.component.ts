@@ -8,6 +8,8 @@ import icSettings from '@iconify/icons-ic/twotone-settings';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { ApiProvider } from 'src/app/services/api-provider';
+
 
 export interface PeriodicElement {
   name: string;
@@ -40,6 +42,8 @@ export class SummeryComponent implements OnInit {
 	  
  onGroupForm: FormGroup;
  submitted = false;
+ public name:String='';
+ public email:String='';
  
   icSettings = icSettings;
   displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
@@ -68,11 +72,22 @@ export class SummeryComponent implements OnInit {
       fields: [null, Validators.compose([ Validators.required])],
 	     receiveEmail: [null, Validators.compose([ Validators.required])],
 		    locale: [null, Validators.compose([ Validators.required])]
-     
+        
 
     });
 	
-	
+    this.apiProvider.getUserDetails('users').subscribe(
+      async resdata => {
+                const res = resdata;
+                let UserData = [];
+                if(res){
+                  UserData = res;
+                  this.name = UserData[0].firstName + ' ' + UserData[0].lastName;
+                  this.email = UserData[0].email;
+                }
+        }, async (error) => {
+          console.log("error occured")
+        });
 	    this.onGroupForm = this.formBuilder.group({
       positive: [null, Validators.compose([
         Validators.required
@@ -130,9 +145,9 @@ export class SummeryComponent implements OnInit {
   closeResult: string;
 
   constructor(private modalService: NgbModal,
-  private formBuilder: FormBuilder
-
-  ) {}
+  private formBuilder: FormBuilder,
+  private apiProvider: ApiProvider) {}
+  
 
   openBackDropCustomClass(content) {
     this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});

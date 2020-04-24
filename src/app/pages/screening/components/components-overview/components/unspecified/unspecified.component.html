@@ -1,22 +1,22 @@
 <div class="card" fxLayout="column" fxLayout.gt-sm="row">
- <div @fadeInUp class="card" fxFlex="auto">
+ <div class="card" fxFlex="auto">
       <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
-        <h2 class="title m-0">Single Screening</h2>
+        <h2 class="title m-0">Unspecified Screening</h2>
       </div>
 
-      <form [formGroup]="componentsoverviewInput" (ngSubmit)="componentsoverviewOnsubmit()" class="p-6" fxLayout="column" fxLayoutGap="16px">
+      <form [formGroup]="unSpecifiedScreeningForm" (ngSubmit)="createUnspecifiedScreening()" class="p-6" fxLayout="column" fxLayoutGap="16px">
        
 
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
           <mat-form-field fxFlex="auto">
           <mat-label>Name</mat-label>
-          <input formControlName="Name" matInput required>
-		  <mat-error *ngIf="hasError('Name', 'required')">Name is Required.</mat-error>
+          <input formControlName="name" matInput required>
+		  <mat-error *ngIf="hasError('name', 'required')">Name is Required.</mat-error>
         </mat-form-field>
 		
 		 <mat-form-field fxFlex="auto">
             <mat-label>Case ID</mat-label>
-            <input formControlName="caseId" matInput>
+            <input formControlName="caseId" matInput value="">
 			<mat-error *ngIf="hasError('caseId', 'required')">Case ID is Required.</mat-error>
           </mat-form-field>
          

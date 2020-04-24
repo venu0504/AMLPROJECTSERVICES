@@ -5,6 +5,8 @@ import { stagger60ms } from '../../../../@vex/animations/stagger.animation';
 import { fadeInUp400ms } from '../../../../@vex/animations/fade-in-up.animation';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {MatTableDataSource} from '@angular/material';
+import icMoreVert from '@iconify/icons-ic/twotone-more-vert';
+
 
 export interface PeriodicElement {
   name: string;
@@ -55,6 +57,8 @@ export class ExportstatusComponent implements OnInit {
 
 
   theme = theme;
+  icMoreVert = icMoreVert;
+
   ngOnInit() {
   }
   closeResult: string;

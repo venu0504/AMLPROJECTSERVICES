@@ -59,10 +59,7 @@
                   "maximumWarning": "3mb",
                   "maximumError": "5mb"
                 }
-              ],
-              "customWebpackConfig": {
-                "path": "./webpack.prod.config.js"
-              }
+              ]
             }
           }
         },

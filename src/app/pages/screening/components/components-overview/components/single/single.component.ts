@@ -9,6 +9,10 @@ import icVisibility from '@iconify/icons-ic/twotone-visibility';
 import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiProvider } from 'src/app/services/api-provider';
+import { ComponentsOverviewSVC } from '../../components-overview.service';
+
+
 
 @Component({
   selector: 'vex-single',
@@ -17,11 +21,15 @@ import { Router } from '@angular/router';
 })
 export class SingleComponent implements OnInit {
 
-public singleinf: any;
+public singleScreeningForm: any;
     submitted = false;
 
 
- constructor(private router: Router, private formBuilder: FormBuilder) {}
+ constructor(
+    private router: Router,  
+    private formBuilder: FormBuilder,
+    private apiProvider: ApiProvider,
+    private ComponentsOverviewSVC: ComponentsOverviewSVC) {}
  
   autocompleteHTML =
     `<mat-input-container>
@@ -41,7 +49,7 @@ public singleinf: any;
   icArrowDropDown = icArrowDropDown;
 
   ngOnInit() {
-this.singleinf = this.formBuilder.group({
+this.singleScreeningForm = this.formBuilder.group({
 	
 	  name: [null, Validators.compose([Validators.required])],
 	  caseId: [null, Validators.compose([Validators.required])],
@@ -49,21 +57,53 @@ this.singleinf = this.formBuilder.group({
 	  countryLoc: [null, Validators.compose([Validators.required])],
 	  placeofBirth: [null, Validators.compose([Validators.required])],
 	  nationality: [null, Validators.compose([Validators.required])],
-	    
-	   
-	 
+	  
  });
+//  this.ComponentsOverviewSVC.getGroups('groups').subscribe(
+//   async resdata => {
+//             const res = resdata;
+//             if(res){
+//               localStorage.setItem('groupId', res[0].id);
+//             }
+//     }, async (error) => {
+//       console.log("error occured")
+//     });
+
   }
 
 
  public hasError = (controlName: string, errorName: string) => {
-    return this.singleinf.controls[controlName].hasError(errorName);
+    return this.singleScreeningForm.controls[controlName].hasError(errorName);
   }
-  componentsoverviewOnsubmit(){
+  createSingleScreening(){
     this.submitted = true;
-    if (this.singleinf.invalid) {
-      return;
+    const inputData = {
+      name: this.singleScreeningForm.value.name,
+      caseId: this.singleScreeningForm.value.caseId,
+      date: this.singleScreeningForm.value.date,
+      countryLoc: this.singleScreeningForm.value.countryLoc,
+      placeofBirth: this.singleScreeningForm.value.placeofBirth,
+      nationality: this.singleScreeningForm.value.nationality
     }
-    alert('form fields are validated successfully!');  
-  }
+    console.log({inputData})
+    this.apiProvider.createSingleScreening('createSingleScreening',inputData).subscribe(
+      async resdata => {
+                const res = resdata;
+                if(res){
+                  //show some message
+                }
+        }, async (error) => {
+          console.log("error occured")
+        });
+    }
+
+  //   if (this.singleScreeningForm.invalid) {
+  //     return;
+  //   }
+  //   alert('form fields are validated successfully!');  
+  // }
+// , async (error) => {
+  // console.log("error occured")
+// }
+
 }

@@ -7,6 +7,8 @@ import icPhoneInTalk from '@iconify/icons-ic/twotone-phone-in-talk';
 import icMail from '@iconify/icons-ic/twotone-mail';
 import { stagger60ms } from '../../../../@vex/animations/stagger.animation';
 import { fadeInUp400ms } from '../../../../@vex/animations/fade-in-up.animation';
+import icMoreVert from '@iconify/icons-ic/twotone-more-vert';
+
 
 @Component({
   selector: 'vex-help',
@@ -19,7 +21,7 @@ export class HelpComponent implements OnInit {
   icBusinessCenter = icBusinessCenter;
   icPhoneInTalk = icPhoneInTalk;
   icMail = icMail;
-
+  icMoreVert = icMoreVert;
   theme = theme;
 
   constructor() { }

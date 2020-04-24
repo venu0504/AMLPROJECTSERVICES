@@ -54,6 +54,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { HelpCenterGuidesModule } from '../../apps/help-center/help-center-guides/help-center-guides.module';
 import { HighlightModule } from '../../../../@vex/components/highlight/highlight.module';
+import { ComponentsOverviewSVC } from '../../screening/components/components-overview/components-overview.service';
+
+
 @NgModule({
   declarations: [CaseComponent],
   imports: [
@@ -110,7 +113,8 @@ import { HighlightModule } from '../../../../@vex/components/highlight/highlight
     HelpCenterGuidesModule,
 	
 	HighlightModule
-  ]
+  ],
+  providers:[ComponentsOverviewSVC]
 })
 export class CaseModule {
 }
