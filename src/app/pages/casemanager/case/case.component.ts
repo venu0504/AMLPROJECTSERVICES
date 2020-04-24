@@ -224,6 +224,7 @@ changeDateFormat(value){
   }
 
   onFilterChange(value: string) {
+    debugger;
     if (!this.dataSource) {
       return;
     }

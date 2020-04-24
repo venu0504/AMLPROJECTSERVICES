@@ -1,10 +1,11 @@
 <vex-page-layout mode="simple">
-  <vex-page-layout-header fxLayout="column" fxLayoutAlign="center start">
-    <div vexContainer>
-      <h1 class="title mt-0 mb-1">SCREENING</h1>
-      <vex-breadcrumbs [crumbs]="['SCREENING', 'Single Screening']"></vex-breadcrumbs>
-    </div>
-  </vex-page-layout-header>
+  <vex-secondary-toolbar current="SCREENING">
+    <vex-breadcrumbs [crumbs]="['SCREENING', 'Single Screening']" class="flex-auto"></vex-breadcrumbs>
+  
+    <button class="ml-2" color="primary" mat-icon-button type="button">
+    
+    </button>
+  </vex-secondary-toolbar>
 
   <vex-page-layout-content fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="24px" vexContainer>
     <div @stagger
