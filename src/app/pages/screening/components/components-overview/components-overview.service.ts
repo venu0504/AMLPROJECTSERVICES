@@ -133,4 +133,27 @@ getCaseResult(endpoint: string): Observable<any> {
           }));
 }
 
+onCaseResolve(endpoint: string, payload: any): Observable<any> {
+    const headers = new Headers();
+    const url = endpoint;
+  
+    const options = new RequestOptions({ headers });
+    return this.http.put(url, payload)
+        .pipe(
+            map(response => {
+                return response;
+            }));
+  }
+
+onCaseReview(endpoint: string, payload: any): Observable<any> {
+    const headers = new Headers();
+    const url = endpoint;
+  
+    const options = new RequestOptions({ headers });
+    return this.http.put(url, payload)
+        .pipe(
+            map(response => {
+                return response;
+            }));
+  }
 }

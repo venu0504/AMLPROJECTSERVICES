@@ -54,9 +54,10 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
   layoutCtrl = new FormControl('boxed');
   id: any;
   sub:any;
+  resultId: string[]=[];
   state$: object;
-  displayedColumns: string[] = ["checkbox", "submittedTerm", "matchedNameType", "matchStrength", "type", "gender", "dateOfBirth", 
-                       "placeOfBirth", "nationality", "residence", "referenceId","categories",
+  displayedColumns: string[] = ["checkbox", "primaryName", "matchedNameType", "matchStrength", "categories", "gender", "dateOfBirth", 
+                       "placeOfBirth", "nationality", "residence", "referenceId","category",
                         "creationDate", "modificationDate", "matchedDate", "lastResolvedOrReviewedDate",
                         "lastResolvedOrReviewedBy", "riskLevel"];
 
@@ -92,7 +93,6 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
   dataSource: MatTableDataSource<Case> | null;
   selection = new SelectionModel<Case>(true, []);
   searchCtrl = new FormControl();
-
   labels = aioTableLabels;
 
   icPhone = icPhone;
@@ -157,7 +157,6 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
     this.ComponentsOverviewSVC.getCaseResult(`cases/${this.state$['value']}/results`).subscribe(
       async resdata => {
         const res = resdata;
-        debugger;
         this.dataSource.data = this.formatJson(resdata);
         if (res) {
           console.log("reaponse", res)
@@ -177,6 +176,28 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
         if(item.referenceId){
           item['referenceId'] = item['referenceId'].substr(9);
         }
+        if(item.events.length > 0){
+          item['dateOfBirth'] = item.events.map(value=>{
+                                   return value.fullDate; 
+                                  }).toString();
+        }
+        if(item.countryLinks){
+          //nationality", "residence",
+          item['nationality'] =  item.countryLinks.filter(item=>{
+                                    return item.type ===  "NATIONALITY"
+                                  }).map(item=>{
+                                    return item.countryText
+                                  }).toString();
+          item['residence'] = item.countryLinks.filter(item=>{
+                                return item.type ===  "LOCATION"
+                              }).map(item=>{
+                                return item.countryText
+                              }).toString();
+        }
+        if(item.resultReview){
+          item['lastResolvedOrReviewedDate'] = item.resultReview['reviewDate'] && this.changeDateFormat(item.resultReview['reviewDate'])
+        }
+        
 })
 return value;
 }
@@ -192,12 +213,57 @@ changeDateFormat(value){
   public hasError = (controlName: string, errorName: string) => {
     return this.casedet.controls[controlName].hasError(errorName);
   }
-  caseOnsubmit() {
-    this.submitted = true;
-    if (this.casedet.invalid) {
-      return;
-    }
-    alert('form fields are validated successfully!');
+  OnCaseSubmit() {
+    // this.submitted = true;
+    // if (this.casedet.invalid) {
+    //   return;
+    // }
+    // alert('form fields are validated successfully!');
+  //   {
+  //     "resultIds": [
+  //         "{{result-id}}"
+  //     ],
+  //     "statusId": "{{status-id}}",
+  //     "riskId": "{{risk-id}}",
+  //     "reasonId": "{{reason-id}}",
+  //     "resolutionRemark": "Remark for the case"
+  // }
+    let payload = {
+      "resultIds": this.resultId,
+      "statusId":"0a3687d0-6a9c-1394-9aa8-fb0d000002bd",
+      "riskId":"0a3687d0-6a9c-1394-9aa8-fb0d000002b5",
+      "reasonId":"0a3687d0-6a9c-1394-9aa8-fb0d000002b2",
+      "remark":"asa"}
+    const caseId=  this.state$['value']; 
+    this.ComponentsOverviewSVC.onCaseResolve(`cases/${caseId}/results/resolution`,payload).subscribe(
+        async resdata => {
+          const res = resdata;
+          this.dataSource.data = this.formatJson(resdata);
+          if (res) {
+            console.log("reaponse", res)
+          }
+        }, async (error) => {
+          console.log("error occured")
+        });
+  }
+
+  onCaseReviewSubmit() {
+    const caseId=  this.state$['value']; 
+
+    let payload= {
+      "resultIds": this.resultId,
+    "remark": "Remark for the case"
+    };
+    this.ComponentsOverviewSVC.onCaseReview(`cases/${caseId}/results/review`,payload).subscribe(
+      async resdata => {
+        const res = resdata;
+        this.dataSource.data = this.formatJson(resdata);
+        if (res) {
+          console.log("reaponse", res)
+        }
+      }, async (error) => {
+        console.log("error occured")
+      });
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -224,7 +290,6 @@ changeDateFormat(value){
   }
 
   onFilterChange(value: string) {
-    debugger;
     if (!this.dataSource) {
       return;
     }
@@ -237,6 +302,7 @@ changeDateFormat(value){
     event.stopPropagation();
     event.stopImmediatePropagation();
     column.visible = !column.visible;
+    console.log('sassa',column);
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -253,6 +319,14 @@ changeDateFormat(value){
       this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
+  selectRow($event, dataSource) {
+   // console.log($event.checked);
+    if ($event.checked) {
+      this.resultId.push(dataSource.resultId)
+    }
+  }
+
+
   trackByProperty<T>(index: number, column: TableColumn<T>) {
     return column.property;
   }
@@ -268,6 +342,8 @@ changeDateFormat(value){
   // createCustomer() {
   //   console.log("createCustomer");
   // }
+  
+  // {"caseId":"5nzbfkc4fbia1ejnpnry226yh","resultIds":["5nzbfkc4fasp1ejnpntx4bsk3"],"statusId":"0a3687d0-6a9c-1394-9aa8-fb0d000002bd","riskId":"0a3687d0-6a9c-1394-9aa8-fb0d000002b5","reasonId":"0a3687d0-6a9c-1394-9aa8-fb0d000002b2","remark":"asa"}
 
   ngOnDestroy() {
   }

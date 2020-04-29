@@ -1,14 +1,14 @@
 export class Case {
-  submittedTerm: string;
+  primaryName: string;
   matchedNameType:any;
   matchStrength: string;
-  type: string;
+  categories: string;
   gender: string;  
   dateOfBirth: string;
   placeOfBirth: any;
   nationality: any;
   residence: any;
-  categories: any;
+  category: any;
   referenceId: string;
   creationDate: any;
   matchedDate:any;
@@ -18,16 +18,16 @@ export class Case {
   riskLevel: any;
 
   constructor(customer) {
-    this.submittedTerm = customer.submittedTerm;
+    this.primaryName = customer.primaryName;
     this.matchedNameType = customer.matchedNameType;
     this.matchStrength = customer.matchStrength;
-    this.type = customer.type;
+    this.categories = customer.categories;
     this.gender = customer.gender;
     this.dateOfBirth = customer.dateOfBirth;
     this.placeOfBirth = customer.placeOfBirth;
     this.nationality = customer.nationality;
     this.residence = customer.residence;
-    this.categories = customer.categories;
+    this.category = customer.category;
     this.referenceId = customer.referenceId;
     this.creationDate = customer.creationDate;
     this.matchedDate = customer.matchedDate;
