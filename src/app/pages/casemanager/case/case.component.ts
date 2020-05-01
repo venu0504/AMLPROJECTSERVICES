@@ -55,6 +55,7 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
   id: any;
   sub:any;
   resultId: string[]=[];
+  resolution: object;
   state$: object;
   displayedColumns: string[] = ["checkbox", "primaryName", "matchedNameType", "matchStrength", "categories", "gender", "dateOfBirth", 
                        "placeOfBirth", "nationality", "residence", "referenceId","category",
@@ -111,7 +112,7 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private dialog: MatDialog, private ComponentsOverviewSVC: ComponentsOverviewSVC) {
+  constructor(private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private dialog: MatDialog, private ComponentsOverviewSVC: ComponentsOverviewSVC, private router: Router) {
   }
 
   get visibleColumns() {
@@ -150,7 +151,7 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
       risk: [null, Validators.compose([Validators.required])],
       reason: [null, Validators.compose([Validators.required])],
       note: [null, Validators.compose([Validators.required])],
-
+      reviewNote: [null, Validators.compose([Validators.required])]
     });
     this.state$ = this.activatedRoute.queryParams['value'];
     let data = {};
@@ -230,10 +231,11 @@ changeDateFormat(value){
   // }
     let payload = {
       "resultIds": this.resultId,
-      "statusId":"0a3687d0-6a9c-1394-9aa8-fb0d000002bd",
-      "riskId":"0a3687d0-6a9c-1394-9aa8-fb0d000002b5",
-      "reasonId":"0a3687d0-6a9c-1394-9aa8-fb0d000002b2",
-      "remark":"asa"}
+      "statusId": this.resolution && this.resolution['statusId'] ? this.resolution['statusId'] : "0a3687d0-6a9c-1394-9aa8-fb0d000002bd",
+      "riskId":this.resolution && this.resolution['riskId'] ? this.resolution['riskId'] : "0a3687d0-6a9c-1394-9aa8-fb0d000002b5",
+      "reasonId":this.resolution && this.resolution['reasonId'] ? this.resolution['reasonId'] : "0a3687d0-6a9c-1394-9aa8-fb0d000002b2",
+      "resolutionRemark":this.casedet.value.note
+    }
     const caseId=  this.state$['value']; 
     this.ComponentsOverviewSVC.onCaseResolve(`cases/${caseId}/results/resolution`,payload).subscribe(
         async resdata => {
@@ -252,7 +254,7 @@ changeDateFormat(value){
 
     let payload= {
       "resultIds": this.resultId,
-    "remark": "Remark for the case"
+      "remark": this.casedet.value.reviewNote,
     };
     this.ComponentsOverviewSVC.onCaseReview(`cases/${caseId}/results/review`,payload).subscribe(
       async resdata => {
@@ -323,6 +325,8 @@ changeDateFormat(value){
    // console.log($event.checked);
     if ($event.checked) {
       this.resultId.push(dataSource.resultId)
+      this.resolution = dataSource.resolution;
+
     }
   }
 
@@ -342,9 +346,12 @@ changeDateFormat(value){
   // createCustomer() {
   //   console.log("createCustomer");
   // }
+
+  routeToCaseDetailPage(value){
+    this.router.navigate(['/casemanager/casedetails/overview'])
+  }
   
   // {"caseId":"5nzbfkc4fbia1ejnpnry226yh","resultIds":["5nzbfkc4fasp1ejnpntx4bsk3"],"statusId":"0a3687d0-6a9c-1394-9aa8-fb0d000002bd","riskId":"0a3687d0-6a9c-1394-9aa8-fb0d000002b5","reasonId":"0a3687d0-6a9c-1394-9aa8-fb0d000002b2","remark":"asa"}
-
   ngOnDestroy() {
   }
 }
