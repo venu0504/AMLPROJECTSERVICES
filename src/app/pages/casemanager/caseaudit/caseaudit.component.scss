@@ -13,3 +13,19 @@ a{ color: #5c77ff }
 
 .mat-list-base .mat-list-item{ font-size:14px; height: auto !important; margin-bottom: 8px; }
 .mat-list-base .mat-list-item .mat-list-item-content{ align-items:top !important }
+.navigation-button {
+    border: 1px solid blue;
+    height: 27px;
+    margin-top: 5px;
+    width: 150px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    padding-top: 2px;
+}
+.navigation{
+    margin-top: -20px;
+    margin-bottom: 5px;
+}
+.ml-2 {
+    display: none;
+}
