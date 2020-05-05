@@ -347,7 +347,7 @@ changeDateFormat(value){
   //   console.log("createCustomer");
   // }
 
-  routeToCaseDetailPage(value){
+  routeToCaseDetailPage(){
     this.router.navigate(['/casemanager/casedetails/overview'])
   }
   

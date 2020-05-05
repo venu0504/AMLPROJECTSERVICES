@@ -262,12 +262,12 @@ export class AppComponent {
       //   ]
       // },
  
-      {
+      /*{
         type: 'link',
         label: 'Configuration',
         route: () => this.layoutService.openConfigpanel(),
         icon: icSettings
-      }
+      }*/
     ];
   }
 }
