@@ -117,7 +117,8 @@ this.vesselScreeningForm = this.formBuilder.group({
       async resdata => {
                 const res = resdata;
                 if(res){
-                  //show some message
+                  let value = res.caseId;
+                  this.router.navigate(['casemanager/case'], {queryParams: {value}});
                 }
         }, async (error) => {
           console.log("error occured")

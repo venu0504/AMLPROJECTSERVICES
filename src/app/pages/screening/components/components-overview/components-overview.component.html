@@ -1,6 +1,6 @@
 <vex-page-layout mode="simple">
   <vex-secondary-toolbar current="SCREENING">
-    <vex-breadcrumbs [crumbs]="['SCREENING', 'Single Screening']" class="flex-auto"></vex-breadcrumbs>
+    <vex-breadcrumbs [crumbs]="['SCREENING']" class="flex-auto"></vex-breadcrumbs>
   
     <button class="ml-2" color="primary" mat-icon-button type="button">
     
@@ -22,7 +22,7 @@
         <mat-list-item (click)="scrollTo('batch')" @fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Batch</h4>
         </mat-list-item> -->
-        <mat-list-item >
+        <mat-list-item class="color-fade">
           <h4 matLine>Entity Type</h4>
         </mat-list-item>
         <mat-list-item (click)="currentForm = 'individual'" @fadeInRight class="cursor-pointer" matRipple>

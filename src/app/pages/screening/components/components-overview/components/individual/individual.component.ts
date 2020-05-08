@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+
 import icArrowDropDown from '@iconify/icons-ic/twotone-arrow-drop-down';
 import icClose from '@iconify/icons-ic/twotone-close';
 import icVisibility from '@iconify/icons-ic/twotone-visibility';
@@ -138,7 +139,8 @@ export class IndividualComponent implements OnInit {
       async resdata => {
                 const res = resdata;
                 if(res){
-                  //show some message
+                  let value = res.caseId;
+                  this.router.navigate(['casemanager/case'], {queryParams: {value}});
                 }
         }, async (error) => {
           console.log("error occured")
