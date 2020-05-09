@@ -42,6 +42,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatRippleModule } from '@angular/material/core';
 
 
+import { ComponentsOverviewSVC } from '../../screening/components/components-overview/components-overview.service';
+
+
 @NgModule({
   declarations: [CasesummeryComponent],
   imports: [
@@ -85,11 +88,9 @@ import { MatRippleModule } from '@angular/material/core';
  HelpCenterGuidesModule,
  HighlightModule,
      MatMenuModule,
-    MatRippleModule
-   
-
-
-  ]
+    MatRippleModule,
+  ],
+  providers:[ComponentsOverviewSVC]
 })
 export class CasesummeryModule {
 }
