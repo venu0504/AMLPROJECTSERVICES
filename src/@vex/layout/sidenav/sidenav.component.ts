@@ -24,6 +24,7 @@ export class SidenavComponent implements OnInit {
               private layoutService: LayoutService) { }
 
   ngOnInit() {
+    this.layoutService.collapseSidenav();
   }
 
   onMouseEnter() {
