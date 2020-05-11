@@ -22,7 +22,7 @@ const childrenRoutes: VexRoutes = [
   
  
         {
-    path: 'casemanager/casesummery',
+    path: 'casemanager/casesummary',
     loadChildren: () => import('./pages/casemanager/casesummery/casesummery.module').then(m => m.CasesummeryModule),
   },
      {

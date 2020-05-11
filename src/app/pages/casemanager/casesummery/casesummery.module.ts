@@ -40,6 +40,7 @@ import { HelpCenterGuidesModule } from '../../apps/help-center/help-center-guide
 import { HighlightModule } from '../../../../@vex/components/highlight/highlight.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRippleModule } from '@angular/material/core';
+import { ComponentsOverviewSVC } from '../../screening/components/components-overview/components-overview.service';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { MatRippleModule } from '@angular/material/core';
    
 
 
-  ]
+  ],
+  providers:[ComponentsOverviewSVC]
 })
 export class CasesummeryModule {
 }

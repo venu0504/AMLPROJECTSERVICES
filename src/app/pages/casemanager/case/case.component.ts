@@ -61,7 +61,7 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
                        "placeOfBirth", "nationality", "residence", "referenceId","category",
                         "creationDate", "modificationDate", "matchedDate", "lastResolvedOrReviewedDate",
                         "lastResolvedOrReviewedBy", "riskLevel"];
-
+  routeParam: any;
   /**
    * Simulating a service with HTTP that returns Observables
    * You probably want to remove this and do all requests in a service with HTTP
@@ -154,6 +154,7 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
       reviewNote: [null, Validators.compose([Validators.required])]
     });
     this.state$ = this.activatedRoute.queryParams['value'];
+    this.routeParam = this.state$['value'];
     let data = {};
     this.ComponentsOverviewSVC.getCaseResult(`cases/${this.state$['value']}/results`).subscribe(
       async resdata => {
