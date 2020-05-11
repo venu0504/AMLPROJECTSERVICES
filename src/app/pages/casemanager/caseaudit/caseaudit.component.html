@@ -31,7 +31,7 @@
   <button class="ml-10" color="primary" mat-icon-button type="button" (click)="openLg(longContent)">
 Add Note
   </button> 
-    <table class="table "   >
+    <!-- <table class="table "   >
       <thead>
       <tr>
         <td class="body-2 text-secondary">#</td>
@@ -54,6 +54,40 @@ Add Note
    
 	     
       </tbody>
+    </table> -->
+    <table @stagger [dataSource]="dataSource" class="w-full" mat-table matSort>
+      <ng-container matColumnDef="checkbox">
+        <th *matHeaderCellDef mat-header-cell>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" color="primary">
+          </mat-checkbox>
+        </th>
+        <td *matCellDef="let row" class="w-4" mat-cell>
+          <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+            (change)="$event ? selectRow($event, row) : null" (click)="$event.stopPropagation()"
+            [checked]="selection.isSelected(row)" color="primary">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="eventDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let element" class="bold-font" >{{ element.eventDate}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actionedByUserName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.actionedByUserName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actionType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <td mat-cell (click)="openLg(content)" style="color:#00a5e2" *matCellDef="let element">{{ element.actionType}} </td>
+      </ng-container>
+      <ng-container matColumnDef="note">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Note</th>
+        <td mat-cell *matCellDef="let element">{{ element.note}} </td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
 

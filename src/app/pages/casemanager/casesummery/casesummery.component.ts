@@ -138,7 +138,7 @@ export class CasesummeryComponent implements OnInit {
     });
     // const caseId=  this.state$['value']; 
     const caseId = '0a3687cf-6b99-1f52-9afe-d2f000707848';
-    this.ComponentsOverviewSVC.getCaseSummaryData(`cases/${caseId}/results`).subscribe(
+    this.ComponentsOverviewSVC.getCaseSummaryData(`cases/summary`).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){

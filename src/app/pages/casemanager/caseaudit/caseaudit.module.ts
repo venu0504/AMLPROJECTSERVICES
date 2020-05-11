@@ -41,6 +41,8 @@ import { HighlightModule } from '../../../../@vex/components/highlight/highlight
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRippleModule } from '@angular/material/core';
 
+import { ComponentsOverviewSVC } from '../../screening/components/components-overview/components-overview.service';
+
 
 @NgModule({
   declarations: [CaseauditComponent],
@@ -86,10 +88,8 @@ import { MatRippleModule } from '@angular/material/core';
  HighlightModule,
      MatMenuModule,
     MatRippleModule
-   
-
-
-  ]
+  ],
+  providers:[ComponentsOverviewSVC]
 })
 export class CaseauditModule {
 }

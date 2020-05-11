@@ -171,6 +171,22 @@ onCaseReview(endpoint: string, payload: any): Observable<any> {
                 return response;
             }));
   }
+
+  getAuditDetailsData(endpoint: string, payload: any): Observable<any> {
+    const headers = new Headers();
+    const url = endpoint;
+  
+    const options = new RequestOptions({ headers });
+    return this.http.post(url, payload)
+        .pipe(
+            map(response => {
+                // response.json();
+                // return response.json();
+                return response;
+            }));
+  }
+
+  
 }
 
 
