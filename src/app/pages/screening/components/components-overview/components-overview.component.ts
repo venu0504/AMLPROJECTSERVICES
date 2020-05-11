@@ -29,15 +29,18 @@ import { stagger80ms } from '../../../../../@vex/animations/stagger.animation';
 })
 export class ComponentsOverviewComponent implements OnInit {
 
-  menuWidth = '250px';
+  menuWidth = '200px';
+  showSingleForm: Boolean = true;
+    showBatchForm: Boolean = true;
   showIndividualForm: Boolean = true;
   showVesselForm: Boolean = false;
   showOrganizationForm: Boolean = false;
   showUnspecifiedForm: Boolean = false;
-  currentForm: string = 'individual';
+    showPassportForm: Boolean = false;
+  currentForm: string = 'single';
 
-  // @ViewChild(SingleComponent, { read: ElementRef, static: true }) private single: ElementRef;
-  // @ViewChild(BatchComponent, { read: ElementRef, static: true }) private batch: ElementRef;
+  @ViewChild(SingleComponent, { read: ElementRef, static: true }) private single: ElementRef;
+  @ViewChild(BatchComponent, { read: ElementRef, static: true }) private batch: ElementRef;
 
   @ViewChild(IndividualComponent, { read: ElementRef, static: true }) private individual: ElementRef;
   @ViewChild(OrganizationComponent, { read: ElementRef, static: true }) private organization: ElementRef;
@@ -77,11 +80,21 @@ export class ComponentsOverviewComponent implements OnInit {
 
   showForm(element: string){
     debugger;
+	
+	
+	this.showSingleForm = false;
+	this.showBatchForm = false;
     this.showIndividualForm = false;
     this.showVesselForm = false;
     this.showOrganizationForm = false;
     this.showUnspecifiedForm = false;
+	 this.showPassportForm = false;
+	
     switch(element){
+		   case 'single':
+        return  this.showSingleForm = true;
+		  case 'batch':
+        return  this.showBatchForm = true;
       case 'individual':
         return  this.showIndividualForm = true;
       case 'vessel':
@@ -90,6 +103,9 @@ export class ComponentsOverviewComponent implements OnInit {
         return  this.showOrganizationForm = true;
       case 'unspecified':
         return  this.showUnspecifiedForm = true;
+		   case 'passportcheck':
+        return  this.showPassportForm = true;
+		
       default:
         return ;
     }

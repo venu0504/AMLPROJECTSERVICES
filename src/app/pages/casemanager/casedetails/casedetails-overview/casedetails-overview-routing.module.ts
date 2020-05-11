@@ -9,7 +9,8 @@ const routes: VexRoutes = [
     path: '',
     component: CasedetailsOverviewComponent,
     data: {
-      toolbarShadowEnabled: true
+      toolbarShadowEnabled: true,
+      containerEnabled: true
     }
   }
 ];

@@ -57,7 +57,6 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
   resultId: string[]=[];
   resolution: object;
   state$: object;
-  routeParam: any;
   displayedColumns: string[] = ["checkbox", "primaryName", "matchedNameType", "matchStrength", "categories", "gender", "dateOfBirth", 
                        "placeOfBirth", "nationality", "residence", "referenceId","category",
                         "creationDate", "modificationDate", "matchedDate", "lastResolvedOrReviewedDate",
@@ -155,7 +154,6 @@ export class CaseComponent implements OnInit, AfterViewInit, OnDestroy {
       reviewNote: [null, Validators.compose([Validators.required])]
     });
     this.state$ = this.activatedRoute.queryParams['value'];
-    this.routeParam = this.state$['value'];
     let data = {};
     this.ComponentsOverviewSVC.getCaseResult(`cases/${this.state$['value']}/results`).subscribe(
       async resdata => {

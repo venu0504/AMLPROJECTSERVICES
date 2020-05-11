@@ -1,3 +1,15 @@
 .color-fade {
     color: rgba(0, 0, 0, 0.54);
 }
+.mat-list-base .mat-list-item {
+    font-size: 14px!important;
+
+}
+.mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 180px;
+    font-size: 12px!important;
+}

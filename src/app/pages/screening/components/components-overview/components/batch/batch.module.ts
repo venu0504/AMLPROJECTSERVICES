@@ -8,7 +8,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { IconModule } from '@visurel/iconify-angular';
 import { HighlightModule } from '../../../../../../../@vex/components/highlight/highlight.module';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 
 import { MatSelectModule } from '@angular/material/select';
@@ -25,6 +25,10 @@ import { BreadcrumbsModule } from '../../../../../../../@vex/components/breadcru
 import { ContainerModule } from '../../../../../../../@vex/directives/container/container.module';
 
 
+
+
+
+
 @NgModule({
   declarations: [BatchComponent],
   imports: [
@@ -32,6 +36,7 @@ import { ContainerModule } from '../../../../../../../@vex/directives/container/
     MatButtonModule,
     FlexLayoutModule,
     MatIconModule,
+	MatTooltipModule,
     MatButtonToggleModule,
     MatTabsModule,
     IconModule,

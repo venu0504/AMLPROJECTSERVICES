@@ -8,7 +8,7 @@
        
 
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
-          <mat-form-field fxFlex="auto">
+          <mat-form-field  fxFlex="auto">
           <mat-label>Name</mat-label>
           <input  formControlName="name" matInput required>
 		  <mat-error *ngIf="hasError('name', 'required')">Name is Required.</mat-error>

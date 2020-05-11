@@ -1,17 +1,11 @@
-<vex-page-layout>
+<vex-secondary-toolbar current="CASE MANAGER">
+  <vex-breadcrumbs [crumbs]="['CASE MANAGER']" class="flex-auto"></vex-breadcrumbs>
 
-  <vex-page-layout-header class="pb-16" fxLayout="column" fxLayoutAlign="center start">
-    <div [class.container]="layoutCtrl.value === 'boxed'"
-         [class.px-gutter]="layoutCtrl.value === 'fullwidth'"
-         class="w-full flex justify-between">
-      <div>
-        <h1 class="title mt-0 mb-1">Case Manager</h1>
-        <vex-breadcrumbs [crumbs]="[ 'Case Manager']"></vex-breadcrumbs>
-      </div>
+</vex-secondary-toolbar>
 
-      
-    </div>
-  </vex-page-layout-header>
+<vex-page-layout style="margin-top:100px;" >
+
+
 
   <vex-page-layout-content [class.container]="layoutCtrl.value === 'boxed'"
                            [class.px-gutter]="layoutCtrl.value === 'fullwidth'"

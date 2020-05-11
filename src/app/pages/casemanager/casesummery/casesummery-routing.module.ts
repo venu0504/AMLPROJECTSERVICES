@@ -6,7 +6,11 @@ import { CasesummeryComponent } from './casesummery.component';
 const routes: Routes = [
   {
     path: '',
-    component: CasesummeryComponent
+    component: CasesummeryComponent,
+	  data: {
+      toolbarShadowEnabled: true,
+      containerEnabled: true
+    }
   }
 ];
 

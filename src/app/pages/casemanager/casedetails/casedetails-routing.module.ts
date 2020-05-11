@@ -6,7 +6,11 @@ import { VexRoutes } from '../../../../@vex/interfaces/vex-route.interface';
 const routes: VexRoutes = [
   {
     path: 'overview',
-    loadChildren: () => import('./casedetails-overview/casedetails-overview.module').then(m => m.CasedetailsOverviewModule)
+    loadChildren: () => import('./casedetails-overview/casedetails-overview.module').then(m => m.CasedetailsOverviewModule),
+	  data: {
+      toolbarShadowEnabled: true,
+      containerEnabled: true
+    }
   }
 ];
 

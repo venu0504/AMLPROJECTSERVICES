@@ -10,18 +10,28 @@
   <vex-page-layout-content fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="24px" vexContainer>
     <div @stagger
          [fxFlex]="menuWidth"
-         class="sticky top-6"
+         class="sticky"
+		 style="
+		 margin-right: 0px !important;
+flex-direction: column;
+box-sizing: border-box;
+display: flex;
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 200px!important;
+max-width: 200px!important;
+min-width: 200px!important;"
          fxHide
          fxLayout="column"
          fxShow.gt-sm>
       <mat-list class="navigation" fxFlex="grow">
         <h3 @fadeInRight matSubheader>Mode</h3>
-        <!-- <mat-list-item (click)="scrollTo('individual')" @fadeInRight class="cursor-pointer" matRipple>
+         <mat-list-item (click)="currentForm = 'single'"  @fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Single</h4>
         </mat-list-item>
-        <mat-list-item (click)="scrollTo('batch')" @fadeInRight class="cursor-pointer" matRipple>
+        <mat-list-item (click)="currentForm = 'batch'"@fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Batch</h4>
-        </mat-list-item> -->
+        </mat-list-item> 
         <mat-list-item class="color-fade">
           <h4 matLine>Entity Type</h4>
         </mat-list-item>
@@ -37,29 +47,29 @@
         <mat-list-item (click)="currentForm ='unspecified'" @fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Unspecified</h4>
         </mat-list-item>
-        <!-- <mat-list-item >
+      <!--<mat-list-item >
           <h4 matLine>Check Types</h4>
         </mat-list-item>
         <mat-list-item >
           <h4 matLine>World-Check</h4>
-        </mat-list-item>
-        <mat-list-item (click)="scrollTo('passportcheck')" @fadeInRight class="cursor-pointer" matRipple>
+        </mat-list-item>-->
+        <mat-list-item (click)="currentForm ='passportcheck'" @fadeInRight class="cursor-pointer" matRipple>
           <h4 matLine>Passport-Check</h4>
-        </mat-list-item> -->
+        </mat-list-item>
 
       </mat-list>
     </div>
 
-    <div @stagger class="max-w-full" fxLayout="column" fxLayoutGap="24px">
-      <!-- <vex-single @fadeInUp></vex-single>
-      <vex-batch @fadeInUp></vex-batch> -->
-    
+    <div @stagger   fxLayout="column" fxLayoutGap="24px">
+       <span *ngIf="currentForm === 'single'">  <vex-single @fadeInUp></vex-single></span>
+       <span *ngIf="currentForm === 'batch'"> <vex-batch @fadeInUp></vex-batch></span>
+   
       <span *ngIf="currentForm === 'individual'"><vex-individual ></vex-individual></span>
       <span *ngIf="currentForm === 'organization'"><vex-organization ></vex-organization></span>
       <span *ngIf="currentForm === 'vessel'"><vex-vessel ></vex-vessel></span>
       <span *ngIf="currentForm === 'unspecified'"><vex-unspecified ></vex-unspecified></span>
 
-      <!-- <vex-passport-check @fadeInUp></vex-passport-check> -->
+       <span *ngIf="currentForm === 'passportcheck'"> <vex-passport-check @fadeInUp></vex-passport-check></span>
      
     </div>
   </vex-page-layout-content>

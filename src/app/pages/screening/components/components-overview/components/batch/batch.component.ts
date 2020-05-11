@@ -15,8 +15,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./batch.component.scss']
 })
 export class BatchComponent implements OnInit {
-
-  flatButtonsHTML: string =
+  icFavorite = icFavorite;
+ flatButtonsHTML: string =
     `<button mat-button>Button</button>
 <button mat-button color="primary">Primary</button>
 <button mat-button color="accent">Accent</button>
@@ -47,16 +47,16 @@ export class BatchComponent implements OnInit {
 <button mat-icon-button color="warn"><mat-icon>build</mat-icon></button>
 <button mat-icon-button disabled="true"><mat-icon>lock</mat-icon></button>`;
 
-   public componentsoverviewButtons: any;
+   public batchScreeningForm: any;
     submitted = false;
 
 
  constructor(private router: Router, private formBuilder: FormBuilder) {}
 
 ngOnInit() {
-this.componentsoverviewButtons = this.formBuilder.group({
-	  batchName: [null, Validators.compose([Validators.required])],
-	  registrationKey: [null, Validators.compose([Validators.required])],
+this.batchScreeningForm = this.formBuilder.group({
+	  batchname: [null, Validators.compose([Validators.required])],
+
 	   
 	   
 	 
@@ -65,11 +65,11 @@ this.componentsoverviewButtons = this.formBuilder.group({
 
 
  public hasError = (controlName: string, errorName: string) => {
-    return this.componentsoverviewButtons.controls[controlName].hasError(errorName);
+    return this.batchScreeningForm.controls[controlName].hasError(errorName);
   }
-  componentsoverviewOnsubmit(){
+  createBatchScreening(){
     this.submitted = true;
-    if (this.componentsoverviewButtons.invalid) {
+    if (this.batchScreeningForm.invalid) {
       return;
     }
     alert('form fields are validated successfully!');  

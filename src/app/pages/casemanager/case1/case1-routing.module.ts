@@ -8,8 +8,9 @@ const routes: VexRoutes = [
   {
     path: '',
     component: Case1Component,
-    data: {
-      toolbarShadowEnabled: true
+     data: {
+      toolbarShadowEnabled: true,
+      containerEnabled: true
     }
   }
 ];

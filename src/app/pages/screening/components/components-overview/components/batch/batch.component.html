@@ -1,29 +1,54 @@
 <div class="card" fxLayout="column" fxLayout.gt-sm="row">
    <div @fadeInUp class="card" fxFlex="auto">
        <div class="p-6">
-      <h2 class="title mt-0 mb-4">World-Check</h2>
-       <h2 class="title m-0">Batch Screening</h2>
+    
+       <h2 class="title m-0">World-Check Batch Screening</h2>
     </div>
-	 
-     <form [formGroup]="componentsoverviewButtons" (ngSubmit)="componentsoverviewOnsubmit()" class="p-6" fxLayout="column" fxLayoutGap="16px">
+	  <h2 class="title mt-0 p-6 " >  <span class="body-2 text-secondary  " matTooltip="There are no Batch Names available. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please contact a Client Administrator to create a new one."> <i class="fa fa-exclamation-circle" ></i></span> BATCH NAMES</h2>
+	     <h4 class="body-2 text-secondary px-4 " > There are no Batch Names available. Please contact a Client Administrator to create a new one.</h4>
+	
+     <form [formGroup]="batchScreeningForm" (ngSubmit)="createBatchScreening()" class="p-6" fxLayout="column" fxLayoutGap="16px">
        
+   
 
-        <div fxLayout="row"  class="title mt-0 mb-4"  >
-          <mat-form-field >
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+          <mat-form-field  fxFlex="auto">
           <mat-label>Batch Name</mat-label>
-          <input formControlName="batchName" matInput required>
-		  <mat-error *ngIf="hasError('batchName', 'required')">Batch Name is required</mat-error>
+          <input  formControlName="batchname" matInput required>
+		  <mat-error *ngIf="hasError('batchname', 'required')">Name is Required.</mat-error>
         </mat-form-field>
-		
-		
-         
+
         </div>
       
   <div >
       <h2 class="title mt-0 mb-2">Batch File</h2>
-      <h4 class="body-2 text-secondary mb-2">Important: Please review the batch upload guidelines and file format before screening</h4>
+      <h4 class="body-2 text-secondary mb-2" >Important: Please review the batch upload guidelines and file format before screening <span matTooltip="
+Batch upload guidelines and file format &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+Follow the guidelines to ensure effective batch screening &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Download the guidelines &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+The XLSX should have the fields in the order provided on the template.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Download the XLSX template  &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+The csv should have the fields in the order provided on the template.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Download the csv template
+"> <i class="fa fa-exclamation-circle" ></i></span></h4>
+	 
+
       <input type='file'>
       <button  mat-raised-button color="primary">Upload File</button>
+	
     </div>
     
 		  

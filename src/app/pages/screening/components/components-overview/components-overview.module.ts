@@ -23,6 +23,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { ComponentsOverviewSVC } from './components-overview.service';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { HighlightModule } from '../../../../../@vex/components/highlight/highlight.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { IconModule } from '@visurel/iconify-angular';
 @NgModule({
   declarations: [ComponentsOverviewComponent],
   imports: [
@@ -40,8 +46,13 @@ import { ComponentsOverviewSVC } from './components-overview.service';
 	OrganizationModule,
 	PassportcheckModule,
 	UnspecifiedModule,
-  
+  MatButtonModule,
+  MatIconModule,
+  MatTabsModule,
+  HighlightModule,
     BreadcrumbsModule,
+	IconModule,
+	MatTooltipModule,
     ContainerModule,
 	MatSelectModule,
 	MatInputModule
