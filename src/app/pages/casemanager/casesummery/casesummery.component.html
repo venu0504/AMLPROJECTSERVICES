@@ -56,8 +56,21 @@
       <mat-list role="list" class="custom-list">
      
         <mat-list-item role="listitem">
-          <span class="w-40">World-Check </span><span class="w-60"> Total Matches:12-May-2019
-            </span></mat-list-item>
+          <span class="w-30">World-Check </span>
+          <span class="w-70"> 
+            <div>
+              Total Matches:<span class="mr-20">{{matchCount}}</span>
+              <span>Unresolved: </span><span>{{unresolvedCount}}</span>
+            </div>
+            <div>Resolved Matched: <span class="mr-10">{{resolvedCount}}</span>
+              <span>Positive:</span><span class="mr-2">{{positiveCount}}</span>
+              <span>Possible: </span><span class="mr-2">{{possibleCount}}</span>
+              <span>False: </span><span class="mr-2">{{falseCount}} </span>
+              <span>Unspecified:</span><span class="mr-2">{{unspecifiedCount}}</span>
+            </div>
+             
+            </span>
+        </mat-list-item>
       </mat-list>
       <table @stagger [dataSource]="dataSource" class="w-full" mat-table matSort>
         

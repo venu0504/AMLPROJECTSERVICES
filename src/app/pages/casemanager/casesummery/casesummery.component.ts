@@ -74,6 +74,13 @@ export class CasesummeryComponent implements OnInit {
   lastModificationDate: string;
   ongScreeningStatus: string;
   assignee: string;
+  matchCount: number;
+  unresolvedCount: number;
+  resolvedCount: number;
+  positiveCount: number = 0;
+  possibleCount: number;
+  falseCount: number = 0;
+  unspecifiedCount: number = 0;
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -197,6 +204,7 @@ export class CasesummeryComponent implements OnInit {
                 const res = resdata;
                 if(res){
                   console.log("summary result",res)
+                  this.matchCount = res.length;
                   // this.caseManagerList = res;
                   let formattedResult = this.formatResponse(res);
                    this.dataSource.data = formattedResult;
@@ -209,6 +217,9 @@ export class CasesummeryComponent implements OnInit {
   }
   formatResponse(response){
     let result = response.filter(item=>item.resolution !== null );
+    this.unresolvedCount = this.matchCount - result.length;
+    this.resolvedCount = result.length;
+    this.possibleCount = this.resolvedCount ;
       result.map(item=>{
         if(item['resolution']){
           item['resolutionDate'] = this.changeDateFormat(item['resolution']['resolutionDate'])
