@@ -93,7 +93,6 @@ export class CasesummeryComponent implements OnInit {
   closeResult: string;
   ngOnInit() {
     this.state$ = this.activatedRoute.queryParams['value'];
-    debugger;
     this.dataSource = new MatTableDataSource();
 
     this.onCustomFields = this.formBuilder.group({
