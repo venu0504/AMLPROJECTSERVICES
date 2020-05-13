@@ -11,6 +11,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { MatSelectChange } from '@angular/material/select';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 
 import { TableColumn } from '../../../../@vex/interfaces/table-column.interface';
@@ -44,7 +46,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class CaseauditComponent implements OnInit {
   icSettings = icSettings;
-
+  state$: object;
   displayedColumns: string[] = ['checkbox','eventDate', 'actionedByUserName', 'note', 'actionType'];
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   dataSource: MatTableDataSource<CaseAudit> | null;
@@ -63,7 +65,7 @@ export class CaseauditComponent implements OnInit {
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
-  constructor(private modalService: NgbModal, private ComponentsOverviewSVC: ComponentsOverviewSVC) {}
+  constructor(private modalService: NgbModal, private ComponentsOverviewSVC: ComponentsOverviewSVC,private activatedRoute: ActivatedRoute,private router: Router) {}
 
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
@@ -82,6 +84,7 @@ export class CaseauditComponent implements OnInit {
      }
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
+    this.state$ = this.activatedRoute.queryParams['value'];
     this.data$.pipe(
       filter<CaseAudit[]>(Boolean)
     ).subscribe(cases => {
@@ -89,7 +92,8 @@ export class CaseauditComponent implements OnInit {
       this.dataSource.data = cases;
     });
 
-    const caseId = '0a3687cf-6b99-1f52-9afe-d2f000707848';
+    // const caseId = '0a3687cf-6b99-1f52-9afe-d2f000707848';
+    const caseId = this.state$['value'];
     const id = '0a3687d0-6a9c-1394-9aa8-fb0e000002da';
     const payload = {
       'query': `actionedByUserId==${id};eventDate>2010-01-01T00:00:00Z;eventDate<2020-06-01T00:00:00Z`
@@ -178,6 +182,22 @@ changeDateFormat(value){
       openScrollableAutoresolution(longAutoresolution) {
     this.modalService.open(longAutoresolution, { size: 'lg' ,scrollable: true });
   }
+
+
+  routeToPage(page){
+    const value = this.state$['value'];
+    switch(page){
+      case 'summary': 
+      this.router.navigate(['/casemanager/casesummary'], {queryParams: {value}} );
+      break;
+      case 'worldCheck': 
+      this.router.navigate(['/casemanager/case'], {queryParams: {value}} );
+      break;
+
+    }
+
+  }
+
 }
 
 //http://168.61.211.238:3000/v2/cases/0a3687cf-6b99-1f52-9afe-d2f000707848/auditEvents

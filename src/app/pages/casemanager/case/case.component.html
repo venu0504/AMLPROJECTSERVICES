@@ -1,11 +1,11 @@
 <vex-secondary-toolbar current="CASE">
   <vex-breadcrumbs [crumbs]="['CASE']" class="flex-auto"></vex-breadcrumbs>
-  <button class="ml-20" color="primary" mat-icon-button type="button" routerLink="/casemanager/casesummary" routerLinkActive="mat-accent">
+  <button class="ml-20" color="primary" mat-icon-button type="button" (click)="routeToPage('summary')" >
 Summary
-  </button>  <button class="ml-20" color="primary" mat-icon-button type="button" routerLink="/casemanager/case" routerLinkActive="mat-accent">
+  </button>  <button class="ml-20" color="primary" mat-icon-button type="button"  style="color: #ff4081;">
 World-Check
   </button>
-  <button class="ml-20" color="primary" mat-icon-button type="button" routerLink="/casemanager/caseaudit" routerLinkActive="mat-accent">
+  <button class="ml-20" color="primary" mat-icon-button type="button" (click)="routeToPage('audit')" >
 Audit
   </button>
 </vex-secondary-toolbar>

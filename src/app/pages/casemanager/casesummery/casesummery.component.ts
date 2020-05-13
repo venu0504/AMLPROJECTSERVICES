@@ -92,9 +92,8 @@ export class CasesummeryComponent implements OnInit {
   theme = theme;
   closeResult: string;
   ngOnInit() {
-    // this.state$ = this.activatedRoute.queryParams.subscribe(params=>{
-    //   return params['routeParam']
-    // });
+    this.state$ = this.activatedRoute.queryParams['value'];
+    debugger;
     this.dataSource = new MatTableDataSource();
 
     this.onCustomFields = this.formBuilder.group({
@@ -164,7 +163,7 @@ export class CasesummeryComponent implements OnInit {
       this.dataSource.data = cases;
     });
 
-    const caseId = '0a3687cf-6b99-1f52-9afe-d2f000707848';
+    const caseId = this.state$['value'];
     // http://168.61.211.238:3000/v2/cases/0a3687cf-6b99-1f52-9afe-d2f000707848
     this.ComponentsOverviewSVC.getFullDetails(`cases/${caseId}`).subscribe(
       async resdata => {
@@ -266,6 +265,20 @@ export class CasesummeryComponent implements OnInit {
   }
   resetBankform() {
     this.onGroupForm.reset();
+  }
+
+  routeToPage(page){
+    const value = this.state$['value'];
+    switch(page){
+      case 'worldcheck': 
+      this.router.navigate(['/casemanager/case'], {queryParams: {value}} );
+      break;
+      case 'audit': 
+      this.router.navigate(['/casemanager/caseaudit'], {queryParams: {value}} );
+      break;
+
+    }
+
   }
 
 }

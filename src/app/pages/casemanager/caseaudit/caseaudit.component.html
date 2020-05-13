@@ -4,12 +4,12 @@
   <button class="ml-2" color="primary" mat-icon-button type="button">
     <mat-icon [icIcon]="icMoreVert"></mat-icon>
   </button>
-  <button class="ml-20" color="primary" mat-icon-button type="button" routerLinkActive="mat-accent" routerLink="/casemanager/casesummary">
+  <button class="ml-20" color="primary" mat-icon-button type="button" (click)="routeToPage('summary')" >
     Summary
-      </button>  <button class="ml-20" color="primary" mat-icon-button type="button" routerLinkActive="mat-accent" routerLink="/casemanager/case" >
+      </button>  <button class="ml-20" color="primary" mat-icon-button type="button" (click)="routeToPage('worldCheck')" >
     World-Check
       </button>
-      <button class="ml-20" color="primary" mat-icon-button type="button" routerLinkActive="mat-accent" routerLink="/casemanager/caseaudit">
+      <button class="ml-20" color="primary" mat-icon-button type="button" style="color:  #ff4081;">
     Audit
       </button>
 </vex-secondary-toolbar>

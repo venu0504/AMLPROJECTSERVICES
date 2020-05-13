@@ -351,7 +351,19 @@ changeDateFormat(value){
   routeToCaseDetailPage(){
     this.router.navigate(['/casemanager/casedetails/overview'])
   }
-  
+  routeToPage(page){
+    const value = this.state$['value'];
+    switch(page){
+      case 'summary': 
+      this.router.navigate(['/casemanager/casesummary'], {queryParams: {value}} );
+      break;
+      case 'audit': 
+      this.router.navigate(['/casemanager/caseaudit'], {queryParams: {value}} );
+      break;
+
+    }
+
+  }
   // {"caseId":"5nzbfkc4fbia1ejnpnry226yh","resultIds":["5nzbfkc4fasp1ejnpntx4bsk3"],"statusId":"0a3687d0-6a9c-1394-9aa8-fb0d000002bd","riskId":"0a3687d0-6a9c-1394-9aa8-fb0d000002b5","reasonId":"0a3687d0-6a9c-1394-9aa8-fb0d000002b2","remark":"asa"}
   ngOnDestroy() {
   }
