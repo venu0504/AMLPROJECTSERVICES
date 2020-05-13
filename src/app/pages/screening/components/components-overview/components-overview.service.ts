@@ -185,6 +185,18 @@ onCaseReview(endpoint: string, payload: any): Observable<any> {
                 return response;
             }));
   }
+  getFullDetails(endpoint: string): Observable<any> {
+    const headers = new Headers();
+    const url = endpoint;
+  
+    return this.http.get(url)
+        .pipe(
+            map(response => {
+                // response.json();
+                // return response.json();
+                return response;
+            }));
+  }
 
   
 }

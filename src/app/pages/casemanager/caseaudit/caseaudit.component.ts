@@ -92,7 +92,7 @@ export class CaseauditComponent implements OnInit {
     const caseId = '0a3687cf-6b99-1f52-9afe-d2f000707848';
     const id = '0a3687d0-6a9c-1394-9aa8-fb0e000002da';
     const payload = {
-      'query': `actionedByUserId==${id};eventDate>2010-01-01T00:00:00Z;eventDate<2020-01-01T00:00:00Z`
+      'query': `actionedByUserId==${id};eventDate>2010-01-01T00:00:00Z;eventDate<2020-06-01T00:00:00Z`
     }
     this.ComponentsOverviewSVC.getAuditDetailsData(`cases/${caseId}/auditEvents`,payload).subscribe(
       async resdata => {

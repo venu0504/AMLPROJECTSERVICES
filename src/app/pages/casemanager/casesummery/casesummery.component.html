@@ -24,29 +24,29 @@
       <h3>Case Record</h3>
       <hr class="mt-2">
       <mat-list role="list" class="custom-list">
-        <mat-list-item role="listitem"><span class="w-40">Name </span><span class=""> ram</span></mat-list-item>
-        <mat-list-item role="listitem"><span class="w-40 pr-2">ID</span><span class="w-60">ram123</span>
+        <mat-list-item role="listitem"><span class="w-40">Name </span><span class="">{{name}}</span></mat-list-item>
+        <mat-list-item role="listitem"><span class="w-40 pr-2">ID</span><span class="w-60">{{caseid}}</span>
         </mat-list-item>
-        <mat-list-item role="listitem"><span class="w-40 pr-2">Group Name</span><span class="w-60">Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</span>
+        <mat-list-item role="listitem"><span class="w-40 pr-2">Group Name</span><span class="w-60">{{groupName}}</span>
         </mat-list-item>
         <mat-list-item role="listitem"><span class="w-40 pr-2">Ongoing Screening</span><span
-            class="w-60"> No</span>
+            class="w-60"> {{ongoingStatus}}</span>
         </mat-list-item>
-        <mat-list-item role="listitem"><span class="w-40 pr-2">Status</span><span class="w-60"> Unarchived</span>
+        <mat-list-item role="listitem"><span class="w-40 pr-2">Status</span><span class="w-60">{{status}}</span>
         </mat-list-item>
-        <mat-list-item role="listitem"><span class="w-40 pr-2">Gender</span><span class="w-60">Male</span>
+        <mat-list-item role="listitem"><span class="w-40 pr-2">Gender</span><span class="w-60">{{gender}}</span>
         </mat-list-item>
-        <mat-list-item role="listitem"><span class="w-40 pr-2">Date of Birth</span><span class="w-60">10-june-1991</span></mat-list-item>
+        <mat-list-item role="listitem"><span class="w-40 pr-2">Date of Birth</span><span class="w-60">{{dob}}</span></mat-list-item>
         <mat-list-item role="listitem"><span class="w-40 pr-2">Nationality</span><span
-            class="w-60">United States</span></mat-list-item>
+            class="w-60">{{nationality}}</span></mat-list-item>
         <mat-list-item role="listitem"><span class="w-40 pr-2">Country Location</span><span
-            class="w-60">United States</span></mat-list-item>
+            class="w-60">{{countryLocation}}</span></mat-list-item>
 			
 			  <mat-list-item role="listitem"><span class="w-40 pr-2">Place of Birth</span><span
-            class="w-60">United States</span></mat-list-item>
+            class="w-60">{{placeOfbirth}}</span></mat-list-item>
 			
 			  <mat-list-item role="listitem"><span class="w-40 pr-2">EDD Request Raised</span><span
-            class="w-60">No</span></mat-list-item>
+            class="w-60">{{eddReqRaised}}</span></mat-list-item>
       </mat-list>
     </mat-card>
 
@@ -55,14 +55,53 @@
       <hr class="mt-2">
       <mat-list role="list" class="custom-list">
      
-        <mat-list-item role="listitem"><span class="w-40">World-Check </span><span class="w-60"> Total Matches:12-May-2019
+        <mat-list-item role="listitem">
+          <span class="w-40">World-Check </span><span class="w-60"> Total Matches:12-May-2019
             </span></mat-list-item>
-    
       </mat-list>
+      <table @stagger [dataSource]="dataSource" class="w-full" mat-table matSort>
+        
+        <ng-container matColumnDef="resolutionStatus">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Resolution Status</th>
+          <td mat-cell *matCellDef="let element" class="bold-font">{{element.resolutionStatus}}</td>
+        </ng-container>
+        <ng-container matColumnDef="categories">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+          <td mat-cell *matCellDef="let element">{{ element.categories && element.categories.toString()}}</td>
+        </ng-container>
+        <ng-container matColumnDef="primaryName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Matching Entity</th>
+          <td mat-cell *matCellDef="let element">{{element.primaryName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="resolutionDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Resolved on</th>
+          <td mat-cell *matCellDef="let element">{{element.resolutionDate}} </td>
+        </ng-container>
+        <ng-container matColumnDef="risk">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Risk</th>
+          <td mat-cell *matCellDef="let element">{{element.risk}}</td>
+        </ng-container>
+        <ng-container matColumnDef="resolutionReason">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Resolution Reason</th>
+          <td mat-cell *matCellDef="let element">{{element.resolutionReason}}</td>
+        </ng-container>
+        <ng-container matColumnDef="resolutionRemark">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Resolution Remark</th>
+          <td mat-cell *matCellDef="let element">{{element.resolutionRemark}}</td>
+        </ng-container>
+        <ng-container matColumnDef="matchStrength">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Match Strength</th>
+          <td mat-cell *matCellDef="let element">{{element.matchStrength}}</td>
+        </ng-container>
+        
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
     </mat-card>
 
 
- <mat-card class="mb-3">
+ <!-- <mat-card class="mb-3">
        
       <h3>Notes - showing 0 of 0</h3>
       <hr class="mt-2">
@@ -95,26 +134,25 @@
       </tbody>
     </table>
 
- </mat-card>
- 
+ </mat-card> -->
  
      <mat-card class="mb-3">
       <h3>Activity</h3>
       <hr class="mt-2">
       <mat-list role="list" class="custom-list">
-        <mat-list-item role="listitem"><span class="w-40">Case Created </span><span class=""> ram</span></mat-list-item>
-        <mat-list-item role="listitem"><span class="w-40 pr-2">Last Modified by</span><span class="w-60">ram123</span>
+        <mat-list-item role="listitem"><span class="w-40">Case Created </span><span class="">{{caseCreated}}</span></mat-list-item>
+        <mat-list-item role="listitem"><span class="w-40 pr-2">Last Modified by</span><span class="w-60">{{lastModified}}</span>
         </mat-list-item>
-        <mat-list-item role="listitem"><span class="w-40 pr-2">Last Action</span><span class="w-60">Cooperativa Servicios Multiples de Tecnologia Avanzada, R.L - API(T)</span>
+        <mat-list-item role="listitem"><span class="w-40 pr-2">Last Action</span><span class="w-60">{{lastAction}}</span>
         </mat-list-item>
         <mat-list-item role="listitem"><span class="w-40 pr-2">Last Modification Date</span><span
-            class="w-60"> No</span>
+            class="w-60"> {{lastModificationDate}}</span>
         </mat-list-item>
-        <mat-list-item role="listitem"><span class="w-40 pr-2">Ongoing Screening Status</span><span class="w-60"> Unarchived</span>
+        <mat-list-item role="listitem"><span class="w-40 pr-2">Ongoing Screening Status</span><span class="w-60"> {{ongScreeningStatus}}</span>
         </mat-list-item>
-        <mat-list-item role="listitem"><span class="w-40 pr-2">Gender</span><span class="w-60">Last Screening Date</span>
+        <mat-list-item role="listitem"><span class="w-40 pr-2">Gender</span><span class="w-60">{{gender}}</span>
         </mat-list-item>
-        <mat-list-item role="listitem"><span class="w-40 pr-2">Assignee</span><span class="w-60">10-june-1991</span></mat-list-item>
+        <mat-list-item role="listitem"><span class="w-40 pr-2">Assignee</span><span class="w-60">{{assignee}}</span></mat-list-item>
  
       </mat-list>
     </mat-card>

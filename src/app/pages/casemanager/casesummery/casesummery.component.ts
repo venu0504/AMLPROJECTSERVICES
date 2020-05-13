@@ -9,7 +9,9 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { ComponentsOverviewSVC } from '../../screening/components/components-overview/components-overview.service';
-
+import { CaseSummary } from './interfaces/casesummary.model';
+import { ReplaySubject, Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -43,16 +45,35 @@ export class CasesummeryComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
+  subject$: ReplaySubject<CaseSummary[]> = new ReplaySubject<CaseSummary[]>(1);
+  data$: Observable<CaseSummary[]> = this.subject$.asObservable();
+  caseSummary: CaseSummary[];
+  dataSource: MatTableDataSource<CaseSummary> | null;
 
   onCustomFields: FormGroup;
   state$: object;
   submitted = false;
   onGroupForm: FormGroup;
   icSettings = icSettings;
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
-
+  displayedColumns: string[] = ['resolutionStatus','categories','primaryName','resolutionDate','risk','resolutionReason','resolutionRemark','matchStrength'];
+  selection = new SelectionModel<CaseSummary>(true, []);
+  name: string;
+  caseid: string;
+  groupName: string;
+  ongoingStatus: string;
+  status: string;
+  gender: string;
+  nationality: string;
+  countryLocation: string;
+  placeOfbirth: string;
+  eddReqRaised: string;
+  dob: string;
+  caseCreated: string;
+  lastModified :string;
+  lastAction: string;
+  lastModificationDate: string;
+  ongScreeningStatus: string;
+  assignee: string;
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -74,12 +95,12 @@ export class CasesummeryComponent implements OnInit {
     // this.state$ = this.activatedRoute.queryParams.subscribe(params=>{
     //   return params['routeParam']
     // });
+    this.dataSource = new MatTableDataSource();
+
     this.onCustomFields = this.formBuilder.group({
       fields: [null, Validators.compose([Validators.required])],
       receiveEmail: [null, Validators.compose([Validators.required])],
       locale: [null, Validators.compose([Validators.required])]
-
-
     });
 
 
@@ -136,16 +157,51 @@ export class CasesummeryComponent implements OnInit {
 
 
     });
-    // const caseId=  this.state$['value']; 
+    this.data$.pipe(
+      filter<CaseSummary[]>(Boolean)
+    ).subscribe(cases => {
+      this.caseSummary = cases;
+      this.dataSource.data = cases;
+    });
+
     const caseId = '0a3687cf-6b99-1f52-9afe-d2f000707848';
-    this.ComponentsOverviewSVC.getCaseSummaryData(`cases/summary`).subscribe(
+    // http://168.61.211.238:3000/v2/cases/0a3687cf-6b99-1f52-9afe-d2f000707848
+    this.ComponentsOverviewSVC.getFullDetails(`cases/${caseId}`).subscribe(
+      async resdata => {
+                const res = resdata;
+                if(res){
+                  console.log("full details result",res)
+                  this.name = res.name;
+                  this.caseid = res.caseId;
+                  this.groupName = res.groupName ? res.groupName : 'NA';
+                  this.ongoingStatus =  res.ongoingStatus ? res.ongoingStatus: 'NA';
+                  this.status = res.status ? res.status : 'NA';
+                  this.gender = res.gender ? res.gender : 'NA';
+                  this.nationality =res.nationality ? res.nationality : 'NA';
+                  this.countryLocation = res.countryLocation ? res.countryLocation : 'NA';
+                  this.placeOfbirth = res.placeOfbirth ? res.placeOfbirth : 'NA';
+                  this.eddReqRaised = res.eddReqRaised ? res.eddReqRaised : 'NA';
+                  this.dob = res.dob ? res.dob : 'NA';
+                  this.assignee = res.assignee ? res.assignee : 'Case Unassigned';
+                  this.caseCreated  = res.creator ? res.creator.fullName : 'NA';
+                  this.lastModified =  res.modifier ? res.modifier.fullName : 'NA';
+                  this.lastAction = res.lastAction ? res.lastAction : 'Case Note Added';
+                  this.lastModificationDate = res.modificationDate ? this.changeDateFormat(res.modificationDate) : 'NA';
+                  this.ongScreeningStatus = res.caseScreeningState ? res.caseScreeningState : 'Not Enabled';
+                }
+        }, async (error) => {
+          console.log("error occured")
+        });
+    
+    // const caseId=  this.state$['value']; 
+    this.ComponentsOverviewSVC.getCaseSummaryData(`cases/${caseId}/results`).subscribe(
       async resdata => {
                 const res = resdata;
                 if(res){
                   console.log("summary result",res)
                   // this.caseManagerList = res;
-                  // let formattedResult = this.formatJson(res);
-                  // this.dataSource.data = formattedResult;
+                  let formattedResult = this.formatResponse(res);
+                   this.dataSource.data = formattedResult;
                   // console.log("value summary",formattedResult)
 
                 }
@@ -153,8 +209,24 @@ export class CasesummeryComponent implements OnInit {
           console.log("error occured")
         });
   }
-
-
+  formatResponse(response){
+    let result = response.filter(item=>item.resolution !== null );
+      result.map(item=>{
+        if(item['resolution']){
+          item['resolutionDate'] = this.changeDateFormat(item['resolution']['resolutionDate'])
+        }
+        if(item['resolution']){
+          item['resolutionRemark'] = item['resolution']['resolutionRemark'];
+        }
+      })
+    return result;
+  }
+  changeDateFormat(value){
+    let date = new Date(value);
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+    let n = date.getDate()+'-' + months[date.getMonth()] + '-'+date.getFullYear() +' '+ date.getHours() +':'+ date.getMinutes() ;
+    return n;
+    }
 
   openBackDropCustomClass(content) {
     this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
